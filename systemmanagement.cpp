@@ -39,7 +39,7 @@ SystemManagement::SystemManagement(QWidget *parent) :
 
     ui->btnSystemRun->setEnabled(false);
 
-    m_watcher.addPath("/sun/web/tmp/");
+    m_watcher.addPath("/app/wwwroot/tmp/");
     connect(&m_watcher, SIGNAL(directoryChanged(const QString&)),
                      this, SLOT(handleFileChanged(const QString&)));
     buttonEnable();
@@ -126,7 +126,7 @@ void SystemManagement::on_btnReboot_clicked()
 
 void SystemManagement::on_btnUpgrade_clicked()
 {
-    QString dir = "/sun/web/tmp/usbdisk/upgrade";
+    QString dir = "/app/wwwroot/tmp/usbdisk/upgrade";
     if(QDir(dir).exists() == false)
     {
         CInfomationDialog dlg("USB 메모리에 업그레이드 파일이 없습니다");
@@ -160,10 +160,10 @@ void SystemManagement::on_btnSetupSave_clicked()
     ui->listWidget->addItem(QString(tr("설정데이터 Backup중입니다.........")));
     QDateTime date = QDateTime::currentDateTime();
     QString src,dest,file;
-    dest = "/sun/web/tmp/usbdisk/setupbackup_";
+    dest = "/app/wwwroot/tmp/usbdisk/setupbackup_";
     dest += date.toString("yyyyMMddhhmmss");
     src = "/data";
-    //dest = "/sun/web/tmp/usbdisk";
+    //dest = "/app/wwwroot/tmp/usbdisk";
 
     QDir destDir(dest);
     if(destDir.exists() == false)
@@ -200,7 +200,7 @@ void SystemManagement::on_btnSetupRestore_clicked()
     CQuestionDialog dlg(tr("설정데이터를 복원하려면 시스템을 잠시 정지하여야 합니다\n 복원 하시겠습니까?"));
     if(dlg.exec() == QDialog::Accepted)
     {
-        QString dir = "/sun/web/tmp/usbdisk";
+        QString dir = "/app/wwwroot/tmp/usbdisk";
         FileSelect fileSelect(dir, false, false);
         if(fileSelect.exec() == QDialog::Accepted)
         {
@@ -218,7 +218,7 @@ void SystemManagement::on_btnSetupRestore_clicked()
             /*
             QString src,dest,file;
             dest = "/data";
-            src = "/sun/web/tmp/usbdisk";
+            src = "/app/wwwroot/tmp/usbdisk";
             file = "project2.db";
             fileCopyS(src, dest, file);
             file = "system.db";
@@ -233,7 +233,7 @@ void SystemManagement::on_btnSetupRestore_clicked()
 /*
 void SystemManagement::fileCopy(const char* src, const char* dest, const char* filename, bool bMsg)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists() == false)
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists() == false)
     {
         CInfomationDialog dlg("USB메모리를 확인하여 주시기 바랍니다");
         dlg.exec();
@@ -274,7 +274,7 @@ void SystemManagement::handleFileChanged(const QString& )
 
 void SystemManagement::buttonEnable()
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists() == false)
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists() == false)
     {
         ui->btnDataSave->setEnabled(false);
         ui->btnDataRestore->setEnabled(false);
@@ -357,7 +357,7 @@ void SystemManagement::on_btnDataSave_clicked()
     ui->listWidget->addItem(QString(tr("자료 Backup중입니다.........")));
     QCoreApplication::processEvents();
     QDateTime date = QDateTime::currentDateTime();
-    QString name = "/sun/web/tmp/usbdisk/backup_";
+    QString name = "/app/wwwroot/tmp/usbdisk/backup_";
     name += date.toString("yyyyMMddhhmmss");
     mDest = name;
     mSrc = "/data";
@@ -377,7 +377,7 @@ void SystemManagement::on_btnDataRestore_clicked()
     {
         if(dlg.exec() == QDialog::Accepted)
         {
-            QString dir = "/sun/web/tmp/usbdisk";
+            QString dir = "/app/wwwroot/tmp/usbdisk";
             FileSelect fileSelect(dir, true, false);
             if(fileSelect.exec() == QDialog::Accepted)
             {
@@ -451,8 +451,8 @@ void SystemManagement::timerEvent(QTimerEvent *)
 {
     killTimer(m_Timer);
 
-    QString dir = "/sun/web/tmp/usbdisk/upgrade";
-    fileCopy("/sun/web/tmp/usbdisk/upgrade", "/sun/web/tmp", mSelectedFile.toLocal8Bit().data(), false);
+    QString dir = "/app/wwwroot/tmp/usbdisk/upgrade";
+    fileCopy("/app/wwwroot/tmp/usbdisk/upgrade", "/app/wwwroot/tmp", mSelectedFile.toLocal8Bit().data(), false);
     system("sync");
     QJsonObject argObject;
     QString name2 = dir + "/" + mSelectedFile;
@@ -524,7 +524,7 @@ void SystemManagement::loadReverseProxyConfig()
     m_sReverseProxyIP = "211.238.253.248";
     m_sReverseProxyMode = "Client";
     m_nReverseProxyPort = 30001;
-    QFile file("/sun/ReverseProxy.conf");
+    QFile file("/app/wwwroot/ReverseProxy.conf");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QString msg("ReverseProxy.conf Open(Read)에 실패했습니다.");
@@ -560,7 +560,7 @@ void SystemManagement::loadReverseProxyConfig()
 
 void SystemManagement::saveReverseProxyConfig()
 {
-    QFile file("/sun/ReverseProxy.conf");
+    QFile file("/app/wwwroot/ReverseProxy.conf");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QString msg("ReverseProxy.conf Open(Write)에 실패했습니다.");
@@ -585,7 +585,7 @@ void SystemManagement::on_btnRemoteRun_clicked()
         m_sReverseProxyIP = ui->ReverseProxyIP->text();
         m_nReverseProxyPort = ui->ReverseProxyPort->text().toInt();
         saveReverseProxyConfig();
-        system("/usr/bin/mono /sun/ReverseProxy.exe &");
+        system("/dot/dotnet  /app/ReverseProxy.dll &");
     }
 }
 

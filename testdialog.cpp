@@ -53,8 +53,6 @@ extern bool        m_bScreenSave;
 extern double AdcCalibraion[6][2];
 extern QString gSoftwareModel;
 extern QString gHardwareModel;
-extern QString gHardwareRevision;
-
 const char *ComStr[10] = {
     "/dev/ttyUSB0",
     "/dev/ttyUSB1",
@@ -178,51 +176,22 @@ CTestDialog::CTestDialog(QWidget *parent) :
 #endif
    QWidget *widget;
    mDiMax = 16;
-   if(gHardwareModel == "SS-500" || gHardwareModel == "SS-501")
+//   if(gHardwareModel == "SS-1000")
    {
-       ui->usbHub3->setVisible(false);
-#ifdef __linux__
-       m_Fd1 = ::open("/dev/ttyS1", O_RDWR | O_NOCTTY |O_NONBLOCK );
-       m_Fd2 = ::open("/dev/ttyS2", O_RDWR | O_NOCTTY |O_NONBLOCK );
-       m_Fd3 = ::open("/dev/ttyS3", O_RDWR | O_NOCTTY |O_NONBLOCK );
-       if(gHardwareModel == "SS-500")
-       {
-            m_Fd4 = ::open("/dev/ttyS4", O_RDWR | O_NOCTTY |O_NONBLOCK );
-            m_Fd5 = ::open("/dev/ttyUSB0", O_RDWR | O_NOCTTY |O_NONBLOCK );
-       }
-       else
-       {
-            m_Fd4 = ::open("/dev/ttyS4", O_RDWR | O_NOCTTY |O_NONBLOCK );
-            m_Fd5 = ::open("/dev/ttyS7", O_RDWR | O_NOCTTY |O_NONBLOCK );
-       }
-       setupComm(m_Fd1);
-       setupComm(m_Fd2);
-       setupComm(m_Fd3);
-       setupComm(m_Fd4);
-       setupComm(m_Fd5);
-#endif
-       widget = ui->stackedWidget->widget(3);
-       ui->stackedWidget->removeWidget(widget);
-       widget = ui->stackedWidget->widget(1);
-       ui->stackedWidget->removeWidget(widget);
-       on_serialClear_clicked();
-   }
-   else
-   if(gHardwareModel == "SS-1000")
-   {
-        if(gHardwareRevision == "1")
+//        if(gHardwareRevision == "1")
         {
             mDiMax = 6;
-            ui->Com9Com10->setText("Com9");
-            ui->Com10Com9->setText("Com10");
+//            ui->Com9Com10->setText("Com9");
+//            ui->Com10Com9->setText("Com10");
         }
-        else
+/*        else
         {
             mDiMax = 4;
             ui->ss1000di_5->setVisible(false);
             ui->ss1000di_6->setVisible(false);
             ui->groupBox->setGeometry(110,190,501,85);
         }
+ */
 #ifdef __linux__
        for(int i = 0; i < 10; i++)
        {
@@ -241,47 +210,6 @@ CTestDialog::CTestDialog(QWidget *parent) :
        m_diButton[3] = ui->ss1000di_4;
        m_diButton[4] = ui->ss1000di_5;
        m_diButton[5] = ui->ss1000di_6;
-   }
-   else
-   if(gHardwareModel == "SS-100")
-   {
-       widget = ui->stackedWidget->widget(2);
-       ui->stackedWidget->removeWidget(widget);
-       widget = ui->stackedWidget->widget(1);
-       ui->stackedWidget->removeWidget(widget);
-       on_serialClear_clicked();
-
-       ui->Com1->setText("Com1->Com2");
-       ui->Com2->setText("Com2->Com1");
-       ui->Com4->setVisible(false);
-       ui->Com5->setVisible(false);
-       ui->Com6->setVisible(false);
-       ui->Com7->setVisible(false);
-       ui->Com8->setVisible(false);
-       ui->Com9Com10->setVisible(false);
-       ui->Com10Com9->setVisible(false);
-
-#ifdef __linux__
-       for(int i = 0; i < 3; i++)
-       {
-           m_Fd[i] = ::open(ComStr[i], O_RDWR | O_NOCTTY |O_NONBLOCK );
-           setupComm(m_Fd[i]);
-       }
-#endif
-       ui->usbHub3->setVisible(false);
-       ui->pingLan2->setVisible(false);
-       ui->lan2->setVisible(false);
-       for(int i = 1; i < 16; i++)
-           m_diButton[i]->setVisible(false);
-       for(int i = 2; i < 8; i++)
-           m_doButton[i]->setVisible(false);
-       ui->groupBoxAI->setVisible(false);
-   }
-   QString model = gSoftwareModel.mid(0, 4);
-   if(model == "EPS_")
-   {
-       ui->lan1->setText("192.168.50.1");
-       ui->lan2->setText("192.168.123.254");
    }
    ui->stackedWidget->setCurrentIndex(0);
    ui->ioTest->setChecked(true);
@@ -1240,33 +1168,17 @@ void CTestDialog::on_Com8_clicked()
     OpenNSend();
 }
 
-void CTestDialog::on_Com9Com10_clicked()
+void CTestDialog::on_Com11Com12_clicked()
 {
-    if(gHardwareRevision == "1")
-    {
-        CommTxSeleced = 8;
-        CommRxSeleced = 8;
-    }
-    else
-    {
-        CommTxSeleced = 8;
-        CommRxSeleced = 9;
-    }
+    CommTxSeleced = 10;
+    CommRxSeleced = 11;
     OpenNSend();
 }
 
-void CTestDialog::on_Com10Com9_clicked()
+void CTestDialog::on_Com12Com11_clicked()
 {
-    if(gHardwareRevision == "1")
-    {
-        CommTxSeleced = 9;
-        CommRxSeleced = 9;
-    }
-    else
-    {
-        CommTxSeleced = 9;
-        CommRxSeleced = 8;
-    }
+    CommTxSeleced = 11;
+    CommRxSeleced = 10;
     OpenNSend();
 }
 
@@ -1300,4 +1212,18 @@ void CTestDialog::on_btnDefault_clicked()
     setText(ui->ai4_20, 4, 1);
     setText(ui->ai5_20, 5, 1);
     setText(ui->ai6_20, 6, 1);
+}
+
+void CTestDialog::on_Com9_clicked()
+{
+    CommTxSeleced = 8;
+    CommRxSeleced = 8;
+    OpenNSend();
+}
+
+void CTestDialog::on_Com10_clicked()
+{
+    CommTxSeleced = 8;
+    CommRxSeleced = 8;
+    OpenNSend();
 }

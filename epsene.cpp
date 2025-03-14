@@ -83,7 +83,7 @@ EpsEnE::EpsEnE(QWidget *parent) :
     CMonDialog(parent),
     ui(new Ui::EpsEnE)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists())
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists())
         m_bUsbReady = true;
     else
         m_bUsbReady = false;
@@ -217,7 +217,7 @@ EpsEnE::EpsEnE(QWidget *parent) :
     installEventFilter(this);
     connect(this, SIGNAL(sigSysMenu()), this, SLOT(on_sysinfoBtn_clicked()));
 
-    m_watcher.addPath("/sun/web/tmp/");
+    m_watcher.addPath("/app/wwwroot/tmp/");
     connect(&m_watcher, SIGNAL(directoryChanged(const QString&)),
                      this, SLOT(handleFileChanged(const QString&)));
 
@@ -784,11 +784,11 @@ void EpsEnE::onTimerClose()
 
 void EpsEnE::handleFileChanged(const QString&)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists())
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists())
     {
 //        if(m_bUsbReady == false)
         {
-            if(QDir("/sun/web/tmp/usbdisk/upgrade").exists() && QFile("/sun/web/tmp/usbdisk/upgrade/upgrade.auto").exists())
+            if(QDir("/app/wwwroot/tmp/usbdisk/upgrade").exists() && QFile("/app/wwwroot/tmp/usbdisk/upgrade/upgrade.auto").exists())
             {
                 CInfomationDialog dlg("자동 Upgrade 중입니다.", false);
                 dlg.exec();

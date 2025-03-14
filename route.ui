@@ -6,13 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>600</height>
+    <width>1245</width>
+    <height>711</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <pointsize>12</pointsize>
+    <family>나눔고딕코딩</family>
+    <pointsize>14</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -21,15 +22,16 @@
   <widget class="QPushButton" name="cancel">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>15</y>
-     <width>150</width>
-     <height>60</height>
+     <x>979</x>
+     <y>20</y>
+     <width>231</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -40,14 +42,14 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>160</y>
-     <width>981</width>
-     <height>431</height>
+     <y>240</y>
+     <width>1191</width>
+     <height>441</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="selectionMode">
@@ -101,10 +103,16 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>96</y>
-     <width>110</width>
-     <height>50</height>
+     <y>130</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="maxVisibleItems">
     <number>2</number>
@@ -127,8 +135,8 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
-     <width>110</width>
+     <y>94</y>
+     <width>181</width>
      <height>30</height>
     </rect>
    </property>
@@ -142,10 +150,10 @@
   <widget class="IpEdit" name="Dest">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>96</y>
-     <width>160</width>
-     <height>50</height>
+     <x>210</x>
+     <y>130</y>
+     <width>200</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -157,9 +165,9 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>60</y>
-     <width>160</width>
+     <x>220</x>
+     <y>94</y>
+     <width>181</width>
      <height>20</height>
     </rect>
    </property>
@@ -173,9 +181,9 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>60</y>
-     <width>160</width>
+     <x>420</x>
+     <y>94</y>
+     <width>201</width>
      <height>20</height>
     </rect>
    </property>
@@ -189,10 +197,10 @@
   <widget class="IpEdit" name="Netmask">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>96</y>
-     <width>160</width>
-     <height>50</height>
+     <x>420</x>
+     <y>130</y>
+     <width>200</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -204,9 +212,9 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>60</y>
-     <width>160</width>
+     <x>630</x>
+     <y>94</y>
+     <width>191</width>
      <height>20</height>
     </rect>
    </property>
@@ -220,10 +228,10 @@
   <widget class="IpEdit" name="GatewayIp">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>96</y>
-     <width>160</width>
-     <height>50</height>
+     <x>630</x>
+     <y>130</y>
+     <width>200</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -235,15 +243,16 @@
   <widget class="QPushButton" name="add">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>96</y>
-     <width>160</width>
-     <height>50</height>
+     <x>840</x>
+     <y>130</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -253,15 +262,16 @@
   <widget class="QPushButton" name="remove">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>96</y>
-     <width>160</width>
-     <height>50</height>
+     <x>1030</x>
+     <y>130</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">

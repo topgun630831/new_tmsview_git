@@ -386,7 +386,7 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     memInfo(total, used);
     ui->memory->setText(tr("Total %1 MB, Free %2 MB").arg(total).arg(used));
 
-    displayData(tr("/sun"), "*", ui->tableProgram);
+    displayData(tr("/app"), "*", ui->tableProgram);
 
     QScrollBar *scroll  = ui->tableProgram->verticalScrollBar();
     scroll->setStyleSheet("QScrollBar:vertical { width: 20px;}");

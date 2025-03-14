@@ -204,7 +204,7 @@ CSrView::CSrView(const QString& folder, const QString& fileName, const QString	i
     QJsonValue vValue(QJsonValue::Null);
     CMonitorUdp::Instance()->sendCommand(this, QString("Network_Get"), argObject, vValue);
 
-    m_watcher.addPath("/sun/web/tmp/");
+    m_watcher.addPath("/app/wwwroot/tmp/");
     connect(&m_watcher, SIGNAL(directoryChanged(const QString&)),
                      this, SLOT(handleFileChanged(const QString&)));
 
@@ -1294,7 +1294,7 @@ void CSrView::loadStyleSheet(const QString &sheetName)
 
 void CSrView::handleFileChanged(const QString&)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists())
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists())
     {
         if(m_bUsbReady == false)
         {

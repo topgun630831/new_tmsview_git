@@ -20,10 +20,10 @@ Route::Route(QList<Gateway_TAB *> *gatewaylist, QWidget *parent) :
     installEventFilter(this);
 
     QTableWidget *table = ui->tableWidget;
-    table->horizontalHeader()->resizeSection(0, 100);    // Interface
-    table->horizontalHeader()->resizeSection(1, 200);   // Dest
-    table->horizontalHeader()->resizeSection(2, 200);   // Netmask
-    table->horizontalHeader()->resizeSection(3, 200);   // GatewayIp
+    table->horizontalHeader()->resizeSection(0, 200);    // Interface
+    table->horizontalHeader()->resizeSection(1, 300);   // Dest
+    table->horizontalHeader()->resizeSection(2, 300);   // Netmask
+    table->horizontalHeader()->resizeSection(3, 300);   // GatewayIp
 
     table->setRowCount(GatewayList->length());
     int row = 0;

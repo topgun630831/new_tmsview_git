@@ -93,7 +93,7 @@ QRadioButton::indicator:unchecked
     </font>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="systeminfo">
     <widget class="QTableWidget" name="tableProgram">
@@ -310,7 +310,7 @@ QRadioButton::indicator:unchecked
        </font>
       </property>
       <property name="text">
-       <string>/sun</string>
+       <string>/app</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -351,7 +351,7 @@ QRadioButton::indicator:unchecked
        </font>
       </property>
       <property name="text">
-       <string>/sun/data</string>
+       <string>/data</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -1829,7 +1829,7 @@ QRadioButton::indicator:unchecked
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="sensor">
       <widget class="QGroupBox" name="groupBox_4">
@@ -5320,7 +5320,7 @@ QRadioButton::indicator:unchecked
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

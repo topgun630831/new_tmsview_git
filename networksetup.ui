@@ -54,7 +54,7 @@ QRadioButton::indicator:unchecked
      <x>50</x>
      <y>230</y>
      <width>811</width>
-     <height>681</height>
+     <height>631</height>
     </rect>
    </property>
    <property name="font">
@@ -282,7 +282,7 @@ QRadioButton::indicator:unchecked
      <rect>
       <x>20</x>
       <y>521</y>
-      <width>161</width>
+      <width>201</width>
       <height>50</height>
      </rect>
     </property>
@@ -303,7 +303,7 @@ QRadioButton::indicator:unchecked
      <x>1030</x>
      <y>230</y>
      <width>691</width>
-     <height>681</height>
+     <height>641</height>
     </rect>
    </property>
    <property name="font">
@@ -556,7 +556,7 @@ QRadioButton::indicator:unchecked
      <rect>
       <x>20</x>
       <y>540</y>
-      <width>161</width>
+      <width>211</width>
       <height>50</height>
      </rect>
     </property>
@@ -574,10 +574,10 @@ QRadioButton::indicator:unchecked
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>950</y>
+     <x>110</x>
+     <y>890</y>
      <width>200</width>
-     <height>50</height>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -593,10 +593,10 @@ QRadioButton::indicator:unchecked
   <widget class="IpEdit" name="dnsSecondary">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>1010</y>
-     <width>201</width>
-     <height>50</height>
+     <x>370</x>
+     <y>980</y>
+     <width>300</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -612,10 +612,10 @@ QRadioButton::indicator:unchecked
   <widget class="IpEdit" name="dnsPrimary">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>950</y>
-     <width>201</width>
-     <height>50</height>
+     <x>370</x>
+     <y>890</y>
+     <width>300</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -631,10 +631,10 @@ QRadioButton::indicator:unchecked
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>1010</y>
+     <x>110</x>
+     <y>980</y>
      <width>200</width>
-     <height>50</height>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -650,7 +650,7 @@ QRadioButton::indicator:unchecked
   <widget class="QPushButton" name="ok">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>1470</x>
      <y>5</y>
      <width>200</width>
      <height>80</height>
@@ -844,7 +844,7 @@ QRadioButton::indicator:unchecked
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>5</y>
      <width>200</width>
      <height>80</height>
     </rect>
@@ -870,7 +870,7 @@ QRadioButton::indicator:unchecked
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="lan2ButtonGroup"/>
   <buttongroup name="lan1ButtonGroup"/>
+  <buttongroup name="lan2ButtonGroup"/>
  </buttongroups>
 </ui>

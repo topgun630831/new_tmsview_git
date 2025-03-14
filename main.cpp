@@ -44,8 +44,8 @@ int XMaxRes = 1920; //1024;
 int YMaxRes = 1200; //600;
 
 
-#define VERSION "3.2"
-#define SVN_REVISION "721"
+#define VERSION "1.0"
+#define SVN_REVISION "1000"
 bool g_DebugDisplay=false;
 bool g_WindowsRun=false;
 QString g_Ip = "127.0.0.1";
@@ -91,7 +91,7 @@ void writeVersion()
                 .arg(iday, 2, 10, QChar('0'));
 
         out << "View\n";                        // Kind
-        out << "srview\n";                      // 이름
+        out << "tmsview\n";                      // 이름
         out << VERSION << "," << SVN_REVISION "\n";                 // Version
 //        out << "*" << __DATE__ << " " <<  __TIME__ << "\n";   // 빌드시간
         out << sDate <<  __TIME__ << "\n";   // 빌드시간

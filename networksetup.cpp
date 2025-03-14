@@ -106,7 +106,7 @@ void CNetworkSetup::onRead(QString& cmd, QJsonObject& robject)
     if(cmd == "Network_Get")
     {
         QString build;
-        QFile file("/sun/BUILDTIME");
+        QFile file("/app/wwwroot/BUILDTIME");
         if(file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QByteArray ar;

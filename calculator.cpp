@@ -37,8 +37,8 @@ extern bool    m_bScreenSave;
 Calculator::Calculator(QString& val, KEY_TYPE type, QWidget *parent)
     : QDialog(parent)
 {
-    QRect rec(0,0,600,500);
-    this->setGeometry(0,0,600,500);
+    QRect rec(0,0,800,650);
+    this->setGeometry(0,0,800,650);
     QRect rect2;
     rect2 = this->geometry();
     m_Type = type;

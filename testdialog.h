@@ -88,12 +88,17 @@ private slots:
     void on_Com6_clicked();
     void on_Com7_clicked();
     void on_Com8_clicked();
-    void on_Com9Com10_clicked();
-    void on_Com10Com9_clicked();
+    void on_Com11Com12_clicked();
+    void on_Com12Com11_clicked();
     void OpenNSend();
     void onTimer();
 
     void on_btnDefault_clicked();
+
+
+    void on_Com9_clicked();
+
+    void on_Com10_clicked();
 
 protected:
     void timerEvent(QTimerEvent *);

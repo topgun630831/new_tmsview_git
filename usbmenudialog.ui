@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
-    <height>374</height>
+    <width>677</width>
+    <height>599</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>나눔고딕코딩</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -16,10 +22,10 @@
   <widget class="QPushButton" name="cancel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>280</y>
+     <x>260</x>
+     <y>400</y>
      <width>120</width>
-     <height>60</height>
+     <height>80</height>
     </rect>
    </property>
    <property name="text">
@@ -29,10 +35,10 @@
   <widget class="QPushButton" name="Unstoring">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>60</y>
-     <width>191</width>
-     <height>71</height>
+     <x>210</x>
+     <y>90</y>
+     <width>250</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -50,10 +56,10 @@
   <widget class="QPushButton" name="Setup">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>160</y>
-     <width>191</width>
-     <height>71</height>
+     <x>210</x>
+     <y>200</y>
+     <width>250</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">

@@ -13,7 +13,7 @@
   <property name="font">
    <font>
     <family>나눔고딕코딩</family>
-    <pointsize>14</pointsize>
+    <pointsize>16</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <property name="text">

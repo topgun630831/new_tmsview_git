@@ -658,7 +658,7 @@ void EpsSetup::on_ok_clicked()
     WorkData.RateUse = ui->rateUse->isChecked();
     WorkData.TotalUse = ui->totalUse->isChecked();
 
-    QString file = "/sun/CommDrivers/" + WorkData.FlowMeter + ".dll";
+    QString file = "/app/CommDrivers/" + WorkData.FlowMeter + ".dll";
     if(QFile(file).exists() == false)
     {
         QString msg = "지원하지 않는 유량계입니다.(" + file + ")";

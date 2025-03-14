@@ -195,7 +195,7 @@ void CMyApplication::timerEvent(QTimerEvent *event)
     {
         if(m_bScreenSave == false)
         {
-            if(m_bScreenSave == false && ++m_nIdle > 30*60)	// 30분
+            if(m_bScreenSave == false && ++m_nIdle > 4*60*60)	// 30분
             {
                 m_bScreenSave = true;
                 BacklightControlOn(0);

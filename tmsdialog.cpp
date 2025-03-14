@@ -389,11 +389,11 @@ TmsDialog::TmsDialog(QWidget *parent) :
 //    EquipStsTagIndexMap["SAM00_EQUIP_STS"] = 6;
     EquipStsTagIndexMap["FLW01_EQUIP_STS"] = 7;
 
-    if(QDir("/sun/web/tmp/usbdisk").exists())
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists())
         m_bUsbReady = true;
     else
         m_bUsbReady = false;
-    m_watcher.addPath("/sun/web/tmp/");
+    m_watcher.addPath("/app/wwwroot/tmp/");
     connect(&m_watcher, SIGNAL(directoryChanged(const QString&)),
                      this, SLOT(handleFileChanged(const QString&)));
     if(QFile("/tmp/__MOUSECURSOR_ON__").exists())
@@ -1342,7 +1342,7 @@ int TmsDialog::CommTagIndex(QString name)
 
 void TmsDialog::handleFileChanged(const QString&)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists())
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists())
     {
 //        if(m_bUsbReady == false)
         {
@@ -1350,7 +1350,7 @@ void TmsDialog::handleFileChanged(const QString&)
             dlg.exec();
         }
         m_bUsbReady = true;
-        if(QFile("/sun/web/tmp/usbdisk/__bestec_menu__").exists())
+        if(QFile("/app/wwwroot/tmp/usbdisk/__bestec_menu__").exists())
         {
             UsbMenuDialog dlg;
             if(dlg.exec() == QDialog::Accepted)
@@ -1360,7 +1360,7 @@ void TmsDialog::handleFileChanged(const QString&)
                     system("/etc/scripts/stop");
                     system("rm -r /data/*");
                     system("rm /tmp/share.db");
-                    system("/usr/bin/mono /sun/monitor.exe clearinstalldate");
+                    system("/dot/dotnet /app/monitor2.dll clearinstalldate");
                     system("sync");
                     CInfomationDialog mDlg("출고상태 만들기를 완료하였습니다");
                     mDlg.exec();

@@ -110,7 +110,7 @@ bool bLoaded = false;
 
 void fileCopy(const char* src, const char* dest, const char* filename, bool bMsg)
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists() == false)
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists() == false)
     {
         CInfomationDialog dlg("USB메모리를 확인하여 주시기 바랍니다");
         dlg.exec();
@@ -246,7 +246,7 @@ TmsData::TmsData(QWidget *parent) :
     mPageIndex = 1;
     ui->stackedWidget->setCurrentIndex(mPageIndex);
 
-    m_watcher.addPath("/sun/web/tmp/");
+    m_watcher.addPath("/app/wwwroot/tmp/");
     connect(&m_watcher, SIGNAL(directoryChanged(const QString&)),
                      this, SLOT(handleFileChanged(const QString&)));
     buttonEnable();
@@ -499,7 +499,7 @@ void TmsData::handleFileChanged(const QString& )
 
 void TmsData::buttonEnable()
 {
-    if(QDir("/sun/web/tmp/usbdisk").exists() == false)
+    if(QDir("/app/wwwroot/tmp/usbdisk").exists() == false)
         ui->btnUsb->setEnabled(false);
     else
         ui->btnUsb->setEnabled(true);
@@ -540,7 +540,7 @@ void TmsData::on_btnUsb_clicked()
     for(int i = 0; i < list.size(); i++)
     {
         QString name = table->item(list[i]->row(), 0)->text();
-        fileCopy(dir, "/sun/web/tmp/usbdisk", name.toLocal8Bit().data(), false);
+        fileCopy(dir, "/app/wwwroot/tmp/usbdisk", name.toLocal8Bit().data(), false);
     }
     CInfomationDialog dlg("작업을 완료했습니다");
     dlg.exec();
