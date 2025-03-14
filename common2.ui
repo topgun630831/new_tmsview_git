@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CComMon2</class>
+ <widget class="QDialog" name="CComMon2">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>1024</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="btnSelect">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>5</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>선택</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>5</y>
+     <width>481</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Not Selected</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnMonStart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>5</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>감시시작</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnClear">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>960</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>화면지우기</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>853</x>
+     <y>960</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>닫기</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnHexDisp">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>960</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>HEX 표시</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>1004</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>34</y>
+      <width>51</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>4</y>
+      <width>91</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>34</y>
+      <width>111</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connect Count</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>4</y>
+      <width>111</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>연속 Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>34</y>
+      <width>91</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>WRITE Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>4</y>
+      <width>51</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>34</y>
+      <width>90</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write Byte</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>4</y>
+      <width>90</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read Byte</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="readCnt">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>10</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="writeCnt">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="readError">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="writeError">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>40</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="connectCount">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>40</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="continuError">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>10</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="totalWrite">
+    <property name="geometry">
+     <rect>
+      <x>829</x>
+      <y>40</y>
+      <width>161</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>12</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="totalRead">
+    <property name="geometry">
+     <rect>
+      <x>829</x>
+      <y>10</y>
+      <width>161</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>12</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btnReset">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>5</y>
+     <width>160</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableFrame">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>151</y>
+     <width>1381</width>
+     <height>791</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>나눔고딕_코딩</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>true</bool>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <property name="textElideMode">
+    <enum>Qt::ElideMiddle</enum>
+   </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
+   <column>
+    <property name="text">
+     <string>Time</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Kind</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Byte</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Frame</string>
+    </property>
+   </column>
+  </widget>
+  <zorder>btnSelect</zorder>
+  <zorder>label</zorder>
+  <zorder>btnMonStart</zorder>
+  <zorder>btnClear</zorder>
+  <zorder>ok</zorder>
+  <zorder>btnHexDisp</zorder>
+  <zorder>frame</zorder>
+  <zorder>btnReset</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>tableFrame</zorder>
+  <zorder>tableFrame</zorder>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ok</sender>
+   <signal>clicked()</signal>
+   <receiver>CComMon2</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>905</x>
+     <y>564</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

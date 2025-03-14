@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CComMon</class>
+ <widget class="QDialog" name="CComMon">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1200</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>14</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QCheckBox::indicator {
+     width: 30px;
+     height: 30px;
+}
+
+QCheckBox::indicator:checked
+{
+	image: url(:images/checkbox_checked.png);
+}
+QCheckBox::indicator:unchecked
+{
+	image: url(:images/checkbox_normal.png);
+}
+
+QCheckBox::indicator:checked:disabled {
+	image: url(:images/checkbox_checked_dis.png);
+}
+
+QCheckBox::indicator:unchecked:disabled {
+	image: url(:images/checkbox_normal_dis.png);
+}</string>
+  </property>
+  <widget class="QPushButton" name="btnSelect">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>300</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>선택</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>10</y>
+     <width>441</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Not Selected</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnMonStart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>795</x>
+     <y>10</y>
+     <width>300</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>감시시작</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnClear">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>1120</y>
+     <width>160</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>화면지우기</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>1610</x>
+     <y>10</y>
+     <width>300</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>닫기</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableFrame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>235</y>
+     <width>1901</width>
+     <height>871</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>true</bool>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <property name="textElideMode">
+    <enum>Qt::ElideNone</enum>
+   </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>Time</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕코딩</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Kind</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕코딩</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Byte</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕코딩</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Frame</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕코딩</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </column>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>1901</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>60</y>
+      <width>80</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>498</x>
+      <y>4</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>963</x>
+      <y>60</y>
+      <width>160</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connect Count</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>963</x>
+      <y>4</y>
+      <width>160</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>연속 Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>498</x>
+      <y>60</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write Error</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>4</y>
+      <width>80</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>1406</x>
+      <y>60</y>
+      <width>160</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write Byte</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>1406</x>
+      <y>4</y>
+      <width>160</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read Byte</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="readCnt">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="writeCnt">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>66</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="readError">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>10</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="writeError">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>66</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="connectCount">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>66</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="continuError">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>10</y>
+      <width>280</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="totalWrite">
+    <property name="geometry">
+     <rect>
+      <x>1570</x>
+      <y>66</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>12</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="totalRead">
+    <property name="geometry">
+     <rect>
+      <x>1570</x>
+      <y>10</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>12</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btnReset">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>1100</x>
+     <y>10</y>
+     <width>300</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkHex">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>1120</y>
+     <width>131</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>HEX 표시</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkSpace">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>1120</y>
+     <width>231</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0x20 -&gt; ^ 로 표시</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ok</sender>
+   <signal>clicked()</signal>
+   <receiver>CComMon</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>905</x>
+     <y>564</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

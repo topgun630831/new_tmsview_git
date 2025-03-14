@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>411</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Academy Engraved LET</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>70</y>
+     <width>871</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>1</y>
+       <width>601</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>0</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>시간 교정</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_2">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>0</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>펌프 재기동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_3">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>60</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>유량계 재기동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_4">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>60</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>RTU 재기동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_5">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>120</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>세정펌프 자동가동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_6">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>120</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>세정펌프 수동가동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_7">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>180</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>세정펌프 간격설정</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_8">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>180</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>세정펌프 자동멈춤</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_9">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>360</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>cotn펌프 간격설정</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_10">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>240</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>채수펌프 자동가동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_11">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>300</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>채수펌프 자동멈춤</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_12">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>360</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>유효범위 설정</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_13">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>300</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>채수 Reset</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_14">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>240</y>
+       <width>125</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>채수펌프 수동가동</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_15">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>420</y>
+       <width>251</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>화면 지우기</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2"/>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>140</y>
+     <width>151</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Academy Engraved LET</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>자료 조회</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>70</y>
+     <width>151</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Academy Engraved LET</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>현장명령</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>550</y>
+     <width>1021</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Academy Engraved LET</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>닫기</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

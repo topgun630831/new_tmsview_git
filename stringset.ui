@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CStringSet</class>
+ <widget class="QDialog" name="CStringSet">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>712</width>
+    <height>326</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QToolButton" name="btnOk">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>261</y>
+     <width>150</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>확인</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>261</y>
+     <width>150</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>취소</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>101</y>
+     <width>101</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>태그설명</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="editDesc">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>101</y>
+     <width>301</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>String Set</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>38</y>
+     <width>101</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>태그</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>158</y>
+     <width>661</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Set</string>
+   </property>
+   <widget class="MyLineEdit" name="editValue">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>631</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="editTagName">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>38</y>
+     <width>171</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">mylineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>CStringSet</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>269</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>355</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DoSelect</class>
+ <widget class="QDialog" name="DoSelect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>767</width>
+    <height>264</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>781</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>DO</string>
+   </property>
+   <widget class="QPushButton" name="none">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>92</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>사용안함</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do01">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 1</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do02">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 2</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do03">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 3</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do04">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 4</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do08">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 8</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do06">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 6</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do05">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO 5</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QPushButton" name="do07">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>28</y>
+      <width>91</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DO0 7</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="cancel">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>187</y>
+     <width>121</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>취소</string>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>258</x>
+     <y>187</y>
+     <width>121</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>확인</string>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>DoSelect</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>448</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

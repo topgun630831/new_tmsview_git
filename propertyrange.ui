@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PropertyRange</class>
+ <widget class="QDialog" name="PropertyRange">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>850</x>
+     <y>10</y>
+     <width>150</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>닫기</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>10</y>
+     <width>150</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>저장</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tagName">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>541</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>75</y>
+     <width>371</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>기본정보</string>
+   </property>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>454</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>연동태그</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>95</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>데이터타입</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>140</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>읽기/쓰기</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>185</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>드라이버</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>275</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>어드레스</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>409</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>초기값</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>319</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>강제값사용여부</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>364</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>강제설정값</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>디바이스</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>130</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>태그타입</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="UseForcedValue">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>319</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>사용</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="TagType">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>50</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DataType">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>95</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Rw">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>140</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Driver">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>185</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Device">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>230</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Address">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>275</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ForceValue">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>364</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="InitialValue">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>409</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Linktags">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>454</y>
+      <width>180</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxDetail">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>203</y>
+     <width>611</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>상세정보</string>
+   </property>
+   <widget class="QStackedWidget" name="stackedDetail">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>581</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="analog">
+     <widget class="QLabel" name="labelRawMax">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>58</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RawMax</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelEuMin">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>106</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EuMin</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelEuMax">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>154</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EuMax</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelRoundUp">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>251</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>반올림자리</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="EuMax">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>154</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="RawMin">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="RoundUp">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>251</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="RawMax">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>58</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="EuMin">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>106</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelRatio">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>203</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>배율</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="Ratio">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>203</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelRawMin">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>10</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RawMin</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="Deadband">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>300</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelDeadband">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>300</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deadband</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>250</y>
+        <width>301</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="plainText">
+       <string>반올림자리는 값이 12.3456일경우
+(1) 반올림자리가 1이면 12로 표시하며
+(2) 반올림자리가 2이면 12.3으로 표시하고
+(3) 반올림자리가 3이면 12.35로 표시합니다</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="UseRatio">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>203</y>
+        <width>51</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>사용</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pulse">
+     <widget class="QLabel" name="labelRatio_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>130</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>배율</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="P_EuMax">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>81</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelRawMin_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>32</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RawMax</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="P_Ratio">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>130</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="NumEdit" name="P_RawMax">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>32</y>
+        <width>150</width>
+        <height>45</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelRawMax_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>81</y>
+        <width>100</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EuMax</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="digital">
+     <widget class="QCheckBox" name="Reversed">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reverse</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="RawValue">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>145</y>
+     <width>151</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Value">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>100</y>
+     <width>151</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>399</x>
+     <y>145</y>
+     <width>101</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>현재 Raw 값</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>399</x>
+     <y>100</y>
+     <width>101</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>현재값</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>NumEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">numedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ok</sender>
+   <signal>clicked()</signal>
+   <receiver>PropertyRange</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>924</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
