@@ -1184,8 +1184,6 @@ void CTestDialog::on_Com12Com11_clicked()
 
 void CTestDialog::onTimer()
 {
-//    if (m_bScreenSave == true)
-//        QDialog::reject();
 }
 
 
