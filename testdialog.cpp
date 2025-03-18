@@ -53,7 +53,11 @@ extern bool        m_bScreenSave;
 extern double AdcCalibraion[6][2];
 extern QString gSoftwareModel;
 extern QString gHardwareModel;
-const char *ComStr[10] = {
+const char *ComStr[12] = {
+    "/dev/ttyS1",
+    "/dev/ttyS3",
+    "/dev/ttyS5",
+    "/dev/ttyS7",
     "/dev/ttyUSB0",
     "/dev/ttyUSB1",
     "/dev/ttyUSB2",
@@ -62,8 +66,6 @@ const char *ComStr[10] = {
     "/dev/ttyUSB5",
     "/dev/ttyUSB6",
     "/dev/ttyUSB7",
-    "/dev/ttyS1",
-    "/dev/ttyS2",
 };
 
 extern bool    m_bScreenSave;
@@ -175,42 +177,27 @@ CTestDialog::CTestDialog(QWidget *parent) :
    }
 #endif
    QWidget *widget;
-   mDiMax = 16;
-//   if(gHardwareModel == "SS-1000")
-   {
-//        if(gHardwareRevision == "1")
-        {
-            mDiMax = 6;
-//            ui->Com9Com10->setText("Com9");
-//            ui->Com10Com9->setText("Com10");
-        }
-/*        else
-        {
-            mDiMax = 4;
-            ui->ss1000di_5->setVisible(false);
-            ui->ss1000di_6->setVisible(false);
-            ui->groupBox->setGeometry(110,190,501,85);
-        }
- */
+   mDiMax = 7;
 #ifdef __linux__
-       for(int i = 0; i < 10; i++)
-       {
-           m_Fd[i] = ::open(ComStr[i], O_RDWR | O_NOCTTY |O_NONBLOCK );
-           setupComm(m_Fd[i]);
-       }
-#endif
-       widget = ui->stackedWidget->widget(2);
-       ui->stackedWidget->removeWidget(widget);
-       widget = ui->stackedWidget->widget(0);
-       ui->stackedWidget->removeWidget(widget);
-       on_CommClear_clicked();
-       m_diButton[0] = ui->ss1000di_1;
-       m_diButton[1] = ui->ss1000di_2;
-       m_diButton[2] = ui->ss1000di_3;
-       m_diButton[3] = ui->ss1000di_4;
-       m_diButton[4] = ui->ss1000di_5;
-       m_diButton[5] = ui->ss1000di_6;
+   for(int i = 0; i < 12; i++)
+   {
+       m_Fd[i] = ::open(ComStr[i], O_RDWR | O_NOCTTY |O_NONBLOCK );
+       setupComm(m_Fd[i]);
    }
+#endif
+   widget = ui->stackedWidget->widget(2);
+   ui->stackedWidget->removeWidget(widget);
+   widget = ui->stackedWidget->widget(0);
+   ui->stackedWidget->removeWidget(widget);
+   on_CommClear_clicked();
+   m_diButton[0] = ui->ss1000di_1;
+   m_diButton[1] = ui->ss1000di_2;
+   m_diButton[2] = ui->ss1000di_3;
+   m_diButton[3] = ui->ss1000di_4;
+   m_diButton[4] = ui->ss1000di_5;
+   m_diButton[5] = ui->ss1000di_6;
+   m_diButton[6] = ui->ss1000di_7;
+
    ui->stackedWidget->setCurrentIndex(0);
    ui->ioTest->setChecked(true);
    ui->serialTest->setChecked(false);
@@ -597,7 +584,7 @@ void CTestDialog::openComm(int& fd, QString msg, int& timer)
         ::write(fd, msg.toLocal8Bit().data(), msg.length());
         if(timer != 0)
             killTimer(timer);
-        timer = startTimer(100);
+        timer = startTimer(1);
     }
 #endif
 }
@@ -1221,7 +1208,7 @@ void CTestDialog::on_Com9_clicked()
 
 void CTestDialog::on_Com10_clicked()
 {
-    CommTxSeleced = 8;
-    CommRxSeleced = 8;
+    CommTxSeleced = 9;
+    CommRxSeleced = 9;
     OpenNSend();
 }

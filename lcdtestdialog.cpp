@@ -46,8 +46,8 @@ void CLcdTestDialog::paintEvent(QPaintEvent *)
     int y = 0;
     for(int i =0; i < 17; i++)
     {
-        painter->fillRect(0, y, 1024, y+35,    testColor[i]);
-        y += 35;
+        painter->fillRect(0, y, 1920, y+70,    testColor[i]);
+        y += 70;
     }
     painter->end();
 }

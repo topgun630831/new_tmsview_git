@@ -124,7 +124,7 @@ private:
     int         m_Fd3;
     int         m_Fd4;
     int         m_Fd5;
-    int         m_Fd[10];
+    int         m_Fd[12];
     int         m_timerIdCom1;
     int         m_timerIdCom2;
     int         m_timerIdCom3;

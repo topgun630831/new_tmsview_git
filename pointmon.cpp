@@ -255,13 +255,14 @@ void CPointMon::InitDisp()
         item = new QTableWidgetItem(mPointList[row]->Desc);
         table->setItem(cnt, 2, item);
         int column = 3;
-//        if(gSoftwareModel != "ORION_TMS")
+/*        if(gSoftwareModel != "ORION_TMS")
         {
             item = new QTableWidgetItem(mPointList[row]->AlarmSt);
             table->setItem(cnt, column++, item);
             item = new QTableWidgetItem(mPointList[row]->TagSt);
             table->setItem(cnt, column++, item);
         }
+        */
         item = new QTableWidgetItem(mPointList[row]->Value);
         item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         table->setItem(cnt, column, item);

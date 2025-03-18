@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1200</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>나눔고딕코딩</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -16,10 +22,10 @@
   <widget class="QPushButton" name="ok">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>1730</x>
      <y>10</y>
-     <width>150</width>
-     <height>60</height>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -35,19 +41,19 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>291</y>
-     <width>351</width>
-     <height>301</height>
+     <y>830</y>
+     <width>511</width>
+     <height>361</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="clear">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>530</y>
-     <width>150</width>
-     <height>60</height>
+     <x>730</x>
+     <y>1110</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -62,10 +68,10 @@
   <widget class="QPushButton" name="run">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>530</y>
-     <width>150</width>
-     <height>60</height>
+     <x>910</x>
+     <y>1110</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -80,10 +86,10 @@
   <widget class="QPushButton" name="checkBox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>530</y>
-     <width>101</width>
-     <height>60</height>
+     <x>550</x>
+     <y>1110</y>
+     <width>150</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="palette">
@@ -141,10 +147,10 @@
   <widget class="QPushButton" name="run_2">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>530</y>
-     <width>150</width>
-     <height>60</height>
+     <x>1100</x>
+     <y>1110</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">

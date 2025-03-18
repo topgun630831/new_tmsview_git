@@ -191,7 +191,7 @@ void CNetworkSetup::onRead(QString& cmd, QJsonObject& robject)
                 }
             }
         }
-        if(bTmsMode == false && gSoftwareModel == "ORION_TMS")
+        if(bTmsMode == false /*&& gSoftwareModel == "ORION_TMS"*/)
             ui->lan1Gateway->setText(sRouteLan1);
     }
     else
@@ -229,7 +229,7 @@ void CNetworkSetup::on_ok_clicked()
     QString dns2 = ui->dnsSecondary->text();
     bool lan2NotUsed = ui->lan2NotUsed->isChecked();
 
-    if(bTmsMode == false && gSoftwareModel == "ORION_TMS")
+    if(bTmsMode == false /*&& gSoftwareModel == "ORION_TMS"*/)
     {
         ui->lan1DefaultGateway->setChecked(false);
         ui->lan2DefaultGateway->setChecked(true);
@@ -341,7 +341,7 @@ void CNetworkSetup::on_ok_clicked()
 
     QJsonArray Gateway;
     QJsonObject gateway;
-    if(bTmsMode == false && gSoftwareModel == "ORION_TMS")
+    if(bTmsMode == false /*&& gSoftwareModel == "ORION_TMS"*/)
     {
         gateway["Interface"] = QJsonValue(QString("eth0"));
         gateway["Kind"] = QJsonValue(QString("net"));

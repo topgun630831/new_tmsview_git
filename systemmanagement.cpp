@@ -45,13 +45,13 @@ SystemManagement::SystemManagement(QWidget *parent) :
     buttonEnable();
     QScrollBar *scroll  = ui->listWidget->verticalScrollBar();
     scroll->setStyleSheet("QScrollBar:vertical { width: 20px; height: 30px}");
-
+/*
     if(gSoftwareModel != "ORION_TMS")    // 수질 TMS
     {
         ui->btnInitTmsData->setVisible(false);
         ui->DeleteInterrupt->setVisible(false);
     }
-
+*/
 /*    if(gSoftwareModel != "ORION_TMS")    // 수질 TMS
     {
         ui->btnInitTmsData->setText("프로젝트초기화");
@@ -475,7 +475,7 @@ void SystemManagement::timerEvent(QTimerEvent *)
 
 void SystemManagement::on_btnInitTmsData_clicked()
 {
-    if(gSoftwareModel == "ORION_TMS")    // 수질 TMS
+//    if(gSoftwareModel == "ORION_TMS")    // 수질 TMS
     {
         CQuestionDialog dlg("모든 데이터를 삭제하시겠습니까?");
         if(dlg.exec() == QDialog::Accepted)
@@ -490,12 +490,14 @@ void SystemManagement::on_btnInitTmsData_clicked()
             RunStart(true);
         }
     }
+#if 0
     else
     {
         CQuestionDialog dlg(tr("이 명령은 프로젝트 데이터를 초기화합니다.\n프로젝트 데이터를 초기화 하시겠습니까?"));
         if(dlg.exec() == QDialog::Accepted)
             sendCOmmand(QString("Recovery_InitRuntimeData"));
     }
+#endif
 }
 
 void SystemManagement::on_DeleteInterrupt_clicked()

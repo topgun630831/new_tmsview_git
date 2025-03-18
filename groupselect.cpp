@@ -41,7 +41,7 @@ CGroupSelect::CGroupSelect(QStringList list, QStringList listdevice, QWidget *pa
     ui->stackedWidget->setCurrentIndex(0);
     m_btnDeviceSelect = false;
     mSelectedIndex = -1;
-    if(gSoftwareModel == "ORION_TMS")
+//    if(gSoftwareModel == "ORION_TMS")
     {
         ui->btnDeviceSelect->setVisible(false);
         ui->ok->setVisible(false);

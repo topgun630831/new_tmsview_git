@@ -281,9 +281,9 @@ TmsData::TmsData(QWidget *parent) :
         ui->comboBox_indi10Sec->setItemText(2, "TOC");
     }
 
-    ui->table5Min->horizontalHeader()->resizeSection(0, 408);
+    ui->table5Min->horizontalHeader()->resizeSection(0, 406);
     ui->table5Min->horizontalHeader()->resizeSection(1, 130);
-    ui->table10Sec->horizontalHeader()->resizeSection(0, 408);
+    ui->table10Sec->horizontalHeader()->resizeSection(0, 406);
     ui->table10Sec->horizontalHeader()->resizeSection(1, 130);
 
     ui->tableAllHour->verticalHeader()->setVisible(false);

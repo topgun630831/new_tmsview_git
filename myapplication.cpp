@@ -93,19 +93,19 @@ void CMyApplication::ScreenSaveDisplay()
 
 void CMyApplication::Update()
 {
-    if(gSoftwareModel == "EPS_HANRIVER")    // 한강수계 표준RTU
-    {
-        ((EpsEnE*)g_View )->update();
-    }
-    else
-    if(gSoftwareModel == "ORION_TMS")    // 수질 TMS
+//    if(gSoftwareModel == "EPS_HANRIVER")    // 한강수계 표준RTU
+//    {
+//        ((EpsEnE*)g_View )->update();
+//    }
+//    else
+//    if(gSoftwareModel == "ORION_TMS")    // 수질 TMS
     {
         ((TmsDialog*)g_View )->update();
     }
-    else
-    {
-        ((CSrView*)g_View )->update();
-    }
+//    else
+//    {
+//        ((CSrView*)g_View )->update();
+//    }
 }
 
 int aNameAdd;

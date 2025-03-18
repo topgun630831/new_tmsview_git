@@ -64,7 +64,7 @@ int ColumnWidth[HISTORY_MAX][9] = {
     {           //TMS
         100,     //No
         240,    //DateTime
-        1200    //Msg
+        1576    //Msg
     }
 };
 int ColumnCount[HISTORY_MAX] = {

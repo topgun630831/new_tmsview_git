@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1200</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>나눔고딕코딩</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -16,10 +22,10 @@
   <widget class="QPushButton" name="ok">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>1730</x>
      <y>10</y>
-     <width>150</width>
-     <height>60</height>
+     <width>180</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -36,13 +42,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
-     <height>35</height>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -56,9 +62,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>35</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>70</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -100,7 +106,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -114,14 +120,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>70</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>140</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -135,14 +141,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>140</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>280</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -156,9 +162,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>175</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>350</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -200,7 +206,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -214,14 +220,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>210</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>420</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -235,9 +241,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>245</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>490</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -279,7 +285,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -293,14 +299,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>280</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>560</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -314,9 +320,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>315</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>630</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -358,7 +364,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -372,14 +378,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>350</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>700</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -393,9 +399,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>385</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>770</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -437,7 +443,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -451,14 +457,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>420</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>840</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -472,9 +478,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>455</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>910</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -516,7 +522,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -530,14 +536,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>490</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>980</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -551,9 +557,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>525</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>1050</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -595,7 +601,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -609,14 +615,14 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>560</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>1120</y>
+     <width>1920</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -630,9 +636,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>105</y>
-     <width>1024</width>
-     <height>35</height>
+     <y>210</y>
+     <width>1920</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="palette">
@@ -674,7 +680,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">

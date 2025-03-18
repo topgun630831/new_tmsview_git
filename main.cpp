@@ -319,6 +319,7 @@ int main(int argc, char *argv[])
     }
 //    delete splash;
 */
+    gSoftwareModel = "ORION_TMS";
     ret = app.exec();
     return ret;
 }
