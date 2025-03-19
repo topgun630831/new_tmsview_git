@@ -6,13 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1200</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <pointsize>12</pointsize>
+    <family>나눔고딕코딩</family>
+    <pointsize>14</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -21,10 +22,10 @@
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>4</y>
-     <width>380</width>
-     <height>131</height>
+     <x>30</x>
+     <y>20</y>
+     <width>681</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="title">
@@ -33,10 +34,10 @@
    <widget class="QPushButton" name="btnSystemStop">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>80</x>
+      <y>30</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
@@ -51,10 +52,10 @@
    <widget class="QPushButton" name="btnSystemRun">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>390</x>
       <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <width>180</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
@@ -69,10 +70,10 @@
    <widget class="QPushButton" name="btnReboot">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>150</width>
-      <height>50</height>
+      <x>80</x>
+      <y>130</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
@@ -87,10 +88,10 @@
    <widget class="QPushButton" name="btnUpgrade">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>70</y>
-      <width>150</width>
-      <height>50</height>
+      <x>390</x>
+      <y>120</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
@@ -106,10 +107,10 @@
   <widget class="QGroupBox" name="groupBox_4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>370</y>
-     <width>380</width>
-     <height>81</height>
+     <x>30</x>
+     <y>460</y>
+     <width>681</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="title">
@@ -118,16 +119,11 @@
    <widget class="QPushButton" name="btnDataRestore">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>400</x>
+      <y>30</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>USB로부터 복원</string>
@@ -136,16 +132,11 @@
    <widget class="QPushButton" name="btnDataSave">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>100</x>
+      <y>40</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>USB에 저장</string>
@@ -155,10 +146,10 @@
   <widget class="QGroupBox" name="groupBox_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>280</y>
-     <width>380</width>
-     <height>81</height>
+     <x>30</x>
+     <y>290</y>
+     <width>681</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="title">
@@ -167,16 +158,11 @@
    <widget class="QPushButton" name="btnSetupSave">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>100</x>
+      <y>40</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>USB에 저장</string>
@@ -185,16 +171,11 @@
    <widget class="QPushButton" name="btnSetupRestore">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>400</x>
+      <y>40</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>USB로부터 복원</string>
@@ -204,28 +185,23 @@
   <widget class="QPushButton" name="cancel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>537</y>
-     <width>150</width>
-     <height>60</height>
+     <x>1160</x>
+     <y>1080</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
    </property>
    <property name="text">
     <string>닫기</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox_6">
+  <widget class="QGroupBox" name="groupBox_reset">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>380</width>
-     <height>131</height>
+     <x>30</x>
+     <y>920</y>
+     <width>681</width>
+     <height>241</height>
     </rect>
    </property>
    <property name="title">
@@ -234,16 +210,11 @@
    <widget class="QPushButton" name="btnFactoryReset">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>70</x>
+      <y>40</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>전체초기화</string>
@@ -252,16 +223,11 @@
    <widget class="QPushButton" name="btnInitData">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>150</width>
-      <height>50</height>
+      <x>70</x>
+      <y>140</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>데이터초기화</string>
@@ -270,16 +236,11 @@
    <widget class="QPushButton" name="btnInitTmsData">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>150</width>
-      <height>50</height>
+      <x>380</x>
+      <y>40</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>T 데이터초기화</string>
@@ -289,26 +250,21 @@
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>10</y>
-     <width>591</width>
-     <height>521</height>
+     <x>950</x>
+     <y>30</y>
+     <width>781</width>
+     <height>1021</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="DeleteInterrupt">
    <property name="geometry">
     <rect>
-     <x>870</x>
-     <y>541</y>
-     <width>140</width>
-     <height>50</height>
+     <x>1360</x>
+     <y>1080</y>
+     <width>180</width>
+     <height>80</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-    </font>
    </property>
    <property name="text">
     <string>I 데이터 삭제</string>
@@ -317,10 +273,10 @@
   <widget class="QGroupBox" name="groupBox_7">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>456</y>
-     <width>380</width>
-     <height>141</height>
+     <x>30</x>
+     <y>640</y>
+     <width>681</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="title">
@@ -329,16 +285,11 @@
    <widget class="QPushButton" name="btnRemoteStop">
     <property name="geometry">
      <rect>
-      <x>201</x>
-      <y>56</y>
-      <width>150</width>
-      <height>50</height>
+      <x>389</x>
+      <y>110</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>원격지원 정지</string>
@@ -347,16 +298,11 @@
    <widget class="QPushButton" name="btnRemoteRun">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>56</y>
-      <width>150</width>
-      <height>50</height>
+      <x>79</x>
+      <y>110</y>
+      <width>180</width>
+      <height>80</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>원격지원 실행</string>
@@ -365,34 +311,27 @@
    <widget class="IpEdit" name="ReverseProxyIP">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>20</y>
-      <width>141</width>
-      <height>30</height>
+      <x>80</x>
+      <y>30</y>
+      <width>251</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>211.238.253.248</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>21</width>
-      <height>30</height>
+      <y>30</y>
+      <width>51</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>IP</string>
@@ -405,16 +344,10 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>116</y>
-      <width>331</width>
-      <height>20</height>
+      <y>200</y>
+      <width>631</width>
+      <height>31</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>나눔고딕코딩</family>
-      <pointsize>10</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>Status : </string>
@@ -423,16 +356,11 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>20</y>
-      <width>61</width>
-      <height>30</height>
+      <x>340</x>
+      <y>30</y>
+      <width>111</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
     </property>
     <property name="text">
      <string>PORT</string>
@@ -444,14 +372,14 @@
    <widget class="NumEdit" name="ReverseProxyPort">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>20</y>
-      <width>61</width>
-      <height>30</height>
+      <x>460</x>
+      <y>30</y>
+      <width>141</width>
+      <height>60</height>
      </rect>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

@@ -58,6 +58,7 @@ SystemManagement::SystemManagement(QWidget *parent) :
         ui->DeleteInterrupt->setVisible(false);
     }
 */    loadReverseProxyConfig();
+    ui->groupBox_reset->setVisible(false);
     connect(&m_TimerStatus, SIGNAL(timeout()), this, SLOT(onTimer()));
     m_TimerStatus.start(1000);
 }
