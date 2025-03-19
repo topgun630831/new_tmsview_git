@@ -207,7 +207,9 @@ int memInfo(int &totalSize, int &freeSize)
 
 int diskInfo(int &totalSize, int &freeSize)
 {
+#ifdef __linux__
     system("df -m /data> /tmp/disk.txt");
+#endif
     FILE *fp = NULL;
     fp = fopen("/tmp/disk.txt", "r");
     if (fp == NULL)
@@ -376,15 +378,15 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
 //    QWidget *widget = ui->stackedWidget->widget(2);
 //    ui->stackedWidget->removeWidget(widget);
 
-    int total, used;
+    int total, free;
     //double fTotal, fFree;
     //QString sDirPath = "/data";
-    diskInfo(total, used);
+    diskInfo(total, free);
     //if(getFreeTotalSpace(sDirPath,fTotal, fFree))
-        ui->disk->setText(tr("Total %1 MB, Free %2 MB").arg(total).arg(used));
-
-    memInfo(total, used);
-    ui->memory->setText(tr("Total %1 MB, Free %2 MB").arg(total).arg(used));
+    ui->disk->setText(tr("Total %1 MB, Free %2 MB").arg(total).arg(free));
+    ui->label_message->setText(tr("%1일 저장 가능").arg(free/6));
+    memInfo(total, free);
+    ui->memory->setText(tr("Total %1 MB, Free %2 MB").arg(total).arg(free));
 
     displayData(tr("/app"), "*", ui->tableProgram);
 

@@ -198,7 +198,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
     DbLoad();
 
     m_imgBackGround.load(":/images/background.png");
-    m_Box.load(":/images/box.png");
+//    m_Box.load(":/images/box.png");
     m_SamplerDoorOn.load(":/images/sampler_open.png");
     m_SamplerDoorOff.load(":/images/sampler_close.png");
     m_SamplerRunOn.load(":/images/sampling.png");
@@ -1185,44 +1185,44 @@ void TmsDialog::paintEvent(QPaintEvent*)
     if((pTag = FindTagObject(name)) != NULL)
     {
         if(pTag->getValue() == 1)
-            p.drawImage(1750,885, m_SamplerRunOn);
+            p.drawImage(1750,895, m_SamplerRunOn);
         else
         if(pTag->getValue() == 2)
-            p.drawImage(1750,885, m_SamplerRunFault);
+            p.drawImage(1750,895, m_SamplerRunFault);
         else
-            p.drawImage(1750,885, m_SamplerRunOff);
+            p.drawImage(1750,895, m_SamplerRunOff);
     }
     name = "DORON";
     if((pTag = FindTagObject(name)) != NULL)
     {
         if(pTag->getValue() == 1)
-            p.drawImage(40, 904, m_DOROn);
+            p.drawImage(20, 800, m_DOROn);
         else
-            p.drawImage(40, 904, m_DOROff);
+            p.drawImage(20, 800, m_DOROff);
     }
     name = "PWRON";
     if((pTag = FindTagObject(name)) != NULL)
     {
         if(pTag->getValue() == 1)
-            p.drawImage(40, 952, m_PWROn);
+            p.drawImage(20, 870, m_PWROn);
         else
-            p.drawImage(40, 952, m_PWROff);
+            p.drawImage(20, 870, m_PWROff);
     }
     name = "FMLON";
     if((pTag = FindTagObject(name)) != NULL)
     {
         if(pTag->getValue() == 1)
-            p.drawImage(40, 1000, m_FMLOn);
+            p.drawImage(20, 940, m_FMLOn);
         else
-            p.drawImage(40, 1000, m_FMLOff);
+            p.drawImage(20, 940, m_FMLOff);
     }
     name = "FMRON";
     if((pTag = FindTagObject(name)) != NULL)
     {
         if(pTag->getValue() == 1)
-            p.drawImage(40, 1048, m_FMROn);
+            p.drawImage(20, 1010, m_FMROn);
         else
-            p.drawImage(40, 1048, m_FMROff);
+            p.drawImage(20, 1010, m_FMROff);
     }
 
     int x = 638;

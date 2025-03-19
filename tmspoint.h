@@ -22,6 +22,8 @@ public:
 private slots:
     void on_change_clicked();
 
+    void on_comboBox_currentIndexChanged(const QString &group);
+
 private:
     Ui::TmsPoint *ui;
     bool                mbStarted;

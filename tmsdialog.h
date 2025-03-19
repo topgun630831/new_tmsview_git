@@ -69,7 +69,7 @@ private:
     QTimer              m_TimerStarter;
     QTimer              m_TimerClose;
     QImage      m_imgBackGround;
-    QImage      m_Box;
+//    QImage      m_Box;
     QPushButton *m_Button[7];
     QLCDNumber  *Value[7];
     QLabel      *Unit[7];

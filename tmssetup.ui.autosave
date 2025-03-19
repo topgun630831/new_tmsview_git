@@ -93,7 +93,7 @@ QRadioButton::indicator:unchecked
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="systeminfo">
     <widget class="QTableWidget" name="tableProgram">

@@ -2151,9 +2151,9 @@
       <colorrole role="Text">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>159</red>
-         <green>162</green>
-         <blue>166</blue>
+         <red>199</red>
+         <green>203</green>
+         <blue>207</blue>
         </color>
        </brush>
       </colorrole>
@@ -2189,9 +2189,9 @@
       <colorrole role="Text">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>159</red>
-         <green>162</green>
-         <blue>166</blue>
+         <red>199</red>
+         <green>203</green>
+         <blue>207</blue>
         </color>
        </brush>
       </colorrole>
@@ -2265,7 +2265,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="frameShape">
@@ -3362,10 +3362,10 @@
   <widget class="QPushButton" name="btnManualSampling">
    <property name="geometry">
     <rect>
-     <x>1750</x>
-     <y>935</y>
-     <width>120</width>
-     <height>80</height>
+     <x>1650</x>
+     <y>955</y>
+     <width>221</width>
+     <height>75</height>
     </rect>
    </property>
    <property name="palette">
@@ -5243,9 +5243,9 @@
    <property name="geometry">
     <rect>
      <x>1600</x>
-     <y>880</y>
+     <y>890</y>
      <width>120</width>
-     <height>50</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="palette">
@@ -5304,7 +5304,7 @@
      <x>1600</x>
      <y>830</y>
      <width>120</width>
-     <height>50</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="palette">

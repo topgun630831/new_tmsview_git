@@ -12,6 +12,8 @@ CTag* FindTagObject(QString& TagName);
 //extern QString GraphicId;
 const QString PointID = "Point";
 
+#define ROW_MAX 20
+
 TmsPoint::TmsPoint(QString& group, QWidget *parent) :
     CMonDialog(parent),
     ui(new Ui::TmsPoint)
@@ -36,6 +38,8 @@ TmsPoint::TmsPoint(QString& group, QWidget *parent) :
     GroupChanged();
     ui->comboBox->setCurrentText(mGroup);
     ui->comboBox->setView(new QListView);
+    ui->change->setVisible(false);
+    ui->tablePoint_2->setVisible(false);
 }
 
 TmsPoint::~TmsPoint()
@@ -190,12 +194,17 @@ void TmsPoint::InitDisp()
     for(i = 0; i < mPointList.size(); i++)
     {
         row = i;
-        if(i >= 15)
+        if(i >= ROW_MAX)
         {
+            ui->tablePoint_2->setVisible(true);
             table = ui->tablePoint_2;
-            row = i - 15;
+            row = i - ROW_MAX;
         }
-        if(row >= 15)
+        else
+        {
+            ui->tablePoint_2->setVisible(false);
+        }
+        if(row >= ROW_MAX)
             break;
         item = new QTableWidgetItem(mPointList[i]->Desc);
         table->setItem(row, 0, item);
@@ -213,10 +222,10 @@ void TmsPoint::ValueDisp()
     for(int i = 0; i < mPointList.size(); i++)
     {
         row = i;
-        if(i >= 15)
+        if(i >= ROW_MAX)
         {
             table = ui->tablePoint_2;
-            row = i - 15;
+            row = i - ROW_MAX;
         }
         item = new QTableWidgetItem(mPointList[i]->Value);
         table->setItem(row, 1, item);
@@ -252,6 +261,14 @@ void TmsPoint::GroupChanged()
 void TmsPoint::on_change_clicked()
 {
     mGroup = ui->comboBox->currentText();
+    ui->tablePoint->clearContents();
+    ui->tablePoint_2->clearContents();
+    GroupChanged();
+}
+
+void TmsPoint::on_comboBox_currentIndexChanged(const QString &group)
+{
+    mGroup = group;
     ui->tablePoint->clearContents();
     ui->tablePoint_2->clearContents();
     GroupChanged();

@@ -47,7 +47,7 @@
     <enum>Qt::ElideMiddle</enum>
    </property>
    <property name="rowCount">
-    <number>15</number>
+    <number>20</number>
    </property>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
@@ -55,6 +55,11 @@
    <attribute name="verticalHeaderDefaultSectionSize">
     <number>50</number>
    </attribute>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
    <row/>
    <row/>
    <row/>
@@ -125,7 +130,7 @@
     <enum>Qt::ElideMiddle</enum>
    </property>
    <property name="rowCount">
-    <number>15</number>
+    <number>20</number>
    </property>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
@@ -133,6 +138,11 @@
    <attribute name="verticalHeaderDefaultSectionSize">
     <number>50</number>
    </attribute>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
    <row/>
    <row/>
    <row/>
@@ -180,7 +190,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>나눔고딕코딩</family>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="styleSheet">
