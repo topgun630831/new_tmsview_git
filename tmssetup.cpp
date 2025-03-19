@@ -122,16 +122,16 @@ const char *UNIT_TAB[9] = {
     "℃",
 };
 
-const char *CONST_TAB[11] = {
+const char *CONST_TAB[12] = {
     "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // TN
     "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // TP
     "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // TOC
     "PASS,MSIG,MTM1,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",           // PH
     "PASS,MSIG,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",                // SS
+    "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // COD
+    "PASS,MSIG,MTM2,ZERO,SPAN,FACT,OFST,MAXR,AUXI",                     // TOX
     "",                                                                 // FLOW
     "",                                                                 // SAMPLER
-    "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // COD
-//    "PASS,MSIG,MTM2,ZERO,SPAN,FACT,OFST,MAXR,AUXI",                     // BOD
     "ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR",                               // OLD
     "PASS,MSIG,MTM1,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",           // SS with 수온
     "PASS,MSIG,MTM1,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // Gas
