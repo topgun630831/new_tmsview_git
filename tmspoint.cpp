@@ -18,6 +18,7 @@ TmsPoint::TmsPoint(QString& group, QWidget *parent) :
     CMonDialog(parent),
     ui(new Ui::TmsPoint)
 {
+    mbInitOk = false;
     ui->setupUi(this);
 
     ui->tablePoint->horizontalHeader()->resizeSection(0, 450);    // 항목
@@ -35,9 +36,10 @@ TmsPoint::TmsPoint(QString& group, QWidget *parent) :
     mGroup = group;
     mbStarted = false;
     mPointInitOk = false;
-    GroupChanged();
     ui->comboBox->setCurrentText(mGroup);
     ui->comboBox->setView(new QListView);
+    mbInitOk = true;
+    GroupChanged();
     ui->change->setVisible(false);
     ui->tablePoint_2->setVisible(false);
 }
@@ -115,7 +117,10 @@ void TmsPoint::onRead(QString& cmd, QJsonObject& jobject)
             else
             if(point->TagType == "String")
                 point->Value = val;
-            mPointList.append(point);
+            if(point->Desc == "시간")
+                mPointList.prepend(point);
+            else
+                mPointList.append(point);
             pos++;
         }
         mPointInitOk = true;
@@ -268,6 +273,8 @@ void TmsPoint::on_change_clicked()
 
 void TmsPoint::on_comboBox_currentIndexChanged(const QString &group)
 {
+    if(mbInitOk == false)
+        return;
     mGroup = group;
     ui->tablePoint->clearContents();
     ui->tablePoint_2->clearContents();

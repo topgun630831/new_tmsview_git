@@ -31,6 +31,7 @@ private:
     QList<POINT_TAB*>   mPointList;
     QString             mGroup;
     bool                mPointInitOk;
+    bool                mbInitOk;
     void timerEvent(QTimerEvent *);
     void InitDisp();
     void ValueDisp();
