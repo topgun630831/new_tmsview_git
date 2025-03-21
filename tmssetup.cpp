@@ -37,7 +37,7 @@ extern bool    m_bScreenSave;
 
 #define SENSOR_ROW_HIGHT   80
 
-struct TMS_TAG_TAB TagTab[36] = {
+struct TMS_TAG_TAB TagTab[37] = {
 /* 0 */{"",          "Analog", "측정값",     "Tms",   "Value",      "R", "R32",      "",     "",        "㎎/L",0, "0"},
 /* 1 */{"_COMM",     "Digital", "통신상태",   "Tms",   "Comm_Status", "R", "DIgital", "정상",  "통신이상", "",   0, "0"},
 /* 2 */{"_CHECK",    "Digital", "점검중",    "System", "Check",       "RW", "DIgital", "점검중", "정상",    "",  1, "0"},
@@ -75,8 +75,8 @@ struct TMS_TAG_TAB TagTab[36] = {
 /* 34 */{"_TIME",       "String", "최종채수시각",     "Tms",    "Time",         "R","Text",  "", "",    "",  0, ""},
 /* 35 {"_DAYTOTAL",       "Analog", "일적산",  "System",    "",         "R","R32",  "", "",    "TON",  1, "0"},*/
 /* 35 */{"_RATE",       "Analog", "순시값",     "System",    "",         "R","R32",  "", "",    "M/S",  0, "0"},
+/* 36*/{"TMS_FATAL",      "String","오류",           "System",   "",      "R", "Text",   "",      "",      "",0, ""},
        };
-
 struct TMS_TAG_TAB FlowTagTab[3] = {
 /* 0 */{"",          "Analog", "유량적산",     "Tms",   "Value",      "R", "R32",      "",     "",        "TON", 0, "0"},
 /* 0 */{"_RATE",     "Analog", "순시유량",     "Tms",   "Flw00",      "R", "R32",      "",     "",        "M/S", 0, "0"},
@@ -1680,6 +1680,7 @@ void TmsSetup::DbSave()
         }
     }
     progressBar->setValue(++cnt);
+    QString device;
     for(int i = 30; i < 34; i++)
     {
         QString device;
@@ -1699,6 +1700,20 @@ void TmsSetup::DbSave()
             group += TagTab[i].suffix;
         }
     }
+
+    device = "internal";
+    int i = 36;
+    TagAdd(TagTab[i].suffix, "부대장비&상태", TagTab[i].TagType, TagTab[i].Desc, TagTab[i].Driver,
+            device, TagTab[i].Address, TagTab[i].Rw, TagTab[i].DataType,
+           TagTab[i].On, TagTab[i].Off, 0, TagTab[i].Unit, 0, 0, TagTab[i].InitValue, 1);
+    if(group == "")
+        group = TagTab[i].suffix;
+    else
+    {
+        group += ",";
+        group += TagTab[i].suffix;
+    }
+
     str = QString("INSERT INTO `TagGroup` (Name, Desc, Enabled, Tags) VALUES ('%1', '%1', 1, '%2')").arg(tr("부대장비&상태")).arg(group);
     SqlExec(str);
     QString monitor = ui->MonitorPort->currentText();

@@ -285,6 +285,10 @@ TmsDialog::TmsDialog(QWidget *parent) :
     pTag = new CTag(name);
     m_TagMap[name] = pTag;
 
+    name = "TMS_FATAL";
+    pTag = new CTag(name);
+    m_TagMap[name] = pTag;
+
     mValueReadCmd = "Tag_Changed";
     mInfoCmd = "Tag_Summary";
     mPasswordCmd = "ShareData_Get";
@@ -700,6 +704,18 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
                 valueDisplay(name, pTag, str);
                 if(name == "TMS_MSG" && str != OldMessage)
                     MsgAdd(str);
+                if(name == "TMS_FATAL")
+                {
+                    if(str != "")
+                    {
+                        ui->tms_fatal->setVisible(true);
+                        ui->tms_fatal->setText(str);
+                    }
+                    else
+                    {
+                        ui->tms_fatal->setVisible(false);
+                    }
+                }
             }
         }
         m_bTmsInitOk = true;
