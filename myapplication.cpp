@@ -195,7 +195,7 @@ void CMyApplication::timerEvent(QTimerEvent *event)
     {
         if(m_bScreenSave == false)
         {
-            if(m_bScreenSave == false && ++m_nIdle > 4*60*60)	// 30분
+            if(m_bScreenSave == false && ++m_nIdle > 2*60*60)	// 2시간
             {
                 m_bScreenSave = true;
                 BacklightControlOn(0);
@@ -227,6 +227,11 @@ void CMyApplication::BacklightControlOn(int on)
        ioctl(sr_fd, IOCTL_LCD_ONOFF, on);
 #endif
 
+       int backlight = 10;
+       if(on == 0)
+           backlight = 255;
+       QString cmd  = QString("echo %1>/sys/devices/platform/backlight/backlight/backlight/brightness").arg(backlight);
+       system(cmd.toLocal8Bit().data());
 }
 
 void CMyApplication::beep()

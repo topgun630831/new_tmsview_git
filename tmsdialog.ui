@@ -5579,7 +5579,7 @@
     </font>
    </property>
    <property name="text">
-    <string>오류 입니다</string>
+    <string>초기화 중 입니다</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

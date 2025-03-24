@@ -62,6 +62,7 @@ private:
     QString mPassword;
     QTimer              m_Timer;
     QTimer              m_TimerClose;
+    int                 m_RejectTimerId;
 };
 
 #endif // NETWORKSETUP_H

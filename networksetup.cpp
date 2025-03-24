@@ -59,6 +59,7 @@ CNetworkSetup::CNetworkSetup( bool bAll, QWidget *parent) :
         ui->btnModel->setVisible(false);
     if(gSoftwareModel != "EPS_HASU")
         ui->btnHasuSetup->setVisible(false);
+    m_RejectTimerId = startTimer(1000*60*5-30);
 }
 
 CNetworkSetup::~CNetworkSetup()
@@ -541,6 +542,8 @@ void CNetworkSetup::timerEvent(QTimerEvent *event)
         QJsonValue vValue(QJsonValue::Null);
         CMonitorUdp::Instance()->sendCommand(this, QString("Network_Get"), argObject, vValue);
     }
+    if (event->timerId() == m_RejectTimerId)
+        QDialog::reject();
 }
 
 void CNetworkSetup::onTimer()

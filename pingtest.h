@@ -20,9 +20,13 @@ private slots:
 
     void on_comboBox_currentTextChanged(const QString &arg1);
 
+protected:
+    void timerEvent(QTimerEvent *);
+
 private:
     Ui::PingTest *ui;
     void paintEvent(QPaintEvent *);
+    int                 m_RejectTimerId;
 };
 
 #endif // PINGTEST_H

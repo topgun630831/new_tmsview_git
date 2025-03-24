@@ -31,6 +31,7 @@ PingTest::PingTest(QString ip, QWidget *parent) :
     ui->Ip->setText(ip);
     const QRect screen = QApplication::desktop()->screenGeometry();
     this->move( screen.center() - this->rect().center() );
+    m_RejectTimerId = startTimer(1000*60*5-30);
 }
 
 PingTest::~PingTest()
@@ -75,3 +76,10 @@ void PingTest::on_comboBox_currentTextChanged(const QString &arg1)
 {
     ui->Ip->setText(arg1);
 }
+
+void PingTest::timerEvent(QTimerEvent *event)
+{
+    if (event->timerId() == m_RejectTimerId)
+        QDialog::reject();
+}
+

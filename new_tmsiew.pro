@@ -79,7 +79,7 @@ SOURCES += main.cpp\
     tmstrenddialog.cpp \
     usbmenudialog.cpp \
     propertyrange.cpp \
-    epshasusetup.cpp
+    epshasusetup.cpp 
 
 HEADERS  += \
 		   button.h \
