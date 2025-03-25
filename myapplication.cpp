@@ -230,7 +230,7 @@ void CMyApplication::BacklightControlOn(int on)
        int backlight = 10;
        if(on == 0)
            backlight = 255;
-       QString cmd  = QString("echo %1>/sys/devices/platform/backlight/backlight/backlight/brightness").arg(backlight);
+       QString cmd  = QString("echo %1 >/sys/devices/platform/backlight/backlight/backlight/brightness").arg(backlight);
        system(cmd.toLocal8Bit().data());
 }
 

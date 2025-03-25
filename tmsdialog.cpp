@@ -430,6 +430,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
         }
     }
     m_bInitOk = true;
+    ui->tms_fatal->setVisible(false);
 
     ui->MsgList->setStyleSheet("QListWidget {background-color: rgb(31, 41, 55);"
                                "margin:5px;}");
