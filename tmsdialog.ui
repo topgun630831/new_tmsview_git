@@ -2360,10 +2360,10 @@
   <widget class="QLabel" name="datetime">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>190</x>
      <y>35</y>
-     <width>211</width>
-     <height>30</height>
+     <width>311</width>
+     <height>50</height>
     </rect>
    </property>
    <property name="palette">
@@ -2432,7 +2432,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>나눔고딕코딩</family>
+     <pointsize>20</pointsize>
     </font>
    </property>
    <property name="text">
@@ -3198,10 +3199,10 @@
   <widget class="QLabel" name="Version">
    <property name="geometry">
     <rect>
-     <x>1720</x>
+     <x>1700</x>
      <y>35</y>
-     <width>171</width>
-     <height>30</height>
+     <width>191</width>
+     <height>50</height>
     </rect>
    </property>
    <property name="palette">
@@ -5504,7 +5505,7 @@
     <rect>
      <x>510</x>
      <y>0</y>
-     <width>1191</width>
+     <width>1181</width>
      <height>100</height>
     </rect>
    </property>

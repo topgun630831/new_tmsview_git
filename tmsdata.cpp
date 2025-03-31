@@ -24,7 +24,7 @@ extern bool    g_bToc10;
 extern bool m_bUseToc;
 extern bool m_bGas;    //이송가스
 
-int TmsColumnWidth[5][16] = {
+int TmsColumnWidth[6][16] = {
     {
         80,    //순번
         120,    //시간
@@ -95,6 +95,15 @@ int TmsColumnWidth[5][16] = {
         186,    //AUXI외부입출력
     },
     {
+        80,    //순번
+        130,    //유량
+        130,    //유량계1
+        130,    //유량계2
+        130,    //유량계3
+        130,    //유량계4
+        130,    //유량계5
+    },
+    {
         500,
         200,
         200,
@@ -103,7 +112,7 @@ int TmsColumnWidth[5][16] = {
 };
 
 
-int TmsColumnMax[5] = { 16, 16, 10, 16, 4 };
+int TmsColumnMax[6] = { 16, 16, 10, 16, 7, 4 };
 extern bool m_bUseToc;
 QString InqCode;
 bool bLoaded = false;
@@ -206,8 +215,8 @@ const char *AllHourHeader[16] =  {
     "TOC00",
     "PHY00",
     "SUS00",
-    "FLW01",
-    "SAM00",
+    "유량",
+    "채수온도",
     "SAM01",
     "SAM02",
     "DOR",
@@ -225,8 +234,8 @@ const char *AllHourHeader2[16] =  {
     "TOC10",
     "PHY00",
     "SUS00",
-    "FLW01",
-    "SAM00",
+    "유량",
+    "채수온도",
     "SAM01",
     "SAM02",
     "DOR",
@@ -255,10 +264,13 @@ TmsData::TmsData(QWidget *parent) :
     mTableWidget[1] = ui->tableAll5Min;
     mTableWidget[2] = ui->tableIndividual5Min;
     mTableWidget[3] = ui->tableIndividual10Sec;
-    mTableWidget[4] = ui->tableSampler;
-    for(int i = 0; i < 5; i++)
+    mTableWidget[4] = ui->tableFlow;
+    mTableWidget[5] = ui->tableSampler;
+    for(int i = 0; i < 6; i++)
         for(int c = 0; c < TmsColumnMax[i]; c++)
             mTableWidget[i]->horizontalHeader()->resizeSection(c, TmsColumnWidth[i][c]);
+    for(int c = 0; c < TmsColumnMax[4]; c++)
+        ui->tableFlow_2->horizontalHeader()->resizeSection(c, TmsColumnWidth[4][c]);
 
     QStringList listAllHour;
 
@@ -269,8 +281,8 @@ TmsData::TmsData(QWidget *parent) :
     }
     else
     {
-        for(int i = 0; i < 16; i++)
-            listAllHour.append(AllHourHeader[i]);
+//        for(int i = 0; i < 16; i++)
+//            listAllHour.append(AllHourHeader[i]);
     }
     if(m_bUseToc == true)
     {
@@ -290,6 +302,7 @@ TmsData::TmsData(QWidget *parent) :
     ui->tableAll5Min->verticalHeader()->setVisible(false);
     ui->tableIndividual5Min->verticalHeader()->setVisible(false);
     ui->tableIndividual10Sec->verticalHeader()->setVisible(false);
+    ui->tableFlow->verticalHeader()->setVisible(false);
     ui->tableSampler->verticalHeader()->setVisible(true);
 
     QDate date = QDate::currentDate();
@@ -305,10 +318,21 @@ TmsData::TmsData(QWidget *parent) :
         else
             hour--;
     }
-    for(int i = 0; i < 4; i++)
+    ui->btnUsb->setVisible(false);
+    mNoData[0] = ui->labelNoDataAllHour;
+    mNoData[1] = ui->labelNoDataAll;
+    mNoData[2] = ui->labelNoData5Min;
+    mNoData[3] = ui->labelNoData10Sec;
+    mNoData[4] = ui->labelNoDataFlow;
+    ui->labelNoDataSampler->setVisible(false);
+    for(int i = 0; i < 5; i++)
     {
         mFromHour[i] = hour;
         mDate[i] = date;
+        mPage[i] = -1;
+        mTotalPage[i] = 0;
+        mbFirst[i] = true;
+        mNoData[i]->setVisible(false);
     }
     QString str = QString("%1").arg(hour, 2, 10, QChar('0'));
     ui->editHour_all5Min->setText(str);
@@ -319,6 +343,7 @@ TmsData::TmsData(QWidget *parent) :
     ui->btnDate_indi5Min->setText(mDate[1].toString(tr("yyyy-MM-dd")));
     ui->btnDate_indi10Sec->setText(mDate[2].toString(tr("yyyy-MM-dd")));
     ui->btnDate_allHour->setText(mDate[3].toString(tr("yyyy-MM-dd")));
+    ui->btnDate_Flow->setText(mDate[4].toString(tr("yyyy-MM-dd")));
 
     mResendFromHour = 0;
     mResendToHour = hour;
@@ -328,16 +353,6 @@ TmsData::TmsData(QWidget *parent) :
     ui->editResendFromHour->setText("0");
     ui->editResendToHour->setText(str);
 
-    mPage[0] = mPage[1] = mPage[2] = mPage[3] =-1;
-    mTotalPage[0] = mTotalPage[1] = mTotalPage[2] = mTotalPage[3] = 0;
-    ui->btnUsb->setVisible(false);
-    mNoData[0] = ui->labelNoDataAllHour;
-    mNoData[1] = ui->labelNoDataAll;
-    mNoData[2] = ui->labelNoData5Min;
-    mNoData[3] = ui->labelNoData10Sec;
-    for(int i = 0; i < 4; i++)
-        mNoData[i]->setVisible(false);
-    ui->labelNoDataSampler->setVisible(false);
 /*
     QTableWidget *table = ui->table5Min;
     QScrollBar *scroll  = table->verticalScrollBar();
@@ -353,8 +368,6 @@ TmsData::TmsData(QWidget *parent) :
 */    ui->editHour_allHour->setVisible(false);
 
     mbInitOk = true;
-    for(int i = 0; i < 5; i++)
-        mbFirst[i] = true;
 
     m_nFlowNum = 0;
     gDb.setDatabaseName(tr("/data/project2.db"));
@@ -370,17 +383,24 @@ TmsData::TmsData(QWidget *parent) :
         }
         gDb.close();
     }
+    QStringList horizontalHeaders;
+    horizontalHeaders.append("시간");
+    horizontalHeaders.append("유량");
+
     if(m_nFlowNum > 5)
         m_nFlowNum = 5;
     if(m_nFlowNum > 1)
     {
         for(int i = 1 ; i <= m_nFlowNum; i++)
         {
-            QString flow = QString("Flow%1").arg(i);
+            QString flow = QString("유량계%1").arg(i);
             ui->comboBox_indi5Min->addItem(flow);
             ui->comboBox_indi10Sec->addItem(flow);
+            horizontalHeaders.append(flow);
         }
     }
+    ui->tableFlow->setHorizontalHeaderLabels(horizontalHeaders);
+    ui->tableFlow_2->setHorizontalHeaderLabels(horizontalHeaders);
     int num = 14;
     if(m_nFlowNum > 1)
         num += m_nFlowNum;
@@ -457,9 +477,9 @@ void TmsData::on_selectedData10Sec_clicked()
 void TmsData::on_sampler_clicked()
 {
     nFile = -1;
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(5);
     ui->btnUsb->setVisible(false);
-    mPageIndex = 4;
+    mPageIndex = 5;
     if(mbFirst[mPageIndex])
     {
         on_btnInqSampler_clicked();
@@ -475,7 +495,7 @@ void TmsData::on_fivemin_clicked()
         displayData(tr("/data/csv"), "M*", ui->table5Min);
         bLoaded = true;
     }
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(6);
     QList<QTableWidgetItem *> list = ui->table5Min->selectedItems();
     for(int i = 0; i < list.length(); i++)
         list[i]->setSelected(false);
@@ -488,7 +508,7 @@ void TmsData::on_fivemin_clicked()
 void TmsData::on_manage_clicked()
 {
     nFile = -1;
-    ui->stackedWidget->setCurrentIndex(6);
+    ui->stackedWidget->setCurrentIndex(7);
     ui->btnUsb->setVisible(false);
 }
 
@@ -579,11 +599,22 @@ void TmsData::InqClicked(QTableWidget *pTable)
 
     mStartPoint[mPageIndex] = mPage[mPageIndex] = -1;
     mTotalPage[mPageIndex] = mTotalPoint[mPageIndex] = 0;
-    PageDisplay();
+    if(mPageIndex != 4)
+        PageDisplay();
 
     if(mPageIndex != 3)     // 10초자료가 아니면
     {
         QString cmd = "Ext_Tms_Dump";
+        if(mPageIndex == 4)
+        {
+            for(int i = 0; i < 6; i++)
+                FlowTotal[i] = 0;
+            for(int i = 0; i < 24; i++)
+            {
+                TMS_DUMP_TAB *item = new TMS_DUMP_TAB;
+                mDumpList[mPageIndex].append(item);
+            }
+        }
         SendCommand(cmd);
     }
 }
@@ -731,7 +762,7 @@ void TmsData::SendCommand(QString cmd)
         QString kind = "A";
 
         QDate toDate = mDate[mPageIndex];
-        if(mPageIndex == 0)
+        if(mPageIndex == 0 || mPageIndex == 4)
         {
             toDate = toDate.addDays(1);
             strDate = QString("%1 00:00:00").arg(mDate[mPageIndex].toString("yyyy-MM-dd"));
@@ -901,6 +932,46 @@ void TmsData::onRead(QString& cmd, QJsonObject& jobject)
                 }
             }
             else
+            if(mPageIndex == 4)
+            {
+                QString time = itemObject["Date"].toString();
+                time = time.mid(11, 2);
+                int hour = time.toInt();
+                QString code = itemObject["Code"].toString();
+                int col;
+                if(code == "FLW01")
+                    col = 0;
+                else
+                if(code == "FLOW1")
+                    col = 1;
+                else
+                if(code == "FLOW2")
+                    col = 2;
+                else
+                if(code == "FLOW3")
+                    col = 3;
+                else
+                if(code == "FLOW4")
+                    col = 4;
+                else
+                if(code == "FLOW5")
+                    col = 5;
+                else
+                    continue;
+
+                int nValue = itemObject["Value"].toString().toInt();
+                QString value;// = QString("%1(%2)").arg(itemObject["Value"].toString())
+                              //.arg((int)itemObject["Status"].toDouble());
+                int status = (int)itemObject["Status"].toDouble();
+                if(status != 0)
+                    value = QString("%1(%2)").arg(itemObject["Value"].toString())
+                            .arg(status);
+                else
+                    value = QString("%1").arg(itemObject["Value"].toString());
+                mDumpList[mPageIndex][hour]->Item[col] = value;
+                FlowTotal[col] += nValue;
+            }
+            else
             {
                 TMS_DUMP_TAB *item = new TMS_DUMP_TAB;
                 QString time = itemObject["Date"].toString();
@@ -978,6 +1049,8 @@ int TmsData::FindData(QString time, QString kind)
 
 void TmsData::PageInit(int total)
 {
+    if(mPageIndex == 4)
+        return;
     mTotalPoint[mPageIndex] = total;
     mStartPoint[mPageIndex] = mPage[mPageIndex] = 0;
     mTotalPage[mPageIndex] = mTotalPoint[mPageIndex] / TMS_MAX_ROW;
@@ -991,6 +1064,53 @@ void TmsData::DataDisplay()
     QTableWidgetItem *item;
     QString str;
     int cnt = 0;
+    if(mPageIndex == 4)
+    {
+        ui->tableFlow->clearContents();
+        ui->tableFlow_2->clearContents();
+        int total[6];
+        int flag;
+        flag = Qt::AlignHCenter | Qt::AlignVCenter;
+        str = QString("합계");
+        item = new QTableWidgetItem(str);
+        ui->tableFlow_2->setItem(12, 0, item);
+        for(int i = 0; i < 12; i++)
+        {
+            str = QString("%1").arg(i);
+            item = new QTableWidgetItem(str);
+            ui->tableFlow->setItem(i, 0, item);
+            str = QString("%1").arg(i+12);
+            item = new QTableWidgetItem(str);
+            ui->tableFlow_2->setItem(i, 0, item);
+            for(int c = 0; c <= m_nFlowNum; c++)
+            {
+                if(mDumpList[mPageIndex][i]->Item[c] != "")
+                {
+                    item = new QTableWidgetItem(mDumpList[mPageIndex][i]->Item[c]);
+                    item->setFlags(item->flags() ^ Qt::ItemIsEditable);
+                    item->setTextAlignment(flag);
+                    ui->tableFlow->setItem(i, c+1, item);
+                    total[c] += mDumpList[mPageIndex][i]->Item[c].toInt();
+                }
+                if(mDumpList[mPageIndex][i+12]->Item[c] != "")
+                {
+                    item = new QTableWidgetItem(mDumpList[mPageIndex][i+12]->Item[c]);
+                    item->setFlags(item->flags() ^ Qt::ItemIsEditable);
+                    item->setTextAlignment(flag);
+                    ui->tableFlow_2->setItem(i, c+1, item);
+                    total[c] += mDumpList[mPageIndex][i+12]->Item[c].toInt();
+                }
+            }
+            for(int c = 0; c <= m_nFlowNum; c++)
+            {
+                str = QString("%1").arg(FlowTotal[c]);
+                item = new QTableWidgetItem(str);
+                item->setTextAlignment(flag);
+                ui->tableFlow_2->setItem(12, c+1, item);
+            }
+        }
+        return;
+    }
     if(mPageIndex == 0)
         table = ui->tableAllHour;
     else
@@ -1000,6 +1120,7 @@ void TmsData::DataDisplay()
     if(mPageIndex == 2)
         table = ui->tableIndividual5Min;
     else
+    if(mPageIndex == 3)
         table = ui->tableIndividual10Sec;
     table->clearContents();
     for(int row = mStartPoint[mPageIndex]; row < mStartPoint[mPageIndex] + TMS_MAX_ROW; row++, cnt++)
@@ -1434,4 +1555,40 @@ void TmsData::on_table10Sec_pressed(const QModelIndex &index)
     QList<QTableWidgetItem *> list = ui->table5Min->selectedItems();
     for(int i = 0; i < list.length(); i++)
         list[i]->setSelected(false);
+}
+
+void TmsData::on_btnDate_Flow_clicked()
+{
+    DateClicked(ui->btnDate_Flow, ui->tableFlow);
+}
+
+void TmsData::on_btnFirst_Flow_clicked()
+{
+    mDate[mPageIndex] = mDate[mPageIndex].addDays(-1);
+    QString str = mDate[mPageIndex].toString(tr("yyyy-MM-dd"));
+    ui->btnDate_Flow->setText(str);
+
+    InqClicked(ui->tableFlow);
+}
+
+void TmsData::on_btnLast_Flow_clicked()
+{
+    mDate[mPageIndex] = mDate[mPageIndex].addDays(1);
+    QString str = mDate[mPageIndex].toString(tr("yyyy-MM-dd"));
+    ui->btnDate_Flow->setText(str);
+
+    InqClicked(ui->tableFlow);
+}
+
+void TmsData::on_flowData_clicked()
+{
+    nFile = -1;
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->btnUsb->setVisible(false);
+    mPageIndex = 4;
+    if(mbFirst[mPageIndex])
+    {
+        InqClicked(ui->tableFlow);
+        mbFirst[mPageIndex] = false;
+    }
 }

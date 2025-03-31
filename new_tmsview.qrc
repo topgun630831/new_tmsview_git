@@ -24,7 +24,6 @@
         <file>images/backspace.png</file>
         <file>images/enter.png</file>
         <file>images/close.png</file>
-        <file>images/background.png</file>
         <file>images/sampler_close.png</file>
         <file>images/sampler_wait.png</file>
         <file>images/sampling.png</file>
@@ -61,5 +60,6 @@
         <file>images/checkbox_normal.png</file>
         <file>images/checkbox_checked_dis.png</file>
         <file>images/checkbox_normal_dis.png</file>
+        <file>images/background.png</file>
     </qresource>
 </RCC>

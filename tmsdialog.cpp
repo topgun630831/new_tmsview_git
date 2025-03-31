@@ -111,7 +111,7 @@ QString TmsCheckTag[9] = {
     "SAM00_CHECK",
 };
 QString TmsStatusText[7] = {
-    "",
+    "정상",
     "일시정지",
     "유량없음",
     "교정중",
@@ -1509,6 +1509,11 @@ bool TmsDialog::PasswordCheck()
 }
 
 void TmsDialog::on_btnManualSampling_clicked()
+{
+    ManualSampling();
+}
+
+void TmsDialog::ManualSampling()
 {
     if(PasswordCheck())
     {

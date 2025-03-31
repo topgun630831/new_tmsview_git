@@ -34,6 +34,7 @@ public:
     int         mCommCount;
     int         mPassCount;
     QString     mPassword;
+    void        ManualSampling();
 
 signals:
     void	sigSysMenu();
@@ -59,7 +60,6 @@ private slots:
     void slotSysMenu();
     bool PasswordCheck();
     void on_btnManualSampling_clicked();
-
     void on_btnToc_clicked();
 
 private:

@@ -485,6 +485,40 @@ QCheckBox::indicator:unchecked:disabled {
     <string>0x20 -&gt; ^ 로 표시</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnManualSampling">
+   <property name="geometry">
+    <rect>
+     <x>1680</x>
+     <y>1116</y>
+     <width>221</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: url(:/images/background2.png)</string>
+   </property>
+   <property name="text">
+    <string>수동채수</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

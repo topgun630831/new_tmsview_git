@@ -7,10 +7,12 @@
 #include "ui_common.h"
 #include "commonselect.h"
 #include "srsocket.h"
+#include "tmsdialog.h"
 
 extern CSrSocket *g_pSrSocket;
 extern QString GraphicId;
 CComMon *g_CommMon;
+extern TmsDialog *g_pTmsDlg;
 
 CComMon::CComMon(QWidget *parent) :
     CMonDialog(parent),
@@ -48,6 +50,7 @@ CComMon::CComMon(QWidget *parent) :
     mbStarted = false;
     m_nHexStart = 0x20;
     connect(this, SIGNAL(sigSelect()), this, SLOT(on_btnSelect_clicked()));
+    ui->btnManualSampling->setVisible(false);
 }
 
 CComMon::~CComMon()
@@ -108,6 +111,10 @@ void CComMon::on_btnSelect_clicked()
         InsertRow(QString(""), QString(""), QString(""), QString(tr("감시 시작")));
         mbStarted = true;
         ui->btnMonStart->setChecked(true);
+        if(mDevice == "Sampler")
+            ui->btnManualSampling->setVisible(true);
+        else
+            ui->btnManualSampling->setVisible(false);
 
 /*        if(mbStarted == true)
         {
@@ -360,4 +367,9 @@ void CComMon::on_checkSpace_clicked()
         m_nHexStart = 0x21;
     else
         m_nHexStart = 0x20;
+}
+
+void CComMon::on_btnManualSampling_clicked()
+{
+    g_pTmsDlg->ManualSampling();
 }

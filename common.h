@@ -35,6 +35,8 @@ private slots:
     void on_checkHex_clicked();
     void on_checkSpace_clicked();
 
+    void on_btnManualSampling_clicked();
+
 private:
     Ui::CComMon *ui;
     bool m_bHexDisp;

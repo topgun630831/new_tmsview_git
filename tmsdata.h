@@ -77,22 +77,30 @@ private slots:
     void on_table10Sec_pressed(const QModelIndex &index);
 
 
+    void on_btnDate_Flow_clicked();
+
+    void on_btnFirst_Flow_clicked();
+
+    void on_btnLast_Flow_clicked();
+
+    void on_flowData_clicked();
+
 private:
     void Inq10Sec();
     Ui::TmsData *ui;
     QFileSystemWatcher m_watcher;
     int                 mPageIndex;
-    int                 mTotalPoint[4];
-    int                 mPage[4];
-    int                 mStartPoint[4];
-    int                 mTotalPage[4];
-    QDate               mDate[4];
-    int                 mFromHour[4];
-    QList<TMS_DUMP_TAB*> mDumpList[4];
-    QLabel              *mNoData[4];
-    QTableWidget        *mTableWidget[5];
+    int                 mTotalPoint[5];
+    int                 mPage[5];
+    int                 mStartPoint[5];
+    int                 mTotalPage[5];
+    QDate               mDate[5];
+    int                 mFromHour[5];
+    QList<TMS_DUMP_TAB*> mDumpList[5];
+    QLabel              *mNoData[5];
+    QTableWidget        *mTableWidget[6];
     bool                mbInitOk;
-    bool                mbFirst[5];
+    bool                mbFirst[6];
     int                 nFile;
     QDate               mResendFromDate;
     QDate               mResendToDate;
@@ -100,6 +108,7 @@ private:
     int                 mResendToHour;
     int                 m_nIndex;
     int                 m_nFlowNum;
+    int                 FlowTotal[6];
     void    buttonEnable();
     void PageInit(int total);
     void DataDisplay();
