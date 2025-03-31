@@ -22,6 +22,14 @@
      <height>1081</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QScrollBar:vertical { 
+	width: 60px;
+}
+QScrollBar:horizontal {
+	height: 60px;
+}</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="close">
    <property name="geometry">

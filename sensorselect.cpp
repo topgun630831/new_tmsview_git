@@ -57,6 +57,7 @@ SensorSelect::SensorSelect( int FlowNum, float FlowRatio, bool WaterTemp, QWidge
     bToc = false;
     bFlow =
     bSampler = true;
+    ui->Analog_toc->setVisible(false);
 
 //    connect(&m_Timer, SIGNAL(timeout()), this, SLOT(onTimer()));
 
@@ -124,8 +125,8 @@ void SensorSelect::disp()
         ui->Analog_ph->setChecked(true);
     if(bAnalog_ss)
         ui->Analog_ss->setChecked(true);
-    if(bAnalog_toc)
-        ui->Analog_toc->setChecked(true);
+//    if(bAnalog_toc)
+//        ui->Analog_toc->setChecked(true);
     if(bGas_toc)
         ui->Gas_toc->setChecked(true);
 
@@ -239,7 +240,7 @@ void SensorSelect::on_ok_clicked()
     bAnalog_cod = ui->Analog_cod->isChecked();
     bAnalog_ph = ui->Analog_ph->isChecked();
     bAnalog_ss = ui->Analog_ss->isChecked();
-    bAnalog_toc = ui->Analog_toc->isChecked();
+//    bAnalog_toc = ui->Analog_toc->isChecked();
     bGas_toc = ui->Gas_toc->isChecked();
     bWaterTemp_ss = ui->WaterTemp_ss->isChecked();
 

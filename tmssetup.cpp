@@ -938,7 +938,7 @@ void TmsSetup::on_sensorSelect_clicked()
         {
             dlg.sToc = tmsitem->Protocol;
             dlg.bGas_toc = tmsitem->UseCchk;
-            dlg.bAnalog_toc = (bool)tmsitem->Analog;
+//            dlg.bAnalog_toc = (bool)tmsitem->Analog;
 //            dlg.bStx_toc = (bool)tmsitem->UseStxChecksum;
             dlg.sTocComPort = tmsitem->Port;
             dlg.bToc = true;
@@ -1000,11 +1000,11 @@ void TmsSetup::on_sensorSelect_clicked()
         {
             QString id = "TOTALC0";
             QString code = "TOC00";
-            if(dlg.bAnalog_toc)
-            {
-                id = "TOTALC1";
-                code = "TOC10";
-            }
+//            if(dlg.bAnalog_toc)
+//            {
+//                id = "TOTALC1";
+//                code = "TOC10";
+//            }
             SensorAdd(tr("TOC"), id, code, dlg.sToc, 1, // 생물학적 산소요구량
                          dlg.sTocComPort, 10000, 5000, tr("PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI"), 1,
                          dlg.bGas_toc, (int)dlg.bAnalog_toc, 0);
