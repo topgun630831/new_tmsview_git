@@ -51,8 +51,14 @@ QRadioButton::indicator:unchecked
 {
 	image: url(:images/radiobutton_normal.png);
 }
+QComboBox {
+    width: 50px;
+    height: 50px;
+}
 
-
+QComboBox QScrollBar {
+    width: 50px;
+}
 </string>
   </property>
   <widget class="QPushButton" name="close">
@@ -1474,7 +1480,7 @@ QRadioButton::indicator:unchecked
        <rect>
         <x>330</x>
         <y>60</y>
-        <width>60</width>
+        <width>91</width>
         <height>30</height>
        </rect>
       </property>
@@ -1872,7 +1878,7 @@ QRadioButton::indicator:unchecked
        <widget class="NumEdit" name="timeout">
         <property name="geometry">
          <rect>
-          <x>1030</x>
+          <x>950</x>
           <y>30</y>
           <width>100</width>
           <height>60</height>
@@ -1891,7 +1897,7 @@ QRadioButton::indicator:unchecked
        <widget class="QCheckBox" name="upload">
         <property name="geometry">
          <rect>
-          <x>840</x>
+          <x>810</x>
           <y>100</y>
           <width>261</width>
           <height>60</height>
@@ -1912,7 +1918,7 @@ QRadioButton::indicator:unchecked
          <rect>
           <x>30</x>
           <y>30</y>
-          <width>131</width>
+          <width>110</width>
           <height>60</height>
          </rect>
         </property>
@@ -1925,13 +1931,16 @@ QRadioButton::indicator:unchecked
         <property name="text">
          <string>프로토콜</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>390</x>
+          <x>450</x>
           <y>100</y>
-          <width>201</width>
+          <width>130</width>
           <height>60</height>
          </rect>
         </property>
@@ -1944,11 +1953,14 @@ QRadioButton::indicator:unchecked
         <property name="text">
          <string>통신주기(ms)</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
        <widget class="QComboBox" name="protocol">
         <property name="geometry">
          <rect>
-          <x>180</x>
+          <x>160</x>
           <y>30</y>
           <width>191</width>
           <height>60</height>
@@ -1984,9 +1996,9 @@ QRadioButton::indicator:unchecked
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>390</x>
+          <x>450</x>
           <y>30</y>
-          <width>181</width>
+          <width>130</width>
           <height>60</height>
          </rect>
         </property>
@@ -1999,13 +2011,16 @@ QRadioButton::indicator:unchecked
         <property name="text">
          <string>소수점</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
           <x>30</x>
           <y>110</y>
-          <width>121</width>
+          <width>110</width>
           <height>60</height>
          </rect>
         </property>
@@ -2018,11 +2033,14 @@ QRadioButton::indicator:unchecked
         <property name="text">
          <string>통신포트</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
-          <x>810</x>
+          <x>760</x>
           <y>30</y>
           <width>161</width>
           <height>60</height>
@@ -2037,11 +2055,14 @@ QRadioButton::indicator:unchecked
         <property name="text">
          <string>타임아웃(ms)</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
        <widget class="NumEdit" name="round">
         <property name="geometry">
          <rect>
-          <x>690</x>
+          <x>600</x>
           <y>30</y>
           <width>100</width>
           <height>60</height>
@@ -2060,7 +2081,7 @@ QRadioButton::indicator:unchecked
        <widget class="QComboBox" name="comPort">
         <property name="geometry">
          <rect>
-          <x>180</x>
+          <x>160</x>
           <y>100</y>
           <width>191</width>
           <height>60</height>
@@ -2073,7 +2094,7 @@ QRadioButton::indicator:unchecked
          </font>
         </property>
         <property name="maxVisibleItems">
-         <number>10</number>
+         <number>15</number>
         </property>
         <item>
          <property name="text">
@@ -2154,7 +2175,7 @@ QRadioButton::indicator:unchecked
        <widget class="NumEdit" name="scanTime">
         <property name="geometry">
          <rect>
-          <x>690</x>
+          <x>600</x>
           <y>100</y>
           <width>100</width>
           <height>60</height>
@@ -2192,7 +2213,7 @@ QRadioButton::indicator:unchecked
        <widget class="QCheckBox" name="usecchk">
         <property name="geometry">
          <rect>
-          <x>1190</x>
+          <x>1140</x>
           <y>30</y>
           <width>201</width>
           <height>60</height>
@@ -2242,6 +2263,9 @@ QRadioButton::indicator:unchecked
          <family>나눔고딕코딩</family>
          <pointsize>16</pointsize>
         </font>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>CrossCursor</cursorShape>
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
@@ -2390,849 +2414,13 @@ QRadioButton::indicator:unchecked
       </widget>
      </widget>
      <widget class="QWidget" name="flow">
-      <widget class="QGroupBox" name="groupBox_8">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>40</y>
-         <width>561</width>
-         <height>531</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>나눔고딕코딩</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="title">
-        <string>유량계</string>
-       </property>
-       <widget class="QLabel" name="f_label1">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>50</y>
-          <width>31</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>1.</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="f_comPort1">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>50</y>
-          <width>121</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="currentText">
-         <string>Com7</string>
-        </property>
-        <property name="currentIndex">
-         <number>6</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Com1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>com13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>com14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>com15</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QCheckBox" name="rate1">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>50</y>
-          <width>200</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>순시 유량</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="rate2">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>120</y>
-          <width>200</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>순시 유량</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="f_label2">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>120</y>
-          <width>31</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>2.</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="f_comPort2">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>120</y>
-          <width>121</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="currentIndex">
-         <number>7</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Com1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com15</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QComboBox" name="f_comPort3">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>190</y>
-          <width>121</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="currentIndex">
-         <number>8</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Com1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com15</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="f_label3">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>190</y>
-          <width>31</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>3.</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="rate3">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>190</y>
-          <width>200</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>순시 유량</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="f_comPort4">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>260</y>
-          <width>121</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="currentIndex">
-         <number>9</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Com1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com15</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="f_label4">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>260</y>
-          <width>31</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>4.</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="rate4">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>260</y>
-          <width>200</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>순시 유량</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="f_comPort5">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>330</y>
-          <width>121</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="currentIndex">
-         <number>10</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Com1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Com15</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QCheckBox" name="rate5">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>330</y>
-          <width>200</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>순시 유량</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="f_label5">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>330</y>
-          <width>31</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>5.</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBoxSampler">
-       <property name="geometry">
-        <rect>
-         <x>670</x>
-         <y>460</y>
-         <width>711</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>나눔고딕코딩</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="title">
-        <string>채수기 도어</string>
-       </property>
-       <widget class="QGroupBox" name="groupBox_10">
-        <property name="geometry">
-         <rect>
-          <x>870</x>
-          <y>-120</y>
-          <width>391</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>채수기 도어</string>
-        </property>
-        <widget class="QComboBox" name="MonitorPort_4">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>60</y>
-           <width>121</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>사용안함</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com6</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com7</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com8</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com9</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Com10</string>
-          </property>
-         </item>
-        </widget>
-       </widget>
-       <widget class="QCheckBox" name="chkExternalIO">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>29</y>
-          <width>180</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>외부 I/O 사용</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="sampDoor">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>29</y>
-          <width>150</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>사용안함</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="sampDoorReverse">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>29</y>
-          <width>180</width>
-          <height>60</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>나눔고딕코딩</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Reverse</string>
-        </property>
-       </widget>
-      </widget>
       <widget class="QGroupBox" name="groupBox">
        <property name="geometry">
         <rect>
-         <x>670</x>
-         <y>40</y>
+         <x>30</x>
+         <y>30</y>
          <width>711</width>
-         <height>371</height>
+         <height>431</height>
         </rect>
        </property>
        <property name="font">
@@ -3533,6 +2721,9 @@ QRadioButton::indicator:unchecked
          <family>나눔고딕코딩</family>
          <pointsize>14</pointsize>
         </font>
+       </property>
+       <property name="maxVisibleItems">
+        <number>16</number>
        </property>
        <item>
         <property name="text">
@@ -4010,7 +3201,7 @@ QRadioButton::indicator:unchecked
       </font>
      </property>
      <property name="text">
-      <string>유량계 / IO</string>
+      <string>부대시설</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -5128,7 +4319,7 @@ QRadioButton::indicator:unchecked
     </font>
    </property>
    <property name="text">
-    <string>계측기 설정</string>
+    <string>계측기/사업장</string>
    </property>
    <property name="checkable">
     <bool>true</bool>

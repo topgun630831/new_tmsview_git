@@ -81,13 +81,13 @@ private slots:
     void on_setup_clicked();
     void on_timeout_textChanged(const QString &arg1);
     void on_UseStxChecksum_stateChanged(int);
-    void on_chkExternalIO_clicked(bool checked);
+//    void on_chkExternalIO_clicked(bool checked);
     void on_f_comPort1_currentIndexChanged(const QString &arg1);
     void on_usecchk_stateChanged(int);
 //    void on_const_2_clicked();
 //    void on_changeConsts_clicked();
 
-    void on_sampDoor_clicked();
+//    void on_sampDoor_clicked();
 
     void on_MonitorPort_currentTextChanged(const QString &monitor);
 //    void onTimer();
@@ -123,14 +123,16 @@ private:
     bool mbFlag[9];
     QLabel *checkLabel[9];
     bool mbCheckFlag[9];
-    QLabel *mFlowLabel[5];
-    QComboBox *mFlowComboBox[5];
-    QCheckBox *mFlowCheckBox[5];
     int         m_nFlowNum;
     float       m_nFlowRatio;
     bool        m_bWaterTempSs;
-    bool        m_bFlowRate[5];
     QGroupBox   *m_GroupBox[5];
+    bool        m_bFlowRate[5];
+    float   m_Ratio[5];
+    QString m_FlowPort[5];
+    QString m_FlowProtocol[5];
+    bool m_bSamplerDoorExternal;
+    bool m_bDoorReversed;
 //    QLineEdit   *m_ConstEdit[5][7];
 //    QLabel      *m_ConstDate[5];
     QString     m_sSamplerModel;
@@ -144,6 +146,7 @@ private:
     QString mServerPort;
     void DispGeneral();
     int SetDi(const char* name, QPushButton *btn, QCheckBox *chk);
+    int SetDi2(const char* name);
     void DiDisp(int pos, QPushButton *btn);
     void SetItem(int row, const TMS_ITEM_TAB *tmsitem, bool bAdd=true);
     void SetItem(QString str, int row, int col);

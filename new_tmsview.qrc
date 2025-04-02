@@ -28,7 +28,6 @@
         <file>images/sampler_wait.png</file>
         <file>images/sampling.png</file>
         <file>images/sampler_open.png</file>
-        <file>images/door_off.png</file>
         <file>images/door_on.png</file>
         <file>images/power_off.png</file>
         <file>images/power_on.png</file>
@@ -61,5 +60,6 @@
         <file>images/checkbox_checked_dis.png</file>
         <file>images/checkbox_normal_dis.png</file>
         <file>images/background.png</file>
+        <file>images/door_off.png</file>
     </qresource>
 </RCC>

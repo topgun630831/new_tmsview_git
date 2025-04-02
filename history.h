@@ -10,7 +10,7 @@
 namespace Ui {
 class CHistory;
 }
-#define MAX_ROW     14
+#define MAX_ROW     18
 #define HISTORY_MAX 7
 
 enum PAGE_DEF

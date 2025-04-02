@@ -4,7 +4,10 @@
 #include <QDialog>
 #include <QRadioButton>
 #include <QCheckBox>
+#include <QLabel>
+#include <QComboBox>
 #include <QTimer>
+#include "numedit.h"
 
 namespace Ui {
 class SensorSelect;
@@ -15,7 +18,7 @@ class SensorSelect : public QDialog
     Q_OBJECT
 
 public:
-    explicit SensorSelect(int nFlowNum, float FlowRatio, bool WaterTemp, QWidget *parent = 0);
+    explicit SensorSelect(int nFlowNum, bool WaterTemp, QWidget *parent = 0);
     ~SensorSelect();
     void disp();
 
@@ -28,7 +31,7 @@ public:
     bool bSampler;
     bool bToc;
     int  nFlowNum;
-    float nFlowRatio;
+//    float nFlowRatio;
     bool bRate;
     QString sTn;
     QString sTp;
@@ -70,6 +73,13 @@ public:
 */    bool    bStx_sampler;
     bool    bWaterTemp_ss;
     bool    bGas_toc;
+    bool    m_bFlowRate[5];
+    float   m_Ratio[5];
+    QString m_FlowPort[5];
+    QString m_FlowProtocol[5];
+    int m_nSampDoor;
+    bool m_bSamplerDoorExternal;
+    bool m_bDoorReversed;
 
 private slots:
     void on_ok_clicked();
@@ -89,13 +99,28 @@ private slots:
     void on_tocNew_clicked();
 */
 
+    void on_num_textChanged(const QString &arg1);
+
+    void on_sampDoor_clicked();
+
+    void on_chkExternalIO_clicked(bool checked);
+
 private:
 //    QTimer              m_Timer;
+    QLabel *mFlowLabel[5];
+    QComboBox *mFlowComboBox[5];
+    QCheckBox *mFlowCheckBox[5];
+    QComboBox *mProtocolComboBox[5];
+    NumEdit   *mRatio[5];
     int                 m_timerId;
     Ui::SensorSelect *ui;
     void	paintEvent(QPaintEvent*);
     void InitDisp(QString sensor, bool check, QString compare, QRadioButton *old, QRadioButton *newB, QCheckBox *checkbox);
     void timerEvent(QTimerEvent *);
+    void NumChangeCheck(void);
+    void DiDisp(int pos, QPushButton *btn);
+    int SetDi(const char* name, QPushButton *btn, QCheckBox *chk);
+
 };
 
 #endif // SENSORSELECT_H

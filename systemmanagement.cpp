@@ -27,12 +27,20 @@ extern QSqlDatabase gDb;
 
 extern bool    m_bScreenSave;
 
-SystemManagement::SystemManagement(QWidget *parent) :
+SystemManagement::SystemManagement(bool bAll, QWidget *parent) :
     CMonDialog(parent),
     ui(new Ui::SystemManagement)
 {
     ui->setupUi(this);
 
+    if(bAll == true)
+    {
+        ui->groupBox_5->setVisible(false);
+        ui->groupBox_4->setVisible(false);
+        ui->groupBox_7->setVisible(false);
+        ui->groupBox_reset->setVisible(false);
+        ui->DeleteInterrupt->setVisible(false);
+    }
     const QRect screen = QApplication::desktop()->screenGeometry();
     this->move( screen.center() - this->rect().center() );
     installEventFilter(this);

@@ -326,7 +326,7 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
             tmsitem->UseStxChecksum = 0;        // 채수기와 유량계 제외하고는 NewAnalyzer이고 STX Checksum은 0 UseStxSet에서 Set
             if(tmsitem->Code == "FLW01")
             {
-                ui->f_comPort1->setCurrentText(tmsitem->Port);
+                // ui->f_comPort1->setCurrentText(tmsitem->Port);
                 FlowRow = row;
             }
             if((tmsitem->Code == "TOC00" || tmsitem->Code == "TOC10") && tmsitem->Upload == 1)
@@ -360,7 +360,7 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     m_nFMLON = SetDi("FMLON", ui->sampL, ui->sampLReverse);
     m_nFMRON = SetDi("FMRON", ui->sampR, ui->sampRReverse);
     m_nPWRON = SetDi("PWRON", ui->power, ui->powerReverse);
-    m_nSampDoor = SetDi("SAM00_DOOR", ui->sampDoor, ui->sampDoorReverse);
+    m_nSampDoor = SetDi2("SAM00_DOOR");
 
     DispGeneral();
     SelectedRow = -1;
@@ -467,21 +467,6 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
 //    if(gHardwareRevision == "1")
         DispSamplerDoor();
 
-    mFlowLabel[0] = ui->f_label1;
-    mFlowLabel[1] = ui->f_label2;
-    mFlowLabel[2] = ui->f_label3;
-    mFlowLabel[3] = ui->f_label4;
-    mFlowLabel[4] = ui->f_label5;
-    mFlowComboBox[0] = ui->f_comPort1;
-    mFlowComboBox[1] = ui->f_comPort2;
-    mFlowComboBox[2] = ui->f_comPort3;
-    mFlowComboBox[3] = ui->f_comPort4;
-    mFlowComboBox[4] = ui->f_comPort5;
-    mFlowCheckBox[0] = ui->rate1;
-    mFlowCheckBox[1] = ui->rate2;
-    mFlowCheckBox[2] = ui->rate3;
-    mFlowCheckBox[3] = ui->rate4;
-    mFlowCheckBox[4] = ui->rate5;
 
     CheckFlow();
 
@@ -502,13 +487,10 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     ui->groupBoxSampler->setVisible(false);
     */
 
+    for(int i = 0; i < ui->protocol->count(); i++)
+        ui->protocol->model()->setData(ui->protocol->model()->index(i, 0), QSize(50, 50), Qt::SizeHintRole);
     for(int i = 0; i < ui->comPort->count(); i++)
         ui->comPort->model()->setData(ui->comPort->model()->index(i, 0), QSize(50, 50), Qt::SizeHintRole);
-    for(int i = 0; i < 5; i++)
-    {
-        for(int j = 0; j < mFlowComboBox[i]->count(); j++)
-            mFlowComboBox[i]->model()->setData(ui->comPort->model()->index(j, 0), QSize(50, 50), Qt::SizeHintRole);
-    }
     for(int i = 0; i < ui->MonitorPort->count(); i++)
         ui->MonitorPort->model()->setData(ui->MonitorPort->model()->index(i, 0), QSize(50, 50), Qt::SizeHintRole);
     for(int i = 0; i < ui->MonitorPortBaudrate->count(); i++)
@@ -611,8 +593,11 @@ void TmsSetup::timerEvent(QTimerEvent *event)
 void TmsSetup::CheckFlow()
 {
     for(int i = 0; i < 5; i++)
-        m_bFlowRate[i] = 0;
-    QSqlQuery query("select Name, Device From Tag Where Name LIKE 'FLOW%'");
+    {
+        m_bFlowRate[i] = false;
+        m_Ratio[i] = 1;
+    }
+    QSqlQuery query("select Name, Device, Ratio From Tag Where Name LIKE 'FLOW%'");
     m_nFlowNum = 1;
     while(query.next())
     {
@@ -620,15 +605,18 @@ void TmsSetup::CheckFlow()
         if(name.length() != 5)
             continue;
         int n = (name.toLocal8Bit())[4]-0x30;
+        if(n < 1 || n >= 5)
+            continue;
         if(n > m_nFlowNum)
             m_nFlowNum = n;
         QString device = query.value(1).toString();
+        m_Ratio[n-1] = query.value(2).toFloat();
         QString str = QString("select Port From Driver_Tms Where Name='%1'").arg(device);
         QSqlQuery query2(str);
         if(query2.next())
         {
             QString port =  query2.value(0).toString();
-            mFlowComboBox[n-1]->setCurrentText(port);
+            m_FlowPort[n-1] = port;
         }
     }
     QSqlQuery query2("select Name From Tag Where Name LIKE 'FLOW%_RATE'");
@@ -639,19 +627,13 @@ void TmsSetup::CheckFlow()
         if(n <= 5)
         {
             m_bFlowRate[n-1] = true;
-            mFlowCheckBox[n-1]->setChecked(true);
+            //mFlowCheckBox[n-1]->setChecked(true);
         }
     }
-    m_nFlowRatio = 1;
-    QSqlQuery query3("select Ratio From Tag Where Name = 'FLOW1'");
-    if(query3.next())
-        m_nFlowRatio = query3.value(0).toFloat();
-    for(int i = m_nFlowNum; i < 5; i++)
-    {
-        mFlowLabel[i]->setVisible(false);
-        mFlowComboBox[i]->setVisible(false);
-        mFlowCheckBox[i]->setVisible(false);
-    }
+//    m_nFlowRatio = 1;
+//    QSqlQuery query3("select Ratio From Tag Where Name = 'FLOW1'");
+//    if(query3.next())
+//        m_nFlowRatio = query3.value(0).toFloat();
     QSqlQuery query4("select Name From Tag Where Name = 'SUS00_MTM1'");
     if(query4.next())
         m_bWaterTempSs = true;
@@ -679,11 +661,13 @@ void TmsSetup::DispSamplerDoor()
         }
     }
     */
+    m_bSamplerDoorExternal = false;
     QSqlQuery query("select Driver from Tag Where Name='SAM00_DOOR'");
     if(query.next())
     {
         if(query.value(0).toString() != "Tms")
-            ui->chkExternalIO->setChecked(true);
+            m_bSamplerDoorExternal = true;
+//            ui->chkExternalIO->setChecked(true);
     }
 }
 
@@ -712,12 +696,14 @@ void TmsSetup::SaveSamplerDoor()
     QString str;
     QString driver, device, address;
     int rev = 0;
-    if(ui->chkExternalIO->isChecked())
+//    if(ui->chkExternalIO->isChecked())
+    if(m_bSamplerDoorExternal)
     {
         driver = "System";
         device = "io";
         address = QString("di%1").arg(m_nSampDoor);
-        if(ui->sampDoorReverse->isChecked())
+//        if(ui->sampDoorReverse->isChecked())
+        if(m_bDoorReversed)
             rev = 1;
     }
     else
@@ -820,6 +806,28 @@ int TmsSetup::SetDi(const char* name, QPushButton *btn, QCheckBox *chk)
     return pos;
 }
 
+int TmsSetup::SetDi2(const char* name)
+{
+    int pos = 0;
+    QString str = QString("select Address, Reversed from Tag where Name = '%1'").arg(name);
+    QSqlQuery query(str);
+    if (query.next())
+    {
+        QString address = query.value(0).toString();
+        address = address.mid(2);
+        pos = address.toInt();
+        if(pos)
+        {
+            address = QString("DI %1").arg(pos);
+            if(query.value(1).toInt() == 1)
+              m_bDoorReversed = true;
+            else
+              m_bDoorReversed = false;
+        }
+    }
+    return pos;
+}
+
 void TmsSetup::SetItem(QString str, int row, int col)
 {
     QTableWidgetItem *item = new QTableWidgetItem(str);
@@ -871,8 +879,18 @@ void TmsSetup::SetItem(int row, const TMS_ITEM_TAB *tmsitem, bool bAdd)
 
 void TmsSetup::on_sensorSelect_clicked()
 {
-    SensorSelect dlg(m_nFlowNum, m_nFlowRatio, m_bWaterTempSs);
+    SensorSelect dlg(m_nFlowNum, m_bWaterTempSs);
     dlg.sSamModel = m_sSamplerModel;
+    for(int i = 0; i < 5; i++)
+    {
+        dlg.m_bFlowRate[i] = m_bFlowRate[i];
+        dlg.m_FlowPort[i] = m_FlowPort[i];
+//        dlg.m_FlowProtocol[i] = m_FlowProtocol[i];
+        dlg.m_Ratio[i] = m_Ratio[i];
+    }
+    dlg.m_bSamplerDoorExternal = m_bSamplerDoorExternal;
+    dlg.m_nSampDoor = m_nSampDoor;
+    dlg.m_bDoorReversed = m_bDoorReversed;
     foreach (const TMS_ITEM_TAB * tmsitem, TmsItemList)
     {
         if(tmsitem->Code == "TON00")
@@ -880,7 +898,7 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.sTn = tmsitem->Protocol;
 //            dlg.bTnCchk = tmsitem->UseCchk;
 //            dlg.bStx_tn = (bool)tmsitem->UseStxChecksum;
-            dlg.bAnalog_tn = (bool)tmsitem->Analog;
+//            dlg.bAnalog_tn = (bool)tmsitem->Analog;
             dlg.sTnComPort = tmsitem->Port;
              dlg.bTn = true;
         }
@@ -890,7 +908,7 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.sTp = tmsitem->Protocol;
 //            dlg.bTpCchk = tmsitem->UseCchk;
 //            dlg.bStx_tp = (bool)tmsitem->UseStxChecksum;
-            dlg.bAnalog_tp = (bool)tmsitem->Analog;
+//            dlg.bAnalog_tp = (bool)tmsitem->Analog;
             dlg.sTpComPort = tmsitem->Port;
             dlg.bTp = true;
         }
@@ -900,7 +918,7 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.sCod = tmsitem->Protocol;
 //            dlg.bCodCchk = tmsitem->UseCchk;
 //            dlg.bStx_cod = (bool)tmsitem->UseStxChecksum;
-            dlg.bAnalog_cod = (bool)tmsitem->Analog;
+//            dlg.bAnalog_cod = (bool)tmsitem->Analog;
             dlg.sCodComPort = tmsitem->Port;
             dlg.bCod = true;
         }
@@ -910,7 +928,7 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.sPh = tmsitem->Protocol;
 //            dlg.bPhCchk = tmsitem->UseCchk;
 //            dlg.bStx_ph = (bool)tmsitem->UseStxChecksum;
-            dlg.bAnalog_ph = (bool)tmsitem->Analog;
+//            dlg.bAnalog_ph = (bool)tmsitem->Analog;
             dlg.sPhComPort = tmsitem->Port;
             dlg.bPh = true;
         }
@@ -920,7 +938,7 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.sSs = tmsitem->Protocol;
 //            dlg.bSsCchk = tmsitem->UseCchk;
 //            dlg.bStx_ss = (bool)tmsitem->UseStxChecksum;
-            dlg.bAnalog_ss = (bool)tmsitem->Analog;
+//            dlg.bAnalog_ss = (bool)tmsitem->Analog;
             dlg.sSsComPort = tmsitem->Port;
             dlg.bSs = true;
         }
@@ -955,6 +973,16 @@ void TmsSetup::on_sensorSelect_clicked()
     dlg.disp();
     if(dlg.exec() == QDialog::Accepted)
     {
+        for(int i = 0; i < 5; i++)
+        {
+            m_bFlowRate[i] = dlg.m_bFlowRate[i];
+            m_FlowPort[i] = dlg.m_FlowPort[i];
+//            m_FlowProtocol[i] = dlg.m_FlowProtocol[i];
+            m_Ratio[i] = dlg.m_Ratio[i];
+        }
+        dlg.m_bSamplerDoorExternal = m_bSamplerDoorExternal;
+        dlg.m_nSampDoor = m_nSampDoor;
+        dlg.m_bDoorReversed = m_bDoorReversed;
         foreach (const TMS_ITEM_TAB * tmsitem, TmsItemList)
             delete tmsitem;
         TmsItemList.clear();
@@ -968,12 +996,12 @@ void TmsSetup::on_sensorSelect_clicked()
         mbFlag[7] = dlg.bFlow;
         mbFlag[8] = dlg.bSampler;
         m_nFlowNum  = dlg.nFlowNum;
-        m_nFlowRatio  = dlg.nFlowRatio;
+ //       m_nFlowRatio  = dlg.nFlowRatio;
         m_sSamplerModel = dlg.sSamModel;
         m_bWaterTempSs = dlg.bWaterTemp_ss;
 //        for(int i = 0; i < m_nFlowNum; i++)       // 유량계설정탭에서 설정하기 때문에 측정기 선택에서는 필요없음
 //            m_bFlowRate[i] = dlg.bRate;
-        for(int i = 0; i < 5; i++)
+/*        for(int i = 0; i < 5; i++)
         {
             bool b = false;
             if(i < m_nFlowNum)
@@ -982,10 +1010,9 @@ void TmsSetup::on_sensorSelect_clicked()
                 mFlowCheckBox[i]->setChecked(m_bFlowRate[i]);
             }
             mFlowLabel[i]->setVisible(b);
-            mFlowComboBox[i]->setVisible(b);
             mFlowCheckBox[i]->setVisible(b);
         }
-
+*/
         if(dlg.bTn)
             SensorAdd(tr("TN"), tr("TOTALN0"), tr("TON00"), dlg.sTn, 3, // 총 질소
                          dlg.sTnComPort, 10000, 5000, tr("PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI"), 1,
@@ -1142,7 +1169,7 @@ void TmsSetup::on_sampR_clicked()
         DiDisp(m_nFMRON, ui->sampR);
     }
 }
-
+/*
 void TmsSetup::on_sampDoor_clicked()
 {
     DiSelect dlg(m_nSampDoor, m_nDiCount);
@@ -1154,7 +1181,7 @@ void TmsSetup::on_sampDoor_clicked()
         DiDisp(m_nSampDoor, ui->sampDoor);
     }
 }
-
+*/
 void TmsSetup::DiDisp(int pos, QPushButton *btn)
 {
     QString str = "사용안함";
@@ -1224,17 +1251,20 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
     {
         ui->protocol->addItem(tr("Flow"));
         ui->protocol->addItem(tr("NewFlow"));
+        ui->comPort->setEnabled(false);
     }
     else
     if(code == "SAM00")
     {
         ui->protocol->addItem(tr("Sampler"));
+        ui->comPort->setEnabled(true);
     }
     else
 //    if(code == "TOC00")
     {
         ui->protocol->addItem(tr("NewAnalyzer"));
         SetItem("NewAnalyzer", SelectedRow, 3);
+        ui->comPort->setEnabled(true);
     }
 /*
     else
@@ -1245,7 +1275,7 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
 */
 
     for(int i = 0; i < ui->protocol->count(); i++)
-        ui->protocol->model()->setData(ui->protocol->model()->index(i, 0), QSize(30, 30), Qt::SizeHintRole);
+        ui->protocol->model()->setData(ui->protocol->model()->index(i, 0), QSize(50, 50), Qt::SizeHintRole);
 
     index = ui->protocol->findText(ui->tableSensor->item(SelectedRow,3)->text());
     ui->protocol->setCurrentIndex(index);
@@ -1293,6 +1323,20 @@ void TmsSetup::on_save_clicked()
                     {
                         continue;
                     }
+                    bError = true;
+                    break;
+                }
+            }
+        }
+    }
+    for(int i = 0; i < TmsItemList.length(); i++)
+    {
+        if(TmsItemList[i]->Code != "FLW01")
+        {
+            for(int j = 0; j < m_nFlowNum; j++)
+            {
+                if(TmsItemList[i]->Port == m_FlowPort[j])
+                {
                     bError = true;
                     break;
                 }
@@ -1384,10 +1428,10 @@ void TmsSetup::CheckMultiSensor(bool &tntp, bool &phss, bool &toccod)
 
 void TmsSetup::DbSave()
 {
-    for(int i = 0; i < 5; i++)
-    {
-        m_bFlowRate[i] = mFlowCheckBox[i]->isChecked();
-    }
+//    for(int i = 0; i < 5; i++)
+//    {
+//        m_bFlowRate[i] = mFlowCheckBox[i]->isChecked();
+//    }
 
     QProgressBar *progressBar = new QProgressBar(this);
     progressBar->setGeometry(330, 250, 420, 30);
@@ -1432,10 +1476,10 @@ void TmsSetup::DbSave()
                               "Port,ScanPeriod,ReadRetryCount,WriteRetryCount,Timeout,FrameDelay,Address) VALUES"
                               "('%1','%1',1,'%2',%6,'',"
                               "'%3',%4,3,3,%5,0,0)")
-                        .arg(name).arg(tmsitem->Protocol).arg(mFlowComboBox[i]->currentText()).arg(tmsitem->ScanTime).arg(tmsitem->Timeout).arg(tmsitem->UseStxChecksum);
+                        .arg(name).arg(tmsitem->Protocol).arg(m_FlowPort[i]).arg(tmsitem->ScanTime).arg(tmsitem->Timeout).arg(tmsitem->UseStxChecksum);
                 SqlExec(str);
             }
-            ui->f_comPort1->setCurrentText(tmsitem->Port);
+            //ui->f_comPort1->setCurrentText(tmsitem->Port);
         }
         else
         {
@@ -1839,7 +1883,7 @@ void TmsSetup::SensorSave(const TMS_ITEM_TAB *item, int max, int sensor, int *se
                 device = QString("Flow%1").arg(i+1);
                 float ratio = 1;
                 if(j == 0)
-                    ratio = m_nFlowRatio;
+                    ratio = m_Ratio[i];
                 TagAdd(name, item->Desc, FlowTagTab[j].TagType, desc, FlowTagTab[j].Driver,
                     device, FlowTagTab[j].Address, FlowTagTab[j].Rw, FlowTagTab[j].DataType,
                        FlowTagTab[j].On, FlowTagTab[j].Off, 0, FlowTagTab[j].Unit, round, FlowTagTab[j].Save, FlowTagTab[j].InitValue, ratio);
@@ -1906,7 +1950,7 @@ void TmsSetup::on_setup_clicked()
 extern bool g_bExit;
 void TmsSetup::on_networkSet_clicked()
 {
-    CNetworkSetup dlg(false);
+    CNetworkSetup dlg;
     dlg.exec();
     if(g_bExit)
         accept();
@@ -2109,8 +2153,8 @@ void TmsSetup::on_comPort_currentIndexChanged(const QString &arg1)
     TMS_ITEM_TAB *tmsitem = TmsItemList[SelectedRow];
     tmsitem->Port = arg1;
     SetItem(tmsitem->Port, SelectedRow, 5);
-    if(tmsitem->Desc == "Flow")
-        ui->f_comPort1->setCurrentText(arg1);
+//    if(tmsitem->Desc == "Flow")
+//        ui->f_comPort1->setCurrentText(arg1);
 }
 
 void TmsSetup::on_round_textChanged(const QString &arg1)
@@ -2151,7 +2195,7 @@ void TmsSetup::on_UseStxChecksum_stateChanged(int)
     tmsitem->UseStxChecksum = check;
     SetItem(QString::number(tmsitem->UseStxChecksum), SelectedRow, 9);
 }
-
+/*
 void TmsSetup::on_chkExternalIO_clicked(bool checked)
 {
     if(m_nSampDoor == 0)
@@ -2160,7 +2204,7 @@ void TmsSetup::on_chkExternalIO_clicked(bool checked)
     ui->sampDoor->setEnabled(checked);
     ui->sampDoorReverse->setEnabled(checked);
 }
-
+*/
 void TmsSetup::on_f_comPort1_currentIndexChanged(const QString &arg1)
 {
     foreach (TMS_ITEM_TAB * tmsitem, TmsItemList)
@@ -2377,5 +2421,3 @@ void TmsSetup::on_upload_clicked()
     }
 
 }
-
-

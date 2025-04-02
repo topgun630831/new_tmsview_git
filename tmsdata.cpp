@@ -20,7 +20,7 @@ extern bool g_DebugDisplay;
 extern CSrSocket *g_pSrSocket;
 extern QString GraphicId;
 extern QMap<QString, CTag*> m_TagMap;
-extern bool    g_bToc10;
+//extern bool    g_bToc10;
 extern bool m_bUseToc;
 extern bool m_bGas;    //이송가스
 
@@ -104,15 +104,16 @@ int TmsColumnWidth[6][16] = {
         130,    //유량계5
     },
     {
+        80,
         500,
         200,
         200,
-        1006
+        926
     }
 };
 
 
-int TmsColumnMax[6] = { 16, 16, 10, 16, 7, 4 };
+int TmsColumnMax[6] = { 16, 16, 10, 16, 7, 5 };
 extern bool m_bUseToc;
 QString InqCode;
 bool bLoaded = false;
@@ -217,12 +218,12 @@ const char *AllHourHeader[16] =  {
     "SUS00",
     "유량",
     "채수온도",
-    "SAM01",
-    "SAM02",
-    "DOR",
-    "PWR",
-    "FML",
-    "FMR",
+    "채수위치",
+    "채수개폐",
+    "출입문",
+    "입력전압",
+    "채수펌프A",
+    "채수펌프B",
 };
 
 const char *AllHourHeader2[16] =  {
@@ -236,12 +237,12 @@ const char *AllHourHeader2[16] =  {
     "SUS00",
     "유량",
     "채수온도",
-    "SAM01",
-    "SAM02",
-    "DOR",
-    "PWR",
-    "FML",
-    "FMR",
+    "채수위치",
+    "채수개폐",
+    "출입문",
+    "입력전압",
+    "채수펌프A",
+    "채수펌프B",
 };
 
 
@@ -274,15 +275,15 @@ TmsData::TmsData(QWidget *parent) :
 
     QStringList listAllHour;
 
-    if(g_bToc10)
+//    if(g_bToc10)
+//    {
+//        for(int i = 0; i < 16; i++)
+//            listAllHour.append(AllHourHeader2[i]);
+//   }
+//    else
     {
         for(int i = 0; i < 16; i++)
-            listAllHour.append(AllHourHeader2[i]);
-    }
-    else
-    {
-//        for(int i = 0; i < 16; i++)
-//            listAllHour.append(AllHourHeader[i]);
+            listAllHour.append(AllHourHeader[i]);
     }
     if(m_bUseToc == true)
     {
@@ -303,7 +304,7 @@ TmsData::TmsData(QWidget *parent) :
     ui->tableIndividual5Min->verticalHeader()->setVisible(false);
     ui->tableIndividual10Sec->verticalHeader()->setVisible(false);
     ui->tableFlow->verticalHeader()->setVisible(false);
-    ui->tableSampler->verticalHeader()->setVisible(true);
+    ui->tableSampler->verticalHeader()->setVisible(false);
 
     QDate date = QDate::currentDate();
     QTime time = QTime::currentTime();
@@ -792,9 +793,9 @@ void TmsData::SendCommand(QString cmd)
             m_nIndex = ui->comboBox_indi5Min->currentIndex();
             if(m_bUseToc == true)
             {
-                if(g_bToc10 == true)
-                    InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi5Min->currentIndex()];
-                else
+//                if(g_bToc10 == true)
+//                    InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi5Min->currentIndex()];
+//                else
                     InqCode = codeStrTmsToc[ui->comboBox_indi5Min->currentIndex()];
             }
             else
@@ -806,9 +807,9 @@ void TmsData::SendCommand(QString cmd)
             m_nIndex = ui->comboBox_indi10Sec->currentIndex();
             if(m_bUseToc == true)
             {
-                if(g_bToc10 == true)
-                   InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi10Sec->currentIndex()];
-                else
+//                if(g_bToc10 == true)
+//                   InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi10Sec->currentIndex()];
+//                else
                    InqCode = codeStrTmsToc[ui->comboBox_indi10Sec->currentIndex()];
             }
             else
@@ -845,12 +846,12 @@ int TmsData::CodeIndex(QString code)
     {
         if(m_bUseToc == true)
         {
-            if(g_bToc10 == true)
-            {
-                if(code == codeStrTmsTocHighTemp[i])
-                    return i;
-            }
-            else
+//            if(g_bToc10 == true)
+//            {
+//                if(code == codeStrTmsTocHighTemp[i])
+//                    return i;
+//            }
+ //           else
             {
                 if(code == codeStrTmsToc[i])
                     return i;
@@ -1013,22 +1014,26 @@ void TmsData::onRead(QString& cmd, QJsonObject& jobject)
         QTableWidgetItem *item;
         ui->tableSampler->setRowCount(0);
         ui->tableSampler->setRowCount(array.size());
+        int no = 1;
         foreach (const QJsonValue& value, array)
         {
             QJsonObject itemObject = value.toObject();
-            item = new QTableWidgetItem(itemObject["Date"].toString());
+            QString str = QString("%1").arg(no);
+            item = new QTableWidgetItem(str);
             ui->tableSampler->setItem(count, 0, item);
+            item = new QTableWidgetItem(itemObject["Date"].toString());
+            ui->tableSampler->setItem(count, 1, item);
             bool remote = itemObject["Remoted"].toBool();
-            QString str;
             if(remote == true)
                 str = "원격";
             else
                 str = "현장";
             item = new QTableWidgetItem(str);
-            ui->tableSampler->setItem(count, 1, item);
-            item = new QTableWidgetItem(QString("%1").arg(itemObject["BottlePos"].toDouble()));
             ui->tableSampler->setItem(count, 2, item);
+            item = new QTableWidgetItem(QString("%1").arg(itemObject["BottlePos"].toDouble()));
+            ui->tableSampler->setItem(count, 3, item);
             count++;
+            no++;
         }
     }
     else
@@ -1291,9 +1296,9 @@ void TmsData::Inq10Sec()
 
         if(m_bUseToc == true)
         {
-            if(g_bToc10 == true)
-                code = codeStrTmsTocHighTemp[index];
-            else
+//            if(g_bToc10 == true)
+//                code = codeStrTmsTocHighTemp[index];
+//            else
                 code = codeStrTmsToc[index];
         }
         else

@@ -61,9 +61,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>17</red>
+        <green>24</green>
+        <blue>39</blue>
        </color>
       </brush>
      </colorrole>
@@ -126,9 +126,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>17</red>
+        <green>24</green>
+        <blue>39</blue>
        </color>
       </brush>
      </colorrole>
@@ -757,7 +757,7 @@ QScrollBar:horizontal {
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>5</number>
    </property>
    <widget class="QWidget" name="AllHour">
     <widget class="QLabel" name="labelPage_4">
@@ -2568,7 +2568,7 @@ QScrollBar:horizontal {
      <row/>
      <column>
       <property name="text">
-       <string>No</string>
+       <string>순번</string>
       </property>
       <property name="font">
        <font>
@@ -4007,7 +4007,7 @@ QScrollBar:horizontal {
      <row/>
      <column>
       <property name="text">
-       <string>No</string>
+       <string>순번</string>
       </property>
       <property name="font">
        <font>
@@ -5715,7 +5715,7 @@ QScrollBar:horizontal {
      <row/>
      <column>
       <property name="text">
-       <string>No</string>
+       <string>순번</string>
       </property>
       <property name="font">
        <font>
@@ -8009,6 +8009,19 @@ QScrollBar:horizontal {
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>50</number>
      </attribute>
+     <column>
+      <property name="text">
+       <string>순번</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>일시</string>

@@ -132,7 +132,7 @@ bool    m_bTmsInitOk;
 QString g_sLastValue[8];
 extern QString     gPassword;
 bool m_bUseToc;
-bool    g_bToc10;
+//bool    g_bToc10;
 bool m_bGas;    //이송가스
 extern bool    m_bScreenSave;
 
@@ -246,8 +246,8 @@ TmsDialog::TmsDialog(QWidget *parent) :
             m_TagMap[TmsEquipStatusTag[i]] = pTag;
         }
     }
-    if(g_bToc10)
-        TmsCheckTag[2] = "TOC10_CHECK";
+//    if(g_bToc10)
+//        TmsCheckTag[2] = "TOC10_CHECK";
     for(int i = 0; i < 9; i++)
     {
 //        if(i < 6 && g_Flag[i] == false)
@@ -259,8 +259,8 @@ TmsDialog::TmsDialog(QWidget *parent) :
    //     if(i < 6)
             CheckTagIndexMap[TmsCheckTag[i]] = i;
     }
-    if(g_bToc10)
-        TmsCommTag[2] = "TOC10_COMM";
+//    if(g_bToc10)
+//        TmsCommTag[2] = "TOC10_COMM";
     for(int i = 0; i < 9; i++)
     {
 //        if(i < 6 && g_Flag[i] == false)
@@ -468,7 +468,7 @@ void TmsDialog::DbLoad()
 {
     for(int i = 0; i < 11; i++)
         g_Flag[i] = false;
-    g_bToc10 = false;
+//    g_bToc10 = false;
     QString dbname =  "/data/project2.db";
     gDb.setDatabaseName(dbname);
     gDb.open();
@@ -487,8 +487,8 @@ void TmsDialog::DbLoad()
                 m_bUseToc = true;
             if(analog == 1)
             {
-                g_bToc10 = true;
-                TmsTagNameList[2] = "TOC10";
+//                g_bToc10 = true;
+//                TmsTagNameList[2] = "TOC10";
             }
             int cchk = query.value(5).toInt();
             if(cchk == 1)
@@ -707,10 +707,10 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
                     MsgAdd(str);
                 if(name == "TMS_FATAL")
                 {
+                    ui->tms_fatal->setText(str);
                     if(str != "")
                     {
                         ui->tms_fatal->setVisible(true);
-                        ui->tms_fatal->setText(str);
                     }
                     else
                     {
@@ -1385,7 +1385,7 @@ void TmsDialog::handleFileChanged(const QString&)
                 else
                 if(dlg.bSetup == true)
                 {
-                    CNetworkSetup dlg;
+                    CNetworkSetup dlg(false);
                     dlg.exec();
                 }
             }
@@ -1486,7 +1486,7 @@ void TmsDialog::slotSysMenu()
     //gApp->TouchReset();
     if(PasswordCheck())
     {
-        CNetworkSetup dlg;
+        CNetworkSetup dlg(false);
         dlg.exec();
     }
 }

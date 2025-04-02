@@ -16,7 +16,7 @@ class SystemManagement : public CMonDialog
     Q_OBJECT
 
 public:
-    explicit SystemManagement(QWidget *parent = 0);
+    explicit SystemManagement(bool bAll=false, QWidget *parent = 0);
     ~SystemManagement();
     void     onRead(QString &cmd, QJsonObject&);
     static void    RunStart(bool start);

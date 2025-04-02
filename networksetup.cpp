@@ -38,11 +38,14 @@ CNetworkSetup::CNetworkSetup( bool bAll, QWidget *parent) :
     bTmsMode = bAll;
     if(bAll == false)
     {
-        ui->btnRoute->setVisible(false);
-        ui->sysMange->setVisible(false);
-        ui->testMode->setVisible(false);
+ //       ui->sysMange->setVisible(false);
         ui->lan1DefaultGateway->setVisible(false);
         ui->lan2DefaultGateway->setVisible(false);
+    }
+    else
+    {
+        ui->btnRoute->setVisible(false);
+        ui->testMode->setVisible(false);
     }
     ui->lan2NotUsed->setChecked(true);
     lan2Used = false;
@@ -55,10 +58,10 @@ CNetworkSetup::CNetworkSetup( bool bAll, QWidget *parent) :
     QJsonValue vValue(QJsonValue::Null);
     CMonitorUdp::Instance()->sendCommand(this, QString("Network_Get"), argObject, vValue);
     mbChanged = false;
-    if(gSoftwareModel != "EPS_HANRIVER" && gSoftwareModel != "EPS_HASU")
-        ui->btnModel->setVisible(false);
-    if(gSoftwareModel != "EPS_HASU")
-        ui->btnHasuSetup->setVisible(false);
+//    if(gSoftwareModel != "EPS_HANRIVER" && gSoftwareModel != "EPS_HASU")
+    ui->btnModel->setVisible(false);
+//    if(gSoftwareModel != "EPS_HASU")
+    ui->btnHasuSetup->setVisible(false);
     m_RejectTimerId = startTimer(1000*60*5-30);
 }
 
@@ -433,7 +436,7 @@ void CNetworkSetup::on_versionInfo_clicked()
 
 void CNetworkSetup::on_sysMange_clicked()
 {
-    SystemManagement dlg(this);
+    SystemManagement dlg(bTmsMode, this);
     dlg.setModal(true);
     if(passwordCheck())
         dlg.exec();

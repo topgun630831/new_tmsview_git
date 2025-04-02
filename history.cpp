@@ -489,6 +489,8 @@ void CHistory::SendCommand(QString cmd)
     QJsonObject argObject;
     argObject.insert(QString("StartTime"),QJsonValue(from));
     argObject.insert(QString("EndTime"),QJsonValue(mToDate.toString("yyyy-MM-dd 00:00:00")));
+    argObject.insert(QString("Offset"),QJsonValue(0));
+    argObject.insert(QString("Limit"),QJsonValue(1000));
     QJsonValue argValue(argObject);
 
     g_pSrSocket->sendCommand((QWidget*)this, cmd, GraphicId, argValue);

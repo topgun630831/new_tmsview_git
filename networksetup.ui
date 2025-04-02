@@ -688,7 +688,7 @@ QRadioButton::indicator:unchecked
   <widget class="QPushButton" name="sysMange">
    <property name="geometry">
     <rect>
-     <x>610</x>
+     <x>10</x>
      <y>5</y>
      <width>200</width>
      <height>80</height>
@@ -786,7 +786,7 @@ QRadioButton::indicator:unchecked
   <widget class="QPushButton" name="btnRoute">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>610</x>
      <y>5</y>
      <width>200</width>
      <height>80</height>
@@ -843,7 +843,7 @@ QRadioButton::indicator:unchecked
   <widget class="QPushButton" name="btnPingTest">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>410</x>
      <y>5</y>
      <width>200</width>
      <height>80</height>
