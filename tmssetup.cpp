@@ -37,7 +37,7 @@ extern bool    m_bScreenSave;
 
 #define SENSOR_ROW_HIGHT   80
 
-struct TMS_TAG_TAB TagTab[37] = {
+struct TMS_TAG_TAB TagTab[38] = {
 /* 0 */{"",          "Analog", "측정값",     "Tms",   "Value",      "R", "R32",      "",     "",        "㎎/L",0, "0"},
 /* 1 */{"_COMM",     "Digital", "통신상태",   "Tms",   "Comm_Status", "R", "DIgital", "정상",  "통신이상", "",   0, "0"},
 /* 2 */{"_CHECK",    "Digital", "점검중",    "System", "Check",       "RW", "DIgital", "점검중", "정상",    "",  1, "0"},
@@ -75,7 +75,8 @@ struct TMS_TAG_TAB TagTab[37] = {
 /* 34 */{"_TIME",       "String", "최종채수시각",     "Tms",    "Time",         "R","Text",  "", "",    "",  0, ""},
 /* 35 {"_DAYTOTAL",       "Analog", "일적산",  "System",    "",         "R","R32",  "", "",    "TON",  1, "0"},*/
 /* 35 */{"_RATE",       "Analog", "순시값",     "System",    "",         "R","R32",  "", "",    "M/S",  0, "0"},
-/* 36*/{"TMS_FATAL",      "String","오류",           "System",   "",      "R", "Text",   "",      "",      "",0, ""},
+/* 36*/{"TMS_FATAL",      "String","오류 메시지",           "System",   "",      "R", "Text",   "",      "",      "",0, ""},
+/* 37*/{"IO_POWER",      "Digital","IO전원 상태",    "System",   "di7",      "R", "Digital", "정상",     "비정상",      "",0, "0"},
        };
 struct TMS_TAG_TAB FlowTagTab[3] = {
 /* 0 */{"",          "Analog", "유량적산",     "Tms",   "Value",      "R", "R32",      "",     "",        "TON", 0, "0"},
@@ -328,6 +329,7 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
             {
                 // ui->f_comPort1->setCurrentText(tmsitem->Port);
                 FlowRow = row;
+                tmsitem->Port = "";
             }
             if((tmsitem->Code == "TOC00" || tmsitem->Code == "TOC10") && tmsitem->Upload == 1)
                 m_bUseToc = true;
@@ -1302,7 +1304,7 @@ void TmsSetup::on_save_clicked()
     QString monitor = ui->MonitorPort->currentText();
     foreach (const TMS_ITEM_TAB * tmsitem, TmsItemList)
     {
-        if(tmsitem->Port == "" || tmsitem->Port == monitor)
+        if((tmsitem->Code != "FLW01" && tmsitem->Port == "") || tmsitem->Port == monitor)
         {
             bError = true;
             break;
@@ -1747,15 +1749,19 @@ void TmsSetup::DbSave()
 
     device = "internal";
     int i = 36;
-    TagAdd(TagTab[i].suffix, "부대장비&상태", TagTab[i].TagType, TagTab[i].Desc, TagTab[i].Driver,
-            device, TagTab[i].Address, TagTab[i].Rw, TagTab[i].DataType,
-           TagTab[i].On, TagTab[i].Off, 0, TagTab[i].Unit, 0, 0, TagTab[i].InitValue, 1);
-    if(group == "")
-        group = TagTab[i].suffix;
-    else
+    for(int i = 36; i < 38; i++)
     {
-        group += ",";
-        group += TagTab[i].suffix;
+        TagAdd(TagTab[i].suffix, "부대장비&상태", TagTab[i].TagType, TagTab[i].Desc, TagTab[i].Driver,
+                device, TagTab[i].Address, TagTab[i].Rw, TagTab[i].DataType,
+               TagTab[i].On, TagTab[i].Off, 0, TagTab[i].Unit, 0, 0, TagTab[i].InitValue, 1);
+        if(group == "")
+            group = TagTab[i].suffix;
+        else
+        {
+            group += ",";
+            group += TagTab[i].suffix;
+        }
+        device = "io";
     }
 
     str = QString("INSERT INTO `TagGroup` (Name, Desc, Enabled, Tags) VALUES ('%1', '%1', 1, '%2')").arg(tr("부대장비&상태")).arg(group);
