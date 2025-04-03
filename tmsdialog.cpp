@@ -754,6 +754,18 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
                 valueDisplay(name, pTag, val);
                 if(name == "TMS_MSG" && val != OldMessage)
                     MsgAdd(val);
+                if(name == "TMS_FATAL")
+                {
+                    ui->tms_fatal->setText(val);
+                    if(val != "")
+                    {
+                        ui->tms_fatal->setVisible(true);
+                    }
+                    else
+                    {
+                        ui->tms_fatal->setVisible(false);
+                    }
+                }
             }
             i++;
         }
