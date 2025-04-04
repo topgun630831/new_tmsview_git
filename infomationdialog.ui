@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>250</height>
+    <width>1090</width>
+    <height>452</height>
    </rect>
   </property>
   <property name="font">
@@ -23,8 +23,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>731</width>
-     <height>131</height>
+     <width>1071</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="font">
@@ -42,11 +42,17 @@
   <widget class="QPushButton" name="btnOk">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>180</y>
+     <x>460</x>
+     <y>340</y>
      <width>160</width>
      <height>60</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>확인</string>

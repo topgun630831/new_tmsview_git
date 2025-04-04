@@ -5,11 +5,11 @@
 #include "versioninfo.h"
 #include "ui_versioninfo.h"
 int VColumnWidth[5] = {
-        150,     //구분
+        250,     //구분
         150,    //이름
         100,    //버전
-        200,    //빌드날자
-        380    //설명
+        250,    //빌드날자
+        500    //설명
 };
 
 extern bool    m_bScreenSave;

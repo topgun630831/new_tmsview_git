@@ -75,7 +75,6 @@ private slots:
     void on_rtc_clicked();
     void on_ping_clicked();
     void on_pingLan2_clicked();
-    void on_usbHub3_clicked();
 //    void on_CommTest_clicked();
     void on_CommClear_clicked();
     void on_btnOK_clicked();

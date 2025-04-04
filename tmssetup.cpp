@@ -1727,7 +1727,7 @@ void TmsSetup::DbSave()
     }
     progressBar->setValue(++cnt);
     QString device;
-    for(int i = 30; i < 34; i++)
+    for(int i = 29; i < 34; i++)
     {
         QString device;
         if(i == 33)
@@ -1748,9 +1748,10 @@ void TmsSetup::DbSave()
     }
 
     device = "internal";
-    int i = 36;
     for(int i = 36; i < 38; i++)
     {
+        if(i == 37)
+            device = "io";
         TagAdd(TagTab[i].suffix, "부대장비&상태", TagTab[i].TagType, TagTab[i].Desc, TagTab[i].Driver,
                 device, TagTab[i].Address, TagTab[i].Rw, TagTab[i].DataType,
                TagTab[i].On, TagTab[i].Off, 0, TagTab[i].Unit, 0, 0, TagTab[i].InitValue, 1);
@@ -1761,7 +1762,6 @@ void TmsSetup::DbSave()
             group += ",";
             group += TagTab[i].suffix;
         }
-        device = "io";
     }
 
     str = QString("INSERT INTO `TagGroup` (Name, Desc, Enabled, Tags) VALUES ('%1', '%1', 1, '%2')").arg(tr("부대장비&상태")).arg(group);

@@ -630,7 +630,7 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
 //        return;
     if(g_DebugDisplay)
     {
-        qDebug() << "TmsDialog::onRead : " << cmd;
+        //qDebug() << "TmsDialog::onRead : " << cmd << " m_bTmsInitOk:" << m_bTmsInitOk;
         qDebug() << jobject;
     }
     QString error = jobject["Error"].toString();
@@ -720,6 +720,7 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
             }
         }
         m_bTmsInitOk = true;
+        qDebug() << "onRead m_bTmsInitOk:" << m_bTmsInitOk;
         mCommCount = 100;
         update();
     }
@@ -1143,12 +1144,12 @@ void TmsDialog::onTimer()
     {
         if(m_bTmsInitOk == false)
         {
-//            qDebug() << "send:" << mInfoRead;
+           // qDebug() << "send:" << mInfoRead << " m_bTmsInitOk:" << m_bTmsInitOk;
             g_pSrSocket->sendCommand((QWidget*)this, mInfoCmd, GraphicId, mInfoRead);
         }
         else
         {
-//            qDebug() << "send:" << mValueRead;
+            //qDebug() << "send:" << mValueRead  << " m_bTmsInitOk:" << m_bTmsInitOk;
             g_pSrSocket->sendCommand((QWidget*)this, mValueReadCmd, GraphicId, mValueRead);
         }
         mCommCount = 0;

@@ -6,6 +6,8 @@
 #include "fileselect.h"
 #include "ui_fileselect.h"
 
+#define SENSOR_ROW_HIGHT   80
+
 FileSelect::FileSelect(QString &dir, bool backup, bool bFile, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::FileSelect)
@@ -20,7 +22,7 @@ FileSelect::FileSelect(QString &dir, bool backup, bool bFile, QWidget *parent) :
     if(bFile)
     {
         FindFile(dir);
-        ui->filesTable->horizontalHeader()->resizeSection(1, 100);
+        ui->filesTable->horizontalHeader()->resizeSection(1, 300);
     }
     else
     {
@@ -35,8 +37,8 @@ FileSelect::FileSelect(QString &dir, bool backup, bool bFile, QWidget *parent) :
         FindDirectory(dir, filter);
     }
     QScrollBar *scroll  = ui->filesTable->verticalScrollBar();
-    scroll->setStyleSheet("QScrollBar:vertical { width: 20px; height: 30px}");
-    ui->filesTable->horizontalHeader()->resizeSection(0, 320);
+    scroll->setStyleSheet("QScrollBar:vertical { width: 60px; height: 60px}");
+    ui->filesTable->horizontalHeader()->resizeSection(0, 450);
 }
 
 FileSelect::~FileSelect()
@@ -80,6 +82,7 @@ void FileSelect::FindFile(QString &dir)
         sizeItem->setFlags(sizeItem->flags() ^ Qt::ItemIsEditable);
 
         int row = ui->filesTable->rowCount();
+        ui->filesTable->setRowHeight(row, SENSOR_ROW_HIGHT);
         ui->filesTable->insertRow(row);
         ui->filesTable->setItem(row, 0, fileNameItem);
         ui->filesTable->setItem(row, 1, sizeItem);
@@ -100,6 +103,7 @@ void FileSelect::FindDirectory(QString &dir, QString &filter)
 
         int row = ui->filesTable->rowCount();
         ui->filesTable->insertRow(row);
+        ui->filesTable->setRowHeight(row, SENSOR_ROW_HIGHT);
         ui->filesTable->setItem(row, 0, fileNameItem);
     }
     ui->found->setText(tr("%1 dir(s) found").arg(files.size()));

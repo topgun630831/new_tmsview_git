@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="pageIO_2">
     <widget class="QGroupBox" name="groupBoxDO">
@@ -1794,7 +1794,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>USB 상단</string>
+      <string>USB 후면</string>
      </property>
     </widget>
     <widget class="QPushButton" name="usbHub1">
@@ -1807,7 +1807,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>USB 하단</string>
+      <string>USB 전면</string>
      </property>
     </widget>
     <widget class="QListWidget" name="listWidgetMsg">
@@ -1869,7 +1869,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>FRAM</string>
+      <string>EEPROM</string>
      </property>
     </widget>
     <widget class="QPushButton" name="usbSerial">
@@ -1958,19 +1958,6 @@
      </property>
      <property name="text">
       <string>10.10.10.3</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="usbHub3">
-     <property name="geometry">
-      <rect>
-       <x>770</x>
-       <y>90</y>
-       <width>180</width>
-       <height>80</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>USB HUB 3</string>
      </property>
     </widget>
    </widget>

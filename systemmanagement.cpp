@@ -98,7 +98,7 @@ void SystemManagement::RunStart(bool start)
     QJsonObject argObject;
     QJsonValue vObject(QJsonValue::Null);
 
-    QString proc = "Sun";
+    QString proc = "app";
     bool SaveStatus=false;
     argObject.insert(QString("Proc"),QJsonValue(proc));
     argObject.insert(QString("Enabled"),QJsonValue(start));
@@ -461,13 +461,13 @@ void SystemManagement::timerEvent(QTimerEvent *)
     killTimer(m_Timer);
 
     QString dir = "/app/wwwroot/tmp/usbdisk/upgrade";
-    fileCopy("/app/wwwroot/tmp/usbdisk/upgrade", "/app/wwwroot/tmp", mSelectedFile.toLocal8Bit().data(), false);
-    system("sync");
+    //fileCopy("/app/wwwroot/tmp/usbdisk/upgrade", "/app/wwwroot/tmp", mSelectedFile.toLocal8Bit().data(), false);
+    //system("sync");
     QJsonObject argObject;
     QString name2 = dir + "/" + mSelectedFile;
     QString name =mSelectedFile;
     QFile sel(name2);
-    argObject.insert(QString("Filename"),QJsonValue(name));
+    argObject.insert(QString("Filename"),QJsonValue(name2));
     argObject.insert(QString("Filesize"),QJsonValue((int)sel.size()));
     argObject.insert(QString("Peroid"),QJsonValue(0));
     argObject.insert(QString("Offset"),QJsonValue(0));
@@ -535,7 +535,7 @@ void SystemManagement::loadReverseProxyConfig()
     m_sReverseProxyIP = "211.238.253.248";
     m_sReverseProxyMode = "Client";
     m_nReverseProxyPort = 30001;
-    QFile file("/app/wwwroot/ReverseProxy.conf");
+    QFile file("/app/ReverseProxy.conf");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QString msg("ReverseProxy.conf Open(Read)에 실패했습니다.");
@@ -571,7 +571,7 @@ void SystemManagement::loadReverseProxyConfig()
 
 void SystemManagement::saveReverseProxyConfig()
 {
-    QFile file("/app/wwwroot/ReverseProxy.conf");
+    QFile file("/app/ReverseProxy.conf");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QString msg("ReverseProxy.conf Open(Write)에 실패했습니다.");

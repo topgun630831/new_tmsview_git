@@ -473,7 +473,7 @@ void CTestDialog::on_usbHub1_clicked()
         m_busbhub1 = false;
         ui->usbHub1->setPalette(greenPalette);
 #ifdef __linux__
-        ioctl(fd, IOCTL_USB1_ONOFF, 0);
+        ioctl(fd, IOCTL_USB2_ONOFF, 0);
 #endif
     }
     else
@@ -481,7 +481,7 @@ void CTestDialog::on_usbHub1_clicked()
         m_busbhub1 = true;
         ui->usbHub1->setPalette(redPalette);
 #ifdef __linux__
-        ioctl(fd, IOCTL_USB1_ONOFF, 1);
+        ioctl(fd, IOCTL_USB2_ONOFF, 1);
 #endif
     }
 }
@@ -493,7 +493,7 @@ void CTestDialog::on_usbHub2_clicked()
         m_busbhub2 = false;
         ui->usbHub2->setPalette(greenPalette);
 #ifdef __linux__
-        ioctl(fd, IOCTL_USB2_ONOFF, 0);
+        ioctl(fd, IOCTL_USB1_ONOFF, 0);
 #endif
     }
     else
@@ -501,27 +501,7 @@ void CTestDialog::on_usbHub2_clicked()
         m_busbhub2 = true;
         ui->usbHub2->setPalette(redPalette);
 #ifdef __linux__
-        ioctl(fd, IOCTL_USB2_ONOFF, 1);
-#endif
-    }
-}
-
-void CTestDialog::on_usbHub3_clicked()
-{
-    if(m_busbhub3 == true)
-    {
-        m_busbhub3 = false;
-        ui->usbHub3->setPalette(greenPalette);
-#ifdef __linux__
-        ioctl(fd, IOCTL_USB3_ONOFF, 0);
-#endif
-    }
-    else
-    {
-        m_busbhub3 = true;
-        ui->usbHub3->setPalette(redPalette);
-#ifdef __linux__
-        ioctl(fd, IOCTL_USB3_ONOFF, 1);
+        ioctl(fd, IOCTL_USB1_ONOFF, 1);
 #endif
     }
 }
@@ -836,31 +816,31 @@ void CTestDialog::on_fram_clicked()
 
     char buf[20];
     char backup[20];
-    int fd = ::open("/sys/bus/spi/drivers/at25/spi1.0/eeprom",  O_RDWR);
+    int fd = ::open("/sys/devices/platform/fdd40000.i2c/i2c-0/0-0050/eeprom",  O_RDWR);
     if (fd < 0) {
         msg = "ERROR: EEPROM SPI open failed";
         msgPut(msg);
         return;
     }
 
-    ::lseek(fd, 0, SEEK_SET);
-    ::read(fd, backup, 10);
+//    ::lseek(fd, 0, SEEK_SET);
+//    ::read(fd, backup, 10);
 
-    ::lseek(fd, 0, SEEK_SET);
+    ::lseek(fd, 2030, SEEK_SET);
     ::write(fd, "abcde12345", 10);
 
-    ::lseek(fd, 0, SEEK_SET);
+    ::lseek(fd, 2030, SEEK_SET);
     ::read(fd, buf, 10);
 
     buf[10]  = 0;
 
     if(::strncmp(buf, "abcde12345", 10) == 0)
-        msg = "FRAM test successfull ";
+        msg = "EEPROM test successfull ";
     else
-        msg = "FRAM test failed";
+        msg = "EEPROM test failed";
     msgPut(msg);
-    ::lseek(fd, 0, SEEK_SET);
-    ::write(fd, backup, 10);
+//    ::lseek(fd, 0, SEEK_SET);
+//    ::write(fd, backup, 10);
     ::close(fd);
 #endif
 }
@@ -878,7 +858,7 @@ void CTestDialog::on_rtc_clicked()
 {
     ::close(mRtc);
     system("rdate -s time.bora.net > /tmp/rtc.txt");
-    system("hwclock -w");
+    system("hwclock -wu");
     mRtc = ::open ( "/dev/rtc0", O_RDWR);
     messageRead("/tmp/rtc.txt", 0);
 }
