@@ -178,16 +178,13 @@ int main(int argc, char *argv[])
 {
 //    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    // QT_SCALE_FACTOR 환경 변수 설정
 #ifdef __linux__
-      qputenv("QT_SCALE_FACTOR", "0.5");
-      qputenv("QT_SCREEN_SCALE_FACTORS", "2");
+    qputenv("QT_SCALE_FACTOR", "0.5");
+    qputenv("QT_SCREEN_SCALE_FACTORS", "2");
 #endif
+//      qDebug() << "QT_SCALE_FACTOR" << qgetenv("QT_SCALE_FACTOR");
+//      qDebug() << "QT_SCREEN_SCALE_FACTORS" << qgetenv("QT_SCREEN_SCALE_FACTORS");
       CMyApplication app(argc, argv);
-
-      qDebug() << "QT_SCALE_FACTOR" << qgetenv("QT_SCALE_FACTOR");
-      qDebug() << "QT_SCREEN_SCALE_FACTORS" << qgetenv("QT_SCREEN_SCALE_FACTORS");
-
 
     // Load an application style
 //    QFile styleFile( ":/qss/Diplaytap.qss" );
@@ -216,13 +213,12 @@ int main(int argc, char *argv[])
 
     QFile file("/data/arg.ini");
     if(file.exists()) {
-        qDebug() << "exists\n";
         if(file.open(QIODevice::ReadOnly)) {
             QTextStream in(&file);
             while (!in.atEnd()) {
-                qDebug() << "arg:" << line;
+//                qDebug() << "arg:" << line;
                 QString line = in.readLine();
-                qDebug() << "arg" << line;
+//                qDebug() << "arg" << line;
                 if (rxArgDebug.indexIn(line) != -1  ||
                         rxArgD.indexIn(line) != -1)
                 {
@@ -254,6 +250,9 @@ int main(int argc, char *argv[])
     }
 #endif
 //    QThread::msleep(300);
+    // QT_SCALE_FACTOR 환경 변수 설정
+
+
     g_pSrSocket = new CSrSocket();
     writeVersion();
 /*

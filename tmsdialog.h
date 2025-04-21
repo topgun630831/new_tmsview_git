@@ -42,7 +42,7 @@ signals:
 private slots:
     void handleFileChanged(const QString&);
     void handleFileChanged2(const QString&);
-    void on_sysinfoBtn_clicked();
+//    void on_sysinfoBtn_clicked();
     void on_historyBtn_clicked();
     void on_commBtn_clicked();
     void on_setupBtn_clicked();

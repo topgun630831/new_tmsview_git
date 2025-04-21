@@ -175,24 +175,27 @@ TmsDialog::TmsDialog(QWidget *parent) :
             double ratioPhysicalDPCMvsPPCMX = givenPhysicalDotsPerCMX / calcPixelPerCMX;
             double ratioPhysicalDPCMvsPPCMY = givenPhysicalDotsPerCMY / calcPixelPerCMY;
 
-            qDebug() << "\n\nScreen: " << ii;
-            qDebug() << "Device Pixel Ratio: " << devicePixelRatio;
-            qDebug() << "Pixel in X-Direction: " << pixelValX;
-            qDebug() << "Pixel in Y-Direction: " << pixelValY;
-            qDebug() << "Physical Size X-Direction in CM: " << physicalSizeX_cm;
-            qDebug() << "Physical Size Y-Direction in CM: " << physicalSizeY_cm;
-            qDebug() << "Calculated Pixel Per CM in X-Direction: " << calcPixelPerCMX;
-            qDebug() << "Calculated Pixel Per CM in Y-Direction: " << calcPixelPerCMY;
-            qDebug() << "Qt Logical Dots Per CM in X-Direction: " << givenLogicalDotsPerCMX;
-            qDebug() << "Qt Logical Dots Per CM in Y-Direction: " << givenLogicalDotsPerCMY;
-            qDebug() << "Qt Logical Dots Per CM Average: " << givenLogicalDotsPerCM;
-            qDebug() << "Qt Physical Dots Per CM in X-Direction: " << givenPhysicalDotsPerCMX;
-            qDebug() << "Qt Physical Dots Per CM in Y-Direction: " << givenPhysicalDotsPerCMY;
-            qDebug() << "Qt Physical Dots Per CM Average: " << givenPhysicalDotsPerCM;
-            qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioLogicalDPCMvsPPCMX;
-            qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioLogicalDPCMvsPPCMY;
-            qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioPhysicalDPCMvsPPCMX;
-            qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioPhysicalDPCMvsPPCMY;
+            if(g_DebugDisplay == true)
+            {
+                qDebug() << "\n\nScreen: " << ii;
+                qDebug() << "Device Pixel Ratio: " << devicePixelRatio;
+                qDebug() << "Pixel in X-Direction: " << pixelValX;
+                qDebug() << "Pixel in Y-Direction: " << pixelValY;
+                qDebug() << "Physical Size X-Direction in CM: " << physicalSizeX_cm;
+                qDebug() << "Physical Size Y-Direction in CM: " << physicalSizeY_cm;
+                qDebug() << "Calculated Pixel Per CM in X-Direction: " << calcPixelPerCMX;
+                qDebug() << "Calculated Pixel Per CM in Y-Direction: " << calcPixelPerCMY;
+                qDebug() << "Qt Logical Dots Per CM in X-Direction: " << givenLogicalDotsPerCMX;
+                qDebug() << "Qt Logical Dots Per CM in Y-Direction: " << givenLogicalDotsPerCMY;
+                qDebug() << "Qt Logical Dots Per CM Average: " << givenLogicalDotsPerCM;
+                qDebug() << "Qt Physical Dots Per CM in X-Direction: " << givenPhysicalDotsPerCMX;
+                qDebug() << "Qt Physical Dots Per CM in Y-Direction: " << givenPhysicalDotsPerCMY;
+                qDebug() << "Qt Physical Dots Per CM Average: " << givenPhysicalDotsPerCM;
+                qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioLogicalDPCMvsPPCMX;
+                qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioLogicalDPCMvsPPCMY;
+                qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioPhysicalDPCMvsPPCMX;
+                qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioPhysicalDPCMvsPPCMY;
+            }
         }
 
     DbLoad();
@@ -403,12 +406,12 @@ TmsDialog::TmsDialog(QWidget *parent) :
     if(QFile("/tmp/__MOUSECURSOR_ON__").exists())
     {
         gApp->setOverrideCursor(Qt::PointingHandCursor);
-        qDebug() << "Mouse ON";
+//        qDebug() << "Mouse ON";
     }
     else
     {
         gApp->setOverrideCursor(Qt::BlankCursor);
-        qDebug() << "Mouse OFF";
+//        qDebug() << "Mouse OFF";
     }
     m_watcher2.addPath("/tmp/");
     connect(&m_watcher2, SIGNAL(directoryChanged(const QString&)),
@@ -539,6 +542,7 @@ void TmsDialog::addTag(const char* n)
 
 extern bool g_bExit;
 
+/*
 void TmsDialog::on_sysinfoBtn_clicked()
 {
     if(PasswordCheck())
@@ -549,7 +553,7 @@ void TmsDialog::on_sysinfoBtn_clicked()
             accept();
     }
 }
-
+*/
 void TmsDialog::on_historyBtn_clicked()
 {
     CHistory dlg;
@@ -720,7 +724,7 @@ void TmsDialog::onRead(QString& cmd, QJsonObject& jobject)
             }
         }
         m_bTmsInitOk = true;
-        qDebug() << "onRead m_bTmsInitOk:" << m_bTmsInitOk;
+//        qDebug() << "onRead m_bTmsInitOk:" << m_bTmsInitOk;
         mCommCount = 100;
         update();
     }
@@ -894,7 +898,7 @@ void TmsDialog::valueDisplay(QString name, CTag *pTag, QString strVal)
         int val = pTag->getValue();
         if(val < 0 && val >= 7)
             val = 0;
-        qDebug() << "Status:" << index << "," << TmsStatusText[val];
+        //qDebug() << "Status:" << index << "," << TmsStatusText[val];
         Status[index][1]->setText(TmsStatusText[val]);
     }
     else
@@ -903,7 +907,7 @@ void TmsDialog::valueDisplay(QString name, CTag *pTag, QString strVal)
         int val = pTag->getValue();
         if(val < 0 && val >= 7)
             val = 0;
-        qDebug() << "EquipStatus:" << index << "," << TmsStatusText[val];
+        //qDebug() << "EquipStatus:" << index << "," << TmsStatusText[val];
         Status[index][0]->setText(TmsStatusText[val]);
     }
     else

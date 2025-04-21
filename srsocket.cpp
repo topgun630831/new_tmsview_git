@@ -238,7 +238,7 @@ void CSrSocket::readyRead()
             foreach (const QJsonValue& value, groupList)
             {
                 mGroupList.append(value.toString());
-                qDebug() << "Group:" << value.toString();
+//                qDebug() << "Group:" << value.toString();
             }
             foreach (const QJsonValue& value, deviceList)
                 mDeviceList.append(value.toString());
