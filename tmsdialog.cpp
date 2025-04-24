@@ -143,7 +143,9 @@ TmsDialog::TmsDialog(QWidget *parent) :
     m_bInitOk = 0;
     ui->setupUi(this);
 
-    QList<QScreen*> screens = qApp->screens();
+    if(g_DebugDisplay == true)
+    {
+        QList<QScreen*> screens = qApp->screens();
         for(int ii = 0; ii < screens.length(); ++ii) {
             QSize pixelSize = screens[ii]->size();
             QSizeF physicalSize = screens[ii]->physicalSize();
@@ -175,28 +177,26 @@ TmsDialog::TmsDialog(QWidget *parent) :
             double ratioPhysicalDPCMvsPPCMX = givenPhysicalDotsPerCMX / calcPixelPerCMX;
             double ratioPhysicalDPCMvsPPCMY = givenPhysicalDotsPerCMY / calcPixelPerCMY;
 
-            if(g_DebugDisplay == true)
-            {
-                qDebug() << "\n\nScreen: " << ii;
-                qDebug() << "Device Pixel Ratio: " << devicePixelRatio;
-                qDebug() << "Pixel in X-Direction: " << pixelValX;
-                qDebug() << "Pixel in Y-Direction: " << pixelValY;
-                qDebug() << "Physical Size X-Direction in CM: " << physicalSizeX_cm;
-                qDebug() << "Physical Size Y-Direction in CM: " << physicalSizeY_cm;
-                qDebug() << "Calculated Pixel Per CM in X-Direction: " << calcPixelPerCMX;
-                qDebug() << "Calculated Pixel Per CM in Y-Direction: " << calcPixelPerCMY;
-                qDebug() << "Qt Logical Dots Per CM in X-Direction: " << givenLogicalDotsPerCMX;
-                qDebug() << "Qt Logical Dots Per CM in Y-Direction: " << givenLogicalDotsPerCMY;
-                qDebug() << "Qt Logical Dots Per CM Average: " << givenLogicalDotsPerCM;
-                qDebug() << "Qt Physical Dots Per CM in X-Direction: " << givenPhysicalDotsPerCMX;
-                qDebug() << "Qt Physical Dots Per CM in Y-Direction: " << givenPhysicalDotsPerCMY;
-                qDebug() << "Qt Physical Dots Per CM Average: " << givenPhysicalDotsPerCM;
-                qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioLogicalDPCMvsPPCMX;
-                qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioLogicalDPCMvsPPCMY;
-                qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioPhysicalDPCMvsPPCMX;
-                qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioPhysicalDPCMvsPPCMY;
-            }
+            qDebug() << "\n\nScreen: " << ii;
+            qDebug() << "Device Pixel Ratio: " << devicePixelRatio;
+            qDebug() << "Pixel in X-Direction: " << pixelValX;
+            qDebug() << "Pixel in Y-Direction: " << pixelValY;
+            qDebug() << "Physical Size X-Direction in CM: " << physicalSizeX_cm;
+            qDebug() << "Physical Size Y-Direction in CM: " << physicalSizeY_cm;
+            qDebug() << "Calculated Pixel Per CM in X-Direction: " << calcPixelPerCMX;
+            qDebug() << "Calculated Pixel Per CM in Y-Direction: " << calcPixelPerCMY;
+            qDebug() << "Qt Logical Dots Per CM in X-Direction: " << givenLogicalDotsPerCMX;
+            qDebug() << "Qt Logical Dots Per CM in Y-Direction: " << givenLogicalDotsPerCMY;
+            qDebug() << "Qt Logical Dots Per CM Average: " << givenLogicalDotsPerCM;
+            qDebug() << "Qt Physical Dots Per CM in X-Direction: " << givenPhysicalDotsPerCMX;
+            qDebug() << "Qt Physical Dots Per CM in Y-Direction: " << givenPhysicalDotsPerCMY;
+            qDebug() << "Qt Physical Dots Per CM Average: " << givenPhysicalDotsPerCM;
+            qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioLogicalDPCMvsPPCMX;
+            qDebug() << "Ratio of Logical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioLogicalDPCMvsPPCMY;
+            qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in X-Direction: " << ratioPhysicalDPCMvsPPCMX;
+            qDebug() << "Ratio of Physical Dots Per CM vs Pixel Per CM in Y-Direction: " << ratioPhysicalDPCMvsPPCMY;
         }
+    }
 
     DbLoad();
 

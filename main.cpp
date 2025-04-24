@@ -23,6 +23,7 @@
 #include <errno.h>
 #include <stdarg.h>
 #include <string.h>
+#include <sstream>
 
 #ifdef __linux__
 #include <sys/ioctl.h>
@@ -182,9 +183,29 @@ int main(int argc, char *argv[])
     qputenv("QT_SCALE_FACTOR", "0.5");
     qputenv("QT_SCREEN_SCALE_FACTORS", "2");
 #endif
-//      qDebug() << "QT_SCALE_FACTOR" << qgetenv("QT_SCALE_FACTOR");
-//      qDebug() << "QT_SCREEN_SCALE_FACTORS" << qgetenv("QT_SCREEN_SCALE_FACTORS");
       CMyApplication app(argc, argv);
+#ifdef __linux__
+    // get this process pid
+    pid_t pid = getpid();
+
+    // compose a bash command that:
+    //    check if another process with the same name as yours
+    //    but with different pid is running
+    std::stringstream command;
+    command << "ps -eo pid,comm | grep tmsview | grep -v " << pid;
+    int isRuning = system(command.str().c_str());
+    if (isRuning == 0) {
+        qDebug() << "Another process already running. exiting.";
+        return 1;
+    }
+    char buf[20];
+    int fd = ::open("/var/run/view.pid",  O_WRONLY);
+    if (fd >= 0) {
+        sprintf(buf, "%d", pid);
+        ::write(fd, buf, strlen(buf));
+        ::close(fd);
+    }
+#endif
 
     // Load an application style
 //    QFile styleFile( ":/qss/Diplaytap.qss" );
