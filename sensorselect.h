@@ -100,10 +100,21 @@ private slots:
 */
 
     void on_num_textChanged(const QString &arg1);
-
     void on_sampDoor_clicked();
 
-    void on_chkExternalIO_clicked(bool checked);
+    void on_Io_clicked();
+
+    void on_Year100_clicked();
+
+    void on_Hanchang_clicked();
+
+    void on_Watersam_clicked();
+
+    void on_Korbi_clicked();
+
+    void on_Ilho_clicked();
+
+    void on_Dongil_clicked();
 
 private:
 //    QTimer              m_Timer;
@@ -120,7 +131,7 @@ private:
     void NumChangeCheck(void);
     void DiDisp(int pos, QPushButton *btn);
     int SetDi(const char* name, QPushButton *btn, QCheckBox *chk);
-
+    void chkExternalIO(bool checked);
 };
 
 #endif // SENSORSELECT_H

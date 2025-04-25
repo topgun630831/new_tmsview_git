@@ -982,9 +982,9 @@ void TmsSetup::on_sensorSelect_clicked()
 //            m_FlowProtocol[i] = dlg.m_FlowProtocol[i];
             m_Ratio[i] = dlg.m_Ratio[i];
         }
-        dlg.m_bSamplerDoorExternal = m_bSamplerDoorExternal;
-        dlg.m_nSampDoor = m_nSampDoor;
-        dlg.m_bDoorReversed = m_bDoorReversed;
+        m_bSamplerDoorExternal = dlg.m_bSamplerDoorExternal;
+        m_nSampDoor = dlg.m_nSampDoor;
+        m_bDoorReversed = dlg.m_bDoorReversed;
         foreach (const TMS_ITEM_TAB * tmsitem, TmsItemList)
             delete tmsitem;
         TmsItemList.clear();

@@ -1124,10 +1124,10 @@ QRadioButton::indicator:unchecked
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>830</y>
-     <width>521</width>
-     <height>221</height>
+     <x>40</x>
+     <y>740</y>
+     <width>641</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="font">
@@ -1137,14 +1137,14 @@ QRadioButton::indicator:unchecked
     </font>
    </property>
    <property name="title">
-    <string>채수기 모델</string>
+    <string>채수기</string>
    </property>
    <widget class="QRadioButton" name="Io">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>80</y>
-      <width>120</width>
+      <x>20</x>
+      <y>40</y>
+      <width>91</width>
       <height>60</height>
      </rect>
     </property>
@@ -1167,9 +1167,9 @@ QRadioButton::indicator:unchecked
    <widget class="QRadioButton" name="Hanchang">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>20</y>
-      <width>120</width>
+      <x>280</x>
+      <y>110</y>
+      <width>241</width>
       <height>60</height>
      </rect>
     </property>
@@ -1180,7 +1180,7 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Hanchang</string>
+     <string>한창기전(Hanchang)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
@@ -1189,9 +1189,9 @@ QRadioButton::indicator:unchecked
    <widget class="QRadioButton" name="Watersam">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>120</width>
+      <x>20</x>
+      <y>180</y>
+      <width>211</width>
       <height>60</height>
      </rect>
     </property>
@@ -1202,7 +1202,7 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Watersam</string>
+     <string>워터샘(Watersam)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
@@ -1211,9 +1211,9 @@ QRadioButton::indicator:unchecked
    <widget class="QRadioButton" name="Year100">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>120</width>
+      <x>20</x>
+      <y>110</y>
+      <width>211</width>
       <height>60</height>
      </rect>
     </property>
@@ -1224,7 +1224,7 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Year100</string>
+     <string>백년기술(Year100)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
@@ -1234,8 +1234,8 @@ QRadioButton::indicator:unchecked
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>80</y>
-      <width>120</width>
+      <y>180</y>
+      <width>221</width>
       <height>60</height>
      </rect>
     </property>
@@ -1246,7 +1246,7 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Korbi</string>
+     <string>에이치코비(Korbi)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
@@ -1255,9 +1255,9 @@ QRadioButton::indicator:unchecked
    <widget class="QRadioButton" name="Ilho">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>120</width>
+      <x>20</x>
+      <y>250</y>
+      <width>201</width>
       <height>60</height>
      </rect>
     </property>
@@ -1268,7 +1268,7 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Ilho</string>
+     <string>일호기전(Ilho)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
@@ -1277,9 +1277,9 @@ QRadioButton::indicator:unchecked
    <widget class="QRadioButton" name="Dongil">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>140</y>
-      <width>120</width>
+      <x>280</x>
+      <y>250</y>
+      <width>251</width>
       <height>60</height>
      </rect>
     </property>
@@ -1290,120 +1290,18 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>Dongil</string>
+     <string>동일그린시스(Dongil)</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">SamModelGroup</string>
     </attribute>
    </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBoxSampler">
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>830</y>
-     <width>711</width>
-     <height>221</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>나눔고딕코딩</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="title">
-    <string>채수기 도어</string>
-   </property>
-   <widget class="QGroupBox" name="groupBox_10">
+   <widget class="QCheckBox" name="sampDoorReverse">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>-120</y>
-      <width>391</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>채수기 도어</string>
-    </property>
-    <widget class="QComboBox" name="MonitorPort_4">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>60</y>
-       <width>121</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
-     <item>
-      <property name="text">
-       <string>사용안함</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com4</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com5</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com7</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com8</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com9</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Com10</string>
-      </property>
-     </item>
-    </widget>
-   </widget>
-   <widget class="QCheckBox" name="chkExternalIO">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>29</y>
-      <width>180</width>
+      <x>310</x>
+      <y>40</y>
+      <width>131</width>
       <height>60</height>
      </rect>
     </property>
@@ -1414,14 +1312,14 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="text">
-     <string>외부 I/O 사용</string>
+     <string>Reverse</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sampDoor">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>29</y>
+      <x>120</x>
+      <y>40</y>
       <width>150</width>
       <height>60</height>
      </rect>
@@ -1434,25 +1332,6 @@ QRadioButton::indicator:unchecked
     </property>
     <property name="text">
      <string>사용안함</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="sampDoorReverse">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>29</y>
-      <width>180</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>나눔고딕코딩</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Reverse</string>
     </property>
    </widget>
   </widget>

@@ -188,6 +188,12 @@ void SensorSelect::disp()
     else
     if(sSamModel == "Dongil")
         ui->Dongil->setChecked(true);
+
+    if(sSamModel == "Io")
+        chkExternalIO(true);
+    else
+        chkExternalIO(false);
+
     for(int i = 0; i < 5; i++)
     {
         mFlowComboBox[i]->setCurrentText(m_FlowPort[i]);
@@ -200,7 +206,7 @@ void SensorSelect::disp()
     {
         QString address = QString("DI %1").arg(m_nSampDoor);
         ui->sampDoor->setText(address);
-        ui->chkExternalIO->setChecked(m_bSamplerDoorExternal);
+//        ui->chkExternalIO->setChecked(m_bSamplerDoorExternal);
     }
 
 
@@ -266,7 +272,7 @@ void SensorSelect::on_ok_clicked()
         bStx_toc = false;
 */
 
-    sSamModel = ui->SamModelGroup->checkedButton()->text();
+//    sSamModel = ui->SamModelGroup->checkedButton()->text();
     bTn = ui->TN->isChecked();
     bTp = ui->TP->isChecked();
     bCod = ui->COD->isChecked();
@@ -298,7 +304,7 @@ void SensorSelect::on_ok_clicked()
             }
         }
     }
-    m_bSamplerDoorExternal = ui->chkExternalIO->isChecked();
+//    m_bSamplerDoorExternal = ui->chkExternalIO->isChecked();
     m_bDoorReversed = false;
     if(ui->sampDoorReverse->isChecked())
         m_bDoorReversed = true;
@@ -473,11 +479,65 @@ int SensorSelect::SetDi(const char* name, QPushButton *btn, QCheckBox *chk)
     return pos;
 }
 */
-void SensorSelect::on_chkExternalIO_clicked(bool checked)
+void SensorSelect::chkExternalIO(bool checked)
 {
-    if(m_nSampDoor == 0)
-        m_nSampDoor = 5;
+    if(checked == true)
+    {
+        if(m_nSampDoor == 0)
+            m_nSampDoor = 5;
+    }
+    else
+        m_nSampDoor = 0;
     DiDisp(m_nSampDoor, ui->sampDoor);
     ui->sampDoor->setEnabled(checked);
     ui->sampDoorReverse->setEnabled(checked);
+}
+
+void SensorSelect::on_Io_clicked()
+{
+    chkExternalIO(true);
+    sSamModel = "Io";
+    m_bSamplerDoorExternal = true;
+}
+
+void SensorSelect::on_Year100_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Year100";
+    m_bSamplerDoorExternal = false;
+}
+
+void SensorSelect::on_Hanchang_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Hanchang";
+    m_bSamplerDoorExternal = false;
+}
+
+void SensorSelect::on_Watersam_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Watersam";
+    m_bSamplerDoorExternal = false;
+}
+
+void SensorSelect::on_Korbi_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Korbi";
+    m_bSamplerDoorExternal = false;
+}
+
+void SensorSelect::on_Ilho_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Ilho";
+    m_bSamplerDoorExternal = false;
+}
+
+void SensorSelect::on_Dongil_clicked()
+{
+    chkExternalIO(false);
+    sSamModel = "Dongil";
+    m_bSamplerDoorExternal = false;
 }

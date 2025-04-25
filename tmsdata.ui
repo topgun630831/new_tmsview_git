@@ -757,7 +757,7 @@ QScrollBar:horizontal {
     </font>
    </property>
    <property name="currentIndex">
-    <number>5</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="AllHour">
     <widget class="QLabel" name="labelPage_4">

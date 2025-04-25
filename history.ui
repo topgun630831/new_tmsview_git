@@ -219,16 +219,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
-    border: none;
-}
-QDialog {
-    background-color: #172439;
-    color: #ffffff;
-    border: 1px solid #333333;
-}
-
-QTableView {
+   <string notr="true">QTableView {
     background-color: #172439;
     color: #ffffff;
     gridline-color: #333333;
