@@ -190,7 +190,9 @@ void SensorSelect::disp()
         ui->Dongil->setChecked(true);
 
     if(sSamModel == "Io")
+    {
         chkExternalIO(true);
+    }
     else
         chkExternalIO(false);
 

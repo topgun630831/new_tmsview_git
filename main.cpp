@@ -183,7 +183,7 @@ int main(int argc, char *argv[])
     qputenv("QT_SCALE_FACTOR", "0.5");
     qputenv("QT_SCREEN_SCALE_FACTORS", "2");
 #endif
-      CMyApplication app(argc, argv);
+    CMyApplication app(argc, argv);
 #ifdef __linux__
     // get this process pid
     pid_t pid = getpid();
@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
         return 1;
     }
     char buf[20];
-    int fd = ::open("/var/run/view.pid",  O_WRONLY);
+    int fd = ::open("/var/run/view.pid",  O_WRONLY|O_CREAT, 0644);
     if (fd >= 0) {
         sprintf(buf, "%d", pid);
         ::write(fd, buf, strlen(buf));
