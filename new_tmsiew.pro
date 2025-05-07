@@ -79,7 +79,8 @@ SOURCES += main.cpp\
     tmstrenddialog.cpp \
     usbmenudialog.cpp \
     propertyrange.cpp \
-    epshasusetup.cpp 
+    epshasusetup.cpp \   
+    monview.cpp
 
 HEADERS  += \
 		   button.h \
@@ -148,7 +149,8 @@ HEADERS  += \
     tmstrenddialog.h \
     usbmenudialog.h \
     propertyrange.h \
-    epshasusetup.h
+    epshasusetup.h \
+    monview.h
 
 FORMS    += \
     sewerdialog2.ui \
@@ -197,7 +199,8 @@ FORMS    += \
     tmstrenddialog.ui \
     usbmenudialog.ui \
     propertyrange.ui \
-    epshasusetup.ui 
+    epshasusetup.ui \   
+    monview.ui
 
 RESOURCES += \
     new_tmsview.qrc

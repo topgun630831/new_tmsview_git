@@ -40,6 +40,12 @@ QScrollBar:horizontal {
      <height>80</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>나눔고딕코딩</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>닫기</string>
    </property>

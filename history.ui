@@ -460,7 +460,7 @@ QScrollBar:horizontal {
    <property name="geometry">
     <rect>
      <x>1630</x>
-     <y>8</y>
+     <y>12</y>
      <width>280</width>
      <height>80</height>
     </rect>
@@ -538,7 +538,7 @@ QScrollBar:horizontal {
   <widget class="QPushButton" name="btnSystem">
    <property name="geometry">
     <rect>
-     <x>1130</x>
+     <x>980</x>
      <y>8</y>
      <width>280</width>
      <height>80</height>
@@ -1280,7 +1280,7 @@ QScrollBar:horizontal {
   <widget class="QPushButton" name="btnConfig">
    <property name="geometry">
     <rect>
-     <x>850</x>
+     <x>790</x>
      <y>8</y>
      <width>280</width>
      <height>80</height>
@@ -1587,6 +1587,19 @@ QScrollBar:horizontal {
    </property>
    <property name="placeholderText">
     <string>00</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="monitor">
+   <property name="geometry">
+    <rect>
+     <x>1310</x>
+     <y>12</y>
+     <width>280</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>MONITOR</string>
    </property>
   </widget>
  </widget>

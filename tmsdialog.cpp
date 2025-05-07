@@ -913,8 +913,8 @@ void TmsDialog::valueDisplay(QString name, CTag *pTag, QString strVal)
     else
     if((index = CommTagIndex(name)) >= 0)
     {
-        int val = pTag->getValue();
-/*        if(val)     // 0:통신이상 1:정상
+/*        int val = pTag->getValue();
+        if(val)     // 0:통신이상 1:정상
             Status[index][4]->setFrameShape(QFrame::NoFrame);
         else
             Status[index][4]->setFrameShape(QFrame::WinPanel);

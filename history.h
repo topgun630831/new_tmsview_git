@@ -51,6 +51,8 @@ private slots:
     void on_btnFromDate_clicked();
     void on_btnToDate_clicked();
 
+    void on_monitor_clicked();
+
 private:
     Ui::CHistory *ui;
     int                 mIndex;
@@ -67,6 +69,7 @@ private:
     void ColumnInit();
     void SendCommand(QString cmd);
     void	paintEvent(QPaintEvent*);
+    void timerEvent(QTimerEvent *);
 };
 
 #endif // HISTORY_H

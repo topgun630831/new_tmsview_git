@@ -6,8 +6,10 @@
 #include "calendardlg.h"
 #include "srsocket.h"
 #include "infomationdialog.h"
+#include "monview.h"
 #include <QDebug>
 
+extern bool    m_bScreenSave;
 extern CSrSocket *g_pSrSocket;
 extern bool g_DebugDisplay;
 extern QString gSoftwareModel;
@@ -129,6 +131,7 @@ CHistory::CHistory(QWidget *parent) :
         mPage[i] = -1;
         mTotalPage[i] = 0;
     }
+    startTimer(1000);
 }
 
 CHistory::~CHistory()
@@ -494,4 +497,16 @@ void CHistory::SendCommand(QString cmd)
     QJsonValue argValue(argObject);
 
     g_pSrSocket->sendCommand((QWidget*)this, cmd, GraphicId, argValue);
+}
+
+void CHistory::on_monitor_clicked()
+{
+    MonView dlg(this);
+    dlg.exec();
+}
+
+void CHistory::timerEvent(QTimerEvent *)
+{
+    if (m_bScreenSave == true)
+        QDialog::reject();
 }
