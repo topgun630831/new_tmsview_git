@@ -420,7 +420,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
     connect(this, SIGNAL(sigSysMenu()), this, SLOT(slotSysMenu()));
     for(int i = 0; i < 7; i++)
     {
-        if(g_Flag[i] == false || i == 6)
+        if(g_Flag[i] == false)
         {
             m_Button[i]->setVisible(false);
             Value[i]->setVisible(false);
@@ -1553,4 +1553,9 @@ void TmsDialog::handleFileChanged2(const QString&)
     {
         gApp->setOverrideCursor(Qt::BlankCursor);
     }
+}
+
+void TmsDialog::on_btn7_clicked()
+{
+    TmsPointDlg(tr("BOD"));
 }

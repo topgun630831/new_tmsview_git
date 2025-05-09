@@ -857,9 +857,15 @@ void CTestDialog::on_usbSerial_clicked()
 void CTestDialog::on_rtc_clicked()
 {
     ::close(mRtc);
-    system("rdate -s time.bora.net > /tmp/rtc.txt");
+    ui->listWidgetMsg->addItem(QString("RTC를 시간서버와 동기화합니다."));
+    system("date > /tmp/rtc.txt");
+    messageRead("/tmp/rtc.txt", 0);
+    system("rdate -s time.bora.net");
     system("hwclock -wu");
+    ui->listWidgetMsg->addItem(QString("동기화한 시간"));
+    system("date > /tmp/rtc.txt");
     mRtc = ::open ( "/dev/rtc0", O_RDWR);
+
     messageRead("/tmp/rtc.txt", 0);
 }
 

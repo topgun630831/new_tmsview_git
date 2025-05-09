@@ -93,7 +93,7 @@ QRadioButton::indicator:unchecked
      <x>40</x>
      <y>30</y>
      <width>641</width>
-     <height>691</height>
+     <height>711</height>
     </rect>
    </property>
    <property name="font">
@@ -275,6 +275,28 @@ QRadioButton::indicator:unchecked
      <string>이송가스</string>
     </property>
    </widget>
+   <widget class="QToolButton" name="BOD">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>590</y>
+      <width>170</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕코딩</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>BOD</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
@@ -282,7 +304,7 @@ QRadioButton::indicator:unchecked
      <x>770</x>
      <y>30</y>
      <width>631</width>
-     <height>691</height>
+     <height>711</height>
     </rect>
    </property>
    <property name="font">
@@ -1125,7 +1147,7 @@ QRadioButton::indicator:unchecked
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>740</y>
+     <y>770</y>
      <width>641</width>
      <height>331</height>
     </rect>

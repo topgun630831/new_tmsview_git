@@ -62,6 +62,8 @@ private slots:
     void on_btnManualSampling_clicked();
     void on_btnToc_clicked();
 
+    void on_btn7_clicked();
+
 private:
     Ui::TmsDialog *ui;
     QList<TAG_WRITE_DELAY*>   m_listDelay;

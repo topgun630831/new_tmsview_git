@@ -13,6 +13,7 @@
 #include "infomationdialog.h"
 #include "tag.h"
 #include "analogset.h"
+
 extern QString gSoftwareModel;
 
 extern QSqlDatabase gDb;
@@ -24,45 +25,44 @@ extern QMap<QString, CTag*> m_TagMap;
 extern bool m_bUseToc;
 extern bool m_bGas;    //이송가스
 
-int TmsColumnWidth[6][16] = {
+int TmsColumnWidth[6][17] = {
     {
-        80,    //순번
-        120,    //시간
-        80,    //종류
-        140,    //T-N
-        140,    //T-P
-//        75,    //COD
-        140,    //TOC
-   //     75,    //BOD
-        140,    //PH
-        140,    //SS
-        140,    //유량계
-        140,    //채수기00
-        140,    //채수기01
-        100,    //채수기02
-        90,    //채수기
-        90,    //채수기
-        100,    //채수기
-        126,    //채수기
-    },
-    {
-        60,    //순번
-        120,    //시간
-        60,    //종류
+        50,    //순번
+        86,    //시간
+        50,    //종류
         150,    //T-N
         150,    //T-P
+        150,    //TOC/BOD
         150,    //COD
- //       75,    //BOD
         150,    //PH
         150,    //SS
         150,    //유량계
         130,    //채수기00
-        130,    //채수기01
-        100,    //채수기02
+        90,    //채수기01
+        90,    //채수기02
         90,    //채수기
         90,    //채수기
-        100,    //채수기
-        126,    //채수기
+        90,    //채수기
+        90,    //채수기
+    },
+    {
+        50,    //순번
+        86,    //시간
+        50,    //종류
+        150,    //T-N
+        150,    //T-P
+        150,    //TOC/BOD
+        150,    //COD
+        150,    //PH
+        150,    //SS
+        150,    //유량계
+        130,    //채수기00
+        90,    //채수기01
+        90,    //채수기02
+        90,    //채수기
+        90,    //채수기
+        90,    //채수기
+        90,    //채수기
     },
     {
         100,    //순번
@@ -112,8 +112,46 @@ int TmsColumnWidth[6][16] = {
     }
 };
 
+int TmsColumnMax[6] = { 17, 17, 10, 16, 7, 5 };
+const char *AllHourHeader[17] =  {
+    "순번",
+    "시간",
+    "종류",
+    "TON00",
+    "TOP00",
+    "BOD00",
+    "COD00",
+    "PHY00",
+    "SUS00",
+    "유량",
+    "채수온도",
+    "채수위치",
+    "채수개폐",
+    "출입문",
+    "입력전원",
+    "펌프A",
+    "펌프B",
+};
+const char *AllHourHeader2[17] =  {
+    "순번",
+    "시간",
+    "종류",
+    "TON00",
+    "TOP00",
+    "TOC00",
+    "COD00",
+    "PHY00",
+    "SUS00",
+    "유량",
+    "채수온도",
+    "채수위치",
+    "채수개폐",
+    "출입문",
+    "입력전압",
+    "펌프A",
+    "펌프B",
+};
 
-int TmsColumnMax[6] = { 16, 16, 10, 16, 7, 5 };
 extern bool m_bUseToc;
 QString InqCode;
 bool bLoaded = false;
@@ -207,45 +245,6 @@ void displayData(QString dir, const char* filter, QTableWidget *table)
    // table->resizeColumnsToContents();
 }
 
-const char *AllHourHeader[16] =  {
-    "순번",
-    "시간",
-    "종류",
-    "TON00",
-    "TOP00",
-    "TOC00",
-    "PHY00",
-    "SUS00",
-    "유량",
-    "채수온도",
-    "채수위치",
-    "채수개폐",
-    "출입문",
-    "입력전압",
-    "채수펌프A",
-    "채수펌프B",
-};
-
-const char *AllHourHeader2[16] =  {
-    "순번",
-    "시간",
-    "종류",
-    "TON00",
-    "TOP00",
-    "TOC10",
-    "PHY00",
-    "SUS00",
-    "유량",
-    "채수온도",
-    "채수위치",
-    "채수개폐",
-    "출입문",
-    "입력전압",
-    "채수펌프A",
-    "채수펌프B",
-};
-
-
 TmsData::TmsData(QWidget *parent) :
     CMonDialog(parent),
     ui(new Ui::TmsData)
@@ -275,21 +274,23 @@ TmsData::TmsData(QWidget *parent) :
 
     QStringList listAllHour;
 
-//    if(g_bToc10)
-//    {
-//        for(int i = 0; i < 16; i++)
-//            listAllHour.append(AllHourHeader2[i]);
-//   }
-//    else
-    {
-        for(int i = 0; i < 16; i++)
-            listAllHour.append(AllHourHeader[i]);
-    }
     if(m_bUseToc == true)
     {
-        ui->tableAllHour->setHorizontalHeaderLabels(listAllHour);
-        ui->tableAll5Min->setHorizontalHeaderLabels(listAllHour);
+        for(int i = 0; i < TmsColumnMax[0]; i++)
+            listAllHour.append(AllHourHeader2[i]);
+    }
+    else
+    {
+        for(int i = 0; i < TmsColumnMax[0]; i++)
+            listAllHour.append(AllHourHeader[i]);
+    }
 
+    //ui->tableAllHour->setColumnCount(TmsColumnMax[0]);
+    //ui->tableAll5Min->setColumnCount(TmsColumnMax[1]);
+    ui->tableAllHour->setHorizontalHeaderLabels(listAllHour);
+    ui->tableAll5Min->setHorizontalHeaderLabels(listAllHour);
+    if(m_bUseToc == true)
+    {
         ui->comboBox_indi5Min->setItemText(2, "TOC");
         ui->comboBox_indi10Sec->setItemText(2, "TOC");
     }
@@ -673,12 +674,11 @@ void TmsData::LastClicked(QTableWidget *pTable, QLineEdit *pEdit, QPushButton *b
     InqClicked(pTable);
 }
 
-const char *codeStrTms[18] =  {
+const char *codeStrTms[19] =  {
     "TON00",   //T-N 0
     "TOP00",   //T-P 1
-    "COD00",   //COD 2
-//    "TOC00",   //TOC 2
- //   "BOD00",   //BOD 3
+    "BOD00",   //COD 2
+    "COD00",   //BOD 3
     "PHY00",   //PH  3
     "SUS00",   //SS  4
     "FLW01",   //유량계 5
@@ -696,12 +696,11 @@ const char *codeStrTms[18] =  {
     "FLOW5",   //유량계5
 };
 
-const char *codeStrTmsToc[18] =  {
+const char *codeStrTmsToc[19] =  {
     "TON00",   //T-N 0
     "TOP00",   //T-P 1
-//    "COD00",   //COD 2
     "TOC00",   //TOC 2
- //   "BOD00",   //BOD 3
+    "COD00",   //COD 3
     "PHY00",   //PH  3
     "SUS00",   //SS  4
     "FLW01",   //유량계 5
@@ -718,31 +717,6 @@ const char *codeStrTmsToc[18] =  {
     "FLOW4",   //유량계4
     "FLOW5",   //유량계5
 };
-
-
-const char *codeStrTmsTocHighTemp[18] =  {
-    "TON00",   //T-N 0
-    "TOP00",   //T-P 1
-//    "COD00",   //COD 2
-    "TOC10",   //TOC 2
- //   "BOD00",   //BOD 3
-    "PHY00",   //PH  3
-    "SUS00",   //SS  4
-    "FLW01",   //유량계 5
-    "SAM00",   //채수기 온도 6
-    "SAM01",   //채수기 병위치 7
-    "SAM02",   //채수기 도어 8
-    "DORON",   //채수기 9
-    "PWRON",   //채수기 10
-    "FMLON",   //채수기 11
-    "FMRON",   //채수기 12
-    "FLOW1",   //유량계1 13
-    "FLOW2",   //유량계2 14
-    "FLOW3",   //유량계3
-    "FLOW4",   //유량계4
-    "FLOW5",   //유량계5
-};
-
 
 const char *statusStrTms[7] =  {
     "정상",
@@ -793,10 +767,7 @@ void TmsData::SendCommand(QString cmd)
             m_nIndex = ui->comboBox_indi5Min->currentIndex();
             if(m_bUseToc == true)
             {
-//                if(g_bToc10 == true)
-//                    InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi5Min->currentIndex()];
-//                else
-                    InqCode = codeStrTmsToc[ui->comboBox_indi5Min->currentIndex()];
+               InqCode = codeStrTmsToc[ui->comboBox_indi5Min->currentIndex()];
             }
             else
                 InqCode = codeStrTms[ui->comboBox_indi5Min->currentIndex()];
@@ -807,10 +778,7 @@ void TmsData::SendCommand(QString cmd)
             m_nIndex = ui->comboBox_indi10Sec->currentIndex();
             if(m_bUseToc == true)
             {
-//                if(g_bToc10 == true)
-//                   InqCode = codeStrTmsTocHighTemp[ui->comboBox_indi10Sec->currentIndex()];
-//                else
-                   InqCode = codeStrTmsToc[ui->comboBox_indi10Sec->currentIndex()];
+                InqCode = codeStrTmsToc[ui->comboBox_indi10Sec->currentIndex()];
             }
             else
                InqCode = codeStrTms[ui->comboBox_indi10Sec->currentIndex()];
@@ -842,20 +810,12 @@ void TmsData::SendCommand(QString cmd)
 
 int TmsData::CodeIndex(QString code)
 {
-    for(int i = 0; i < 18; i++)
+    for(int i = 0; i < 19; i++)
     {
         if(m_bUseToc == true)
         {
-//            if(g_bToc10 == true)
-//            {
-//                if(code == codeStrTmsTocHighTemp[i])
-//                    return i;
-//            }
- //           else
-            {
-                if(code == codeStrTmsToc[i])
-                    return i;
-            }
+            if(code == codeStrTmsToc[i])
+                return i;
         }
         else
         {
@@ -894,11 +854,11 @@ void TmsData::onRead(QString& cmd, QJsonObject& jobject)
                 QString value;// = QString("%1(%2)").arg(itemObject["Value"].toString())
                               //.arg((int)itemObject["Status"].toDouble());
                 int pos = CodeIndex(code);
-                if(pos > 12)
+                if(pos > 13)
                     continue;
                 int status = (int)itemObject["Status"].toDouble();
 //                if(pos < 9 && status != 0)
-                if(pos >= 8)
+                if(pos >= 9)
                     value = QString("%1").arg(status);
                 else
                 {
@@ -1296,10 +1256,7 @@ void TmsData::Inq10Sec()
 
         if(m_bUseToc == true)
         {
-//            if(g_bToc10 == true)
-//                code = codeStrTmsTocHighTemp[index];
-//            else
-                code = codeStrTmsToc[index];
+            code = codeStrTmsToc[index];
         }
         else
             code = codeStrTms[index];

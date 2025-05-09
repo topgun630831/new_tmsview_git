@@ -91,7 +91,8 @@ int ITEM_SELECT[12][25] = {
 /* PH      */    {0,1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20},
 /* SS      */    {0,1,2,3,4,5,6,7,8,9,13,14,15,16,17,18,19,20},
 /* COD     */    {0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20},
-/* TOX     */    {0,1,2,3,4,5,6,7,8,9,11,13,14,17,18,19,20},
+/* BOD     */    {0,1,2,3,4,5,6,7,8,9,11,13,14,17,18,19,20},
+// TOX         {0,1,2,3,4,5,6,7,8,9,11,13,14,17,18,19,20},
 /* FLOW    */    {0,1,2,3,4,6,7,29,35},
 /* SAMPLER */    {21,22,1,2,4,5,23,24,6,34},
 /* 구형     */    {0,1,2,3,4,5,6,7,13,14,15,16,17,18,19},
@@ -106,7 +107,8 @@ const char *DESC_TAB[9] = {
     "PH",
     "SS",
     "COD",
-    "TOX",
+    "BOD",
+//    "TOX",
     "FLOW",
     "SAMPLER",
 };
@@ -130,7 +132,7 @@ const char *CONST_TAB[12] = {
     "PASS,MSIG,MTM1,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",           // PH
     "PASS,MSIG,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",                // SS
     "PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI",      // COD
-    "PASS,MSIG,MTM2,ZERO,SPAN,FACT,OFST,MAXR,AUXI",                     // TOX
+    "PASS,MSIG,MTM2,ZERO,SPAN,FACT,OFST,MAXR,AUXI",                     // BOD/TOX
     "",                                                                 // FLOW
     "",                                                                 // SAMPLER
     "ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR",                               // OLD
@@ -145,7 +147,7 @@ int ITEM_MAX[12] = {
     /* PH      */    19,
     /* SS      */    18,
     /* COD     */    20,
-    /* TOX     */    20,
+    /* BOD/TOX     */    17,
     /* FLOW    */    9,
     /* SAMPLER */    10,
     /* 구형     */    15,
@@ -925,6 +927,13 @@ void TmsSetup::on_sensorSelect_clicked()
             dlg.bCod = true;
         }
         else
+        if(tmsitem->Code == "BOD00")
+        {
+            dlg.sBod = tmsitem->Protocol;
+            dlg.sBodComPort = tmsitem->Port;
+            dlg.bBod = true;
+        }
+        else
         if(tmsitem->Code == "PHY00")
         {
             dlg.sPh = tmsitem->Protocol;
@@ -995,6 +1004,7 @@ void TmsSetup::on_sensorSelect_clicked()
         mbFlag[3] = dlg.bPh;
         mbFlag[4] = dlg.bSs;
         mbFlag[5] = dlg.bCod;
+        mbFlag[6] = dlg.bBod;
         mbFlag[7] = dlg.bFlow;
         mbFlag[8] = dlg.bSampler;
         m_nFlowNum  = dlg.nFlowNum;
@@ -1068,10 +1078,17 @@ void TmsSetup::on_sensorSelect_clicked()
             // ui->f_comPort1->setCurrentText(tr("Com7"));
         }
         if(dlg.bCod)
+        {
             SensorAdd(tr("COD"), tr("CHEMLC0"), tr("COD00"), dlg.sCod, 1, // 화학적 산소요구량
                          dlg.sCodComPort, 10000, 5000, tr("PASS,MSIG,MTM2,MSAM,ZERO,SPAN,SLOP,ICPT,FACT,OFST,MAXR,AUXI"), 1,
-//                         dlg.bCodCchk, (int)dlg.bAnalog_cod, (int)dlg.bStx_cod);
                          0, (int)dlg.bAnalog_cod, 0);
+        }
+        if(dlg.bBod)
+        {
+            SensorAdd(tr("BOD"), tr("BIOCMC0"), tr("BOD00"), dlg.sBod, 1, // 생물학적 산소요구량
+                         dlg.sBodComPort, 10000, 5000, tr("PASS,MSIG,MTM2,ZERO,SPAN,FACT,OFST,MAXR,AUXI"), 1,
+                         0, (int)dlg.bAnalog_bod, 0);
+        }
         int row = 0;
 
         foreach (const TMS_ITEM_TAB * tmsitem, TmsItemList) {
@@ -1589,6 +1606,9 @@ void TmsSetup::DbSave()
         {
             if(tmsitem->Code == "COD00")
                 sensor = COD;
+            else
+            if(tmsitem->Code == "BOD00")
+                sensor = BOD;
             else
             if(tmsitem->Code == "TON00")
                 sensor = TN;

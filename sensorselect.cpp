@@ -58,6 +58,7 @@ SensorSelect::SensorSelect( int FlowNum, bool WaterTemp, QWidget *parent) :
     sPhComPort = "Com4";
     sSsComPort = "Com5";
     sCodComPort = "Com6";
+    sBodComPort = "Com9";
     sFlowComPort = "Com7";
     sSamplerComPort = "Com8";
 
@@ -68,6 +69,7 @@ SensorSelect::SensorSelect( int FlowNum, bool WaterTemp, QWidget *parent) :
     bAnalog_tn = false;
     bAnalog_tp = false;
     bAnalog_cod = false;
+    bAnalog_bod = false;
     bAnalog_ph = false;
     bAnalog_ss = false;
     bAnalog_toc = false;
@@ -90,6 +92,7 @@ SensorSelect::SensorSelect( int FlowNum, bool WaterTemp, QWidget *parent) :
     bTn =
     bTp =
     bCod =
+    bBod =
     bPh =
     bSs =
     bToc = false;
@@ -124,6 +127,8 @@ void SensorSelect::disp()
         ui->TP->setChecked(true);
     if(bCod)
         ui->COD->setChecked(true);
+    if(bBod)
+        ui->BOD->setChecked(true);
     if(bPh)
         ui->PH->setChecked(true);
     if(bSs)
@@ -278,6 +283,7 @@ void SensorSelect::on_ok_clicked()
     bTn = ui->TN->isChecked();
     bTp = ui->TP->isChecked();
     bCod = ui->COD->isChecked();
+    bBod = ui->BOD->isChecked();
     bPh = ui->PH->isChecked();
     bSs = ui->SS->isChecked();
     bFlow = true; //ui->FLOW->isChecked();
@@ -312,7 +318,7 @@ void SensorSelect::on_ok_clicked()
         m_bDoorReversed = true;
 
 //    bRate = ui->rate->isChecked();
-    sTn = sTp = sCod = sPh = sSs = sToc = "NewAnalyzer";
+    sTn = sTp = sCod = sBod= sPh = sSs = sToc = "NewAnalyzer";
 
 /*
     bTnCchk = ui->TnCchk->isChecked();
@@ -326,6 +332,7 @@ void SensorSelect::on_ok_clicked()
     bAnalog_tn = false;
     bAnalog_tp = false;
     bAnalog_cod = false;
+    bAnalog_bod = false;
     bAnalog_ph = false;
     bAnalog_ss = false;
 //    bAnalog_toc = ui->Analog_toc->isChecked();

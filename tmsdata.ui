@@ -757,7 +757,7 @@ QScrollBar:horizontal {
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="AllHour">
     <widget class="QLabel" name="labelPage_4">
@@ -957,6 +957,16 @@ QScrollBar:horizontal {
       <property name="font">
        <font>
         <family>나눔고딕코딩</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>BOD00</string>
+      </property>
+      <property name="font">
+       <font>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -2653,6 +2663,16 @@ QScrollBar:horizontal {
       <property name="font">
        <font>
         <family>나눔고딕_코딩</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>BOD00</string>
+      </property>
+      <property name="font">
+       <font>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -4356,6 +4376,12 @@ QScrollBar:horizontal {
        </disabled>
       </palette>
      </property>
+     <property name="font">
+      <font>
+       <family>나눔고딕코딩</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <property name="maxVisibleItems">
       <number>20</number>
      </property>
@@ -4373,6 +4399,11 @@ QScrollBar:horizontal {
      <item>
       <property name="text">
        <string>T-P</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BOD</string>
       </property>
      </item>
      <item>
@@ -4397,17 +4428,17 @@ QScrollBar:horizontal {
      </item>
      <item>
       <property name="text">
-       <string>채수기 온도</string>
+       <string>채수온도</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수기 병위치</string>
+       <string>채수위치</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수기 도어</string>
+       <string>채수개폐</string>
       </property>
      </item>
      <item>
@@ -4422,12 +4453,12 @@ QScrollBar:horizontal {
      </item>
      <item>
       <property name="text">
-       <string>채수펌프 좌</string>
+       <string>채수펌프A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수펌프 우</string>
+       <string>채수펌프B</string>
       </property>
      </item>
     </widget>
@@ -5590,6 +5621,12 @@ QScrollBar:horizontal {
        <height>70</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>나눔고딕코딩</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <property name="maxVisibleItems">
       <number>20</number>
      </property>
@@ -5601,6 +5638,11 @@ QScrollBar:horizontal {
      <item>
       <property name="text">
        <string>T-P</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BOD</string>
       </property>
      </item>
      <item>
@@ -5625,17 +5667,17 @@ QScrollBar:horizontal {
      </item>
      <item>
       <property name="text">
-       <string>채수기 온도</string>
+       <string>채수온도</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수기 병위치</string>
+       <string>채수위치</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수기 도어</string>
+       <string>채수개폐</string>
       </property>
      </item>
      <item>
@@ -5650,12 +5692,12 @@ QScrollBar:horizontal {
      </item>
      <item>
       <property name="text">
-       <string>채수펌프 좌</string>
+       <string>채수펌프A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>채수펌프 우</string>
+       <string>채수펌프B</string>
       </property>
      </item>
     </widget>
@@ -6846,7 +6888,7 @@ QScrollBar:horizontal {
     <widget class="QPushButton" name="btnInq10Sec">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>430</x>
        <y>10</y>
        <width>120</width>
        <height>70</height>

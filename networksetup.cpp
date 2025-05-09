@@ -419,7 +419,7 @@ void CNetworkSetup::RunStart(bool start)
     QJsonObject argObject;
     QJsonValue vObject(QJsonValue::Null);
 
-    QString proc = "Sun";
+    QString proc = "app";
     bool SaveStatus=false;
     argObject.insert(QString("Proc"),QJsonValue(proc));
     argObject.insert(QString("Enabled"),QJsonValue(start));

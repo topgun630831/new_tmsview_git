@@ -2130,7 +2130,7 @@
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
-    <string>TON</string>
+    <string>mg/L</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -4525,7 +4525,7 @@
     </font>
    </property>
    <property name="text">
-    <string/>
+    <string>BOD</string>
    </property>
    <property name="iconSize">
     <size>

@@ -1957,7 +1957,7 @@
       </font>
      </property>
      <property name="text">
-      <string>10.10.10.3</string>
+      <string>10.10.10.1</string>
      </property>
     </widget>
    </widget>
@@ -2093,20 +2093,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>IpEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">ipedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>MyLineEdit</class>
    <extends>QLineEdit</extends>
    <header location="global">mylineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>IpEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">ipedit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

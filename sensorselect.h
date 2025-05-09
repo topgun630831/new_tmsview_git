@@ -23,6 +23,7 @@ public:
     void disp();
 
     bool bCod;
+    bool bBod;
     bool bTn;
     bool bTp;
     bool bPh;
@@ -38,6 +39,7 @@ public:
     QString sPh;
     QString sSs;
     QString sCod;
+    QString sBod;
     QString sFlow;
     QString sSamModel;
     QString sToc;
@@ -46,6 +48,7 @@ public:
     QString sPhComPort;
     QString sSsComPort;
     QString sCodComPort;
+    QString sBodComPort;
     QString sFlowComPort;
     QString sSamplerComPort;
     QString sTocComPort;
@@ -60,6 +63,7 @@ public:
     bool    bAnalog_tn;
     bool    bAnalog_tp;
     bool    bAnalog_cod;
+    bool    bAnalog_bod;
     bool    bAnalog_ph;
     bool    bAnalog_ss;
     bool    bAnalog_toc;
