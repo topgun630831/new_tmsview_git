@@ -20,6 +20,7 @@ extern bool    m_bScreenSave;
 extern bool g_bPowerOff;
 extern QString gSoftwareModel;
 extern QString gHardwareModel;
+extern QString gCpuSerialNumber;
 extern QString gPassword;
 bool bTmsMode;
 extern QString gPassword;
@@ -63,6 +64,7 @@ CNetworkSetup::CNetworkSetup( bool bAll, QWidget *parent) :
 //    if(gSoftwareModel != "EPS_HASU")
     ui->btnHasuSetup->setVisible(false);
     m_RejectTimerId = startTimer(1000*60*5-30);
+    ui->serialNo->setText(gCpuSerialNumber);
 }
 
 CNetworkSetup::~CNetworkSetup()
@@ -121,10 +123,10 @@ void CNetworkSetup::onRead(QString& cmd, QJsonObject& robject)
 
         //        ui->productName->setText(jobject["Model"].toString());
         build.remove("\n");
-        if(build == "")
-            ui->serialNo->setText(QString("%1 %2").arg((int)jobject["SerialNumber"].toDouble(),10,10,QChar('0')).arg(gHardwareModel));
-        else
-            ui->serialNo->setText(QString("%1(%2) %3").arg((int)jobject["SerialNumber"].toDouble(),10,10,QChar('0')).arg(build).arg(gHardwareModel));
+//        if(build == "")
+//            ui->serialNo->setText(QString("%1 %2").arg((int)jobject["SerialNumber"].toDouble(),10,10,QChar('0')).arg(gHardwareModel));
+//        else
+//            ui->serialNo->setText(QString("%1(%2) %3").arg((int)jobject["SerialNumber"].toDouble(),10,10,QChar('0')).arg(build).arg(gHardwareModel));
         if(jobject["Dns"].isNull() == false)
             ui->dnsPrimary->setText(jobject["Dns"].toString());
         if(jobject["Dns2"].isNull() == false)

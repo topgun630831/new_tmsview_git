@@ -78,10 +78,11 @@ struct TMS_TAG_TAB TagTab[38] = {
 /* 36*/{"TMS_FATAL",      "String","오류 메시지",           "System",   "",      "R", "Text",   "",      "",      "",0, ""},
 /* 37*/{"IO_POWER",      "Digital","IO전원 상태",    "System",   "di7",      "R", "Digital", "정상",     "비정상",      "",0, "0"},
        };
-struct TMS_TAG_TAB FlowTagTab[3] = {
+struct TMS_TAG_TAB FlowTagTab[4] = {
 /* 0 */{"",          "Analog", "유량적산",     "Tms",   "Value",      "R", "R32",      "",     "",        "TON", 0, "0"},
-/* 0 */{"_RATE",     "Analog", "순시유량",     "Tms",   "Flw00",      "R", "R32",      "",     "",        "M/S", 0, "0"},
-/* 1 */{"_COMM",     "Digital", "통신상태",   "Tms",   "Comm_Status", "R", "DIgital", "정상",  "통신이상", "",   0, "0"},
+/* 1 */{"_RATE",     "Analog", "순시유량",     "Tms",   "Flw00",      "R", "R32",      "",     "",        "M/S", 0, "0"},
+/* 2 */{"_COMM",     "Digital", "통신상태",   "Tms",   "Comm_Status", "R", "DIgital", "정상",  "통신이상", "",   0, "0"},
+/* 3 */{"_EQUIP_STS", "Analog", "유량계 상태", "Tms",   "Status", "R", "S32",     "",      "",       "",  0,"0"},
 };
 
 int ITEM_SELECT[12][25] = {
@@ -1896,7 +1897,7 @@ void TmsSetup::SensorSave(const TMS_ITEM_TAB *item, int max, int sensor, int *se
         QString desc;
         for(int i = 0; i < m_nFlowNum; i++)
         {
-            for(int j = 0; j < 3; j++)
+            for(int j = 0; j < 4; j++)
             {
                 int round = item->RoundUp;
                 if(j == 1 && m_bFlowRate[i] == false)

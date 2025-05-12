@@ -41,6 +41,7 @@ double AdcCalibraion[6][2];
 QString gSoftwareModel;
 QString gHardwareModel;
 QString gHardwareRevision;
+QString gCpuSerialNumber;
 int XMaxRes = 1920; //1024;
 int YMaxRes = 1200; //600;
 
@@ -163,6 +164,7 @@ void systeminfoLoad()
     gSoftwareModel    = jObj["SoftwareModel"].toString();
     gHardwareModel    = jObj["HardwareModel"].toString();
     gHardwareRevision = jObj["HardwareRevision"].toString();
+    gCpuSerialNumber = jObj["CpuSerialNumber"].toString();
     if(jObj["AdcCalibration"].isNull() != true)
     {
         QJsonArray array    = jObj["AdcCalibration"].toArray();
@@ -216,7 +218,7 @@ int main(int argc, char *argv[])
 //    app.setStyleSheet( style );
 
     qDebug() << "Version : " << VERSION << "," << SVN_REVISION << "(" << __DATE__ << " " << __TIME__ << ")";
-//    systeminfoLoad();
+    systeminfoLoad();
 
 //    QPixmap pixmap(":/images/splash.png");
 //    splash = new QSplashScreen;

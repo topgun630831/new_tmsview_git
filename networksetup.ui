@@ -764,7 +764,7 @@ QRadioButton::indicator:unchecked
   <widget class="QLabel" name="serialNo">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>660</x>
      <y>1118</y>
      <width>971</width>
      <height>50</height>
@@ -870,7 +870,7 @@ QRadioButton::indicator:unchecked
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="lan1ButtonGroup"/>
   <buttongroup name="lan2ButtonGroup"/>
+  <buttongroup name="lan1ButtonGroup"/>
  </buttongroups>
 </ui>
