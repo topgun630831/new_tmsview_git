@@ -109,6 +109,7 @@ private:
     Ui::CTestDialog *ui;
     QPalette redPalette;
     QPalette greenPalette;
+    QPalette defaultPalette;
     int         m_timerId;
     int         m_timerIdAi;
     QPushButton *m_diButton[16];
@@ -143,7 +144,8 @@ private:
     void        setText(QPushButton *button, int ai, int pos);
     void        messageRead(const char *fname, int lineSkip);
     void	paintEvent(QPaintEvent*);
-    QTimer              m_Timer;
+    QTimer           m_Timer;
+    QPushButton     *m_pButton;
 };
 
 #endif // TESTDIALOG_H

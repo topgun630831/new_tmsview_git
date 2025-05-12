@@ -1307,7 +1307,7 @@ void TmsSetup::RunStart(bool start)
     QJsonValue vObject(QJsonValue::Null);
 
     bool SaveStatus=false;
-    argObject.insert(QString("Proc"),QJsonValue(QString("Sun")));
+    argObject.insert(QString("Proc"),QJsonValue(QString("app")));
     argObject.insert(QString("Enabled"),QJsonValue(start));
     argObject.insert(QString("SaveStatus"),QJsonValue(SaveStatus));
 

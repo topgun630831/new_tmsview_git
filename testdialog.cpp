@@ -90,6 +90,7 @@ CTestDialog::CTestDialog(QWidget *parent) :
 
     memcpy(m_AdcCalibraion, AdcCalibraion, sizeof(AdcCalibraion));
 
+    defaultPalette = ui->Com1->palette();
     redPalette.setColor(QPalette::Button, Qt::red);
     greenPalette.setColor(QPalette::Button, Qt::green);
 
@@ -207,6 +208,8 @@ CTestDialog::CTestDialog(QWidget *parent) :
        ui->labelLowBattery->setVisible(false);
    connect(&m_Timer, SIGNAL(timeout()), this, SLOT(onTimer()));
    m_Timer.start(1000);
+   ui->usbSerial->setVisible(false);
+   m_pButton = NULL;
 }
 
 CTestDialog::~CTestDialog()
@@ -564,7 +567,7 @@ void CTestDialog::openComm(int& fd, QString msg, int& timer)
         ::write(fd, msg.toLocal8Bit().data(), msg.length());
         if(timer != 0)
             killTimer(timer);
-        timer = startTimer(1);
+        timer = startTimer(100);
     }
 #endif
 }
@@ -582,6 +585,10 @@ void CTestDialog::readComm(int& fd, QString send, int& timer, QLineEdit *edit)
         buf[len] = 0;
         rcv = buf;
         edit->setText(rcv);
+        if(send == rcv)
+        {
+            m_pButton->setPalette(greenPalette);
+        }
     }
 #endif
 }
@@ -1012,6 +1019,18 @@ void CTestDialog::on_CommClear_clicked()
 {
     ui->commTx->setText("abcdefghijk1234567890");
     ui->commRx->setText("");
+    ui->Com1->setPalette(defaultPalette);
+    ui->Com2->setPalette(defaultPalette);
+    ui->Com3->setPalette(defaultPalette);
+    ui->Com4->setPalette(defaultPalette);
+    ui->Com5->setPalette(defaultPalette);
+    ui->Com6->setPalette(defaultPalette);
+    ui->Com7->setPalette(defaultPalette);
+    ui->Com8->setPalette(defaultPalette);
+    ui->Com9->setPalette(defaultPalette);
+    ui->Com10->setPalette(defaultPalette);
+    ui->Com11Com12->setPalette(defaultPalette);
+    ui->Com12Com11->setPalette(defaultPalette);
 }
 
 void CTestDialog::on_btnOK_clicked()
@@ -1071,87 +1090,91 @@ void CTestDialog::OpenNSend()
 
 void CTestDialog::on_Com1_clicked()
 {
-    if(gHardwareModel == "SS-100")
-    {
-        CommTxSeleced = 0;
-        CommRxSeleced = 1;
-    }
-    else
-    {
-        CommTxSeleced = 0;
-        CommRxSeleced = 0;
-    }
+    ui->Com1->setPalette(defaultPalette);
+    CommTxSeleced = 0;
+    CommRxSeleced = 0;
+    m_pButton = ui->Com1;
     OpenNSend();
 }
 
 void CTestDialog::on_Com2_clicked()
 {
-    if(gHardwareModel == "SS-100")
-    {
-        CommTxSeleced = 1;
-        CommRxSeleced = 0;
-    }
-    else
-    {
-        CommTxSeleced = 1;
-        CommRxSeleced = 1;
-    }
+    ui->Com2->setPalette(defaultPalette);
+    CommTxSeleced = 1;
+    CommRxSeleced = 1;
+    m_pButton = ui->Com2;
     OpenNSend();
 }
 
 void CTestDialog::on_Com3_clicked()
 {
+    ui->Com3->setPalette(defaultPalette);
     CommTxSeleced = 2;
     CommRxSeleced = 2;
+    m_pButton = ui->Com3;
     OpenNSend();
 }
 
 void CTestDialog::on_Com4_clicked()
 {
+    ui->Com4->setPalette(defaultPalette);
     CommTxSeleced = 3;
     CommRxSeleced = 3;
+    m_pButton = ui->Com4;
     OpenNSend();
 }
 
 void CTestDialog::on_Com5_clicked()
 {
+    ui->Com5->setPalette(defaultPalette);
     CommTxSeleced = 4;
     CommRxSeleced = 4;
+    m_pButton = ui->Com5;
     OpenNSend();
 }
 
 void CTestDialog::on_Com6_clicked()
 {
+    ui->Com6->setPalette(defaultPalette);
     CommTxSeleced = 5;
     CommRxSeleced = 5;
+    m_pButton = ui->Com6;
     OpenNSend();
 }
 
 void CTestDialog::on_Com7_clicked()
 {
+    ui->Com7->setPalette(defaultPalette);
     CommTxSeleced = 6;
     CommRxSeleced = 6;
+    m_pButton = ui->Com7;
     OpenNSend();
 }
 
 void CTestDialog::on_Com8_clicked()
 {
+    ui->Com8->setPalette(defaultPalette);
     CommTxSeleced = 7;
     CommRxSeleced = 7;
+    m_pButton = ui->Com8;
     OpenNSend();
 }
 
 void CTestDialog::on_Com11Com12_clicked()
 {
+    ui->Com11Com12->setPalette(defaultPalette);
     CommTxSeleced = 10;
     CommRxSeleced = 11;
+    m_pButton = ui->Com11Com12;
     OpenNSend();
 }
 
 void CTestDialog::on_Com12Com11_clicked()
 {
+    ui->Com12Com11->setPalette(defaultPalette);
     CommTxSeleced = 11;
     CommRxSeleced = 10;
+    m_pButton = ui->Com12Com11;
     OpenNSend();
 }
 
@@ -1187,6 +1210,8 @@ void CTestDialog::on_btnDefault_clicked()
 
 void CTestDialog::on_Com9_clicked()
 {
+    m_pButton = ui->Com9;
+    m_pButton->setPalette(defaultPalette);
     CommTxSeleced = 8;
     CommRxSeleced = 8;
     OpenNSend();
@@ -1194,6 +1219,8 @@ void CTestDialog::on_Com9_clicked()
 
 void CTestDialog::on_Com10_clicked()
 {
+    m_pButton = ui->Com10;
+    m_pButton->setPalette(defaultPalette);
     CommTxSeleced = 9;
     CommRxSeleced = 9;
     OpenNSend();
