@@ -230,14 +230,11 @@ TmsDialog::TmsDialog(QWidget *parent) :
     }
     for(int i = 0; i < 9; i++)
     {
-        //if(i < 6 && g_Flag[i] == false)
         if(g_Flag[i] == false)
             continue;
         {
             pTag = new CTag(TmsStatusTag[i]);
             m_TagMap[TmsStatusTag[i]] = pTag;
-//            if(i < 6)
-//                StsTagIndexMap[TmsStatusTag[i]] = i;
         }
     }
     for(int i = 0; i < 8; i++)
@@ -249,31 +246,23 @@ TmsDialog::TmsDialog(QWidget *parent) :
             m_TagMap[TmsEquipStatusTag[i]] = pTag;
         }
     }
-//    if(g_bToc10)
-//        TmsCheckTag[2] = "TOC10_CHECK";
     for(int i = 0; i < 9; i++)
     {
-//        if(i < 6 && g_Flag[i] == false)
         if(g_Flag[i] == false)
             continue;
         pTag = new CTag(TmsCheckTag[i]);
         m_TagMap[TmsCheckTag[i]] = pTag;
         mpCheckTag[i] = pTag;
-   //     if(i < 6)
             CheckTagIndexMap[TmsCheckTag[i]] = i;
     }
-//    if(g_bToc10)
-//        TmsCommTag[2] = "TOC10_COMM";
     for(int i = 0; i < 9; i++)
     {
-//        if(i < 6 && g_Flag[i] == false)
         if(g_Flag[i] == false)
             continue;
         {
             pTag = new CTag(TmsCommTag[i]);
             m_TagMap[TmsCommTag[i]] = pTag;
             mpCommTag[i] = pTag;
-          //  if(i < 6)
                 CommTagIndexMap[TmsCommTag[i]] = i;
         }
     }
@@ -376,6 +365,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
     TagIndexMap["PHY00"] = 3;
     TagIndexMap["SUS00"] = 4;
     TagIndexMap["COD00"] = 5;
+    TagIndexMap["BOD00"] = 6;
 //    TagIndexMap["SAM00"] = 5;
 //    TagIndexMap["FLW01"] = 6;
     StsTagIndexMap["TON00_STS"] = 0;
@@ -384,6 +374,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
     StsTagIndexMap["PHY00_STS"] = 3;
     StsTagIndexMap["SUS00_STS"] = 4;
     StsTagIndexMap["COD00_STS"] = 5;
+    StsTagIndexMap["BOD00_STS"] = 6;
     StsTagIndexMap["FLW01_STS"] = 7;
     StsTagIndexMap["SAM00_STS"] = 8;
 
@@ -393,6 +384,7 @@ TmsDialog::TmsDialog(QWidget *parent) :
     EquipStsTagIndexMap["PHY00_EQUIP_STS"] = 3;
     EquipStsTagIndexMap["SUS00_EQUIP_STS"] = 4;
     EquipStsTagIndexMap["COD00_EQUIP_STS"] = 5;
+    EquipStsTagIndexMap["BOD00_EQUIP_STS"] = 6;
 //    EquipStsTagIndexMap["SAM00_EQUIP_STS"] = 6;
     EquipStsTagIndexMap["FLW01_EQUIP_STS"] = 7;
 

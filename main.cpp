@@ -106,7 +106,6 @@ void writeVersion()
 void startPageNameLoad(QString& name)
 {
 
-    gDb = QSqlDatabase::addDatabase("QSQLITE");
     QString dbname =  "/data/project2.db";
     gDb.setDatabaseName(dbname);
     if(gDb.open() != true)
@@ -300,7 +299,8 @@ int main(int argc, char *argv[])
         XMaxRes = 1280;
         YMaxRes = 720;
     }
-    startPageNameLoad(filename);
+    gDb = QSqlDatabase::addDatabase("QSQLITE");
+//    startPageNameLoad(filename);
     qDebug() << "<<<<<<<<<<<<<<X-Max=" << XMaxRes << "Y-Max=" << YMaxRes << ">>>>>>>>>>>>>>>>>>>>>>>";
     qDebug() << "===============================================================================";
     qDebug() << "folder=" << folder << "IpAddr=" << g_Ip << "port=" << g_Port << "filename=" << filename << "Debug = " << g_DebugDisplay;
