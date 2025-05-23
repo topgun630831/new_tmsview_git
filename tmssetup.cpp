@@ -1906,7 +1906,7 @@ void TmsSetup::SensorSave(const TMS_ITEM_TAB *item, int max, int sensor, int *se
                     round = 2;
                 name = QString("FLOW%1").arg(i+1);
                 name += FlowTagTab[j].suffix;
-                desc = QString("%1%2").arg(FlowTagTab[j].Desc).arg(i+1);
+                desc = QString("유량계%1 상태").arg(i+1);
                 device = QString("Flow%1").arg(i+1);
                 float ratio = 1;
                 if(j == 0)

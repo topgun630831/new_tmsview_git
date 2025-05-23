@@ -221,16 +221,21 @@ TmsDialog::TmsDialog(QWidget *parent) :
     g_pTmsDlg = this;
 
     CTag* pTag;
+    QString sam = "SAM";
     for(int i = 0; i < TAG_MAX; i++)
     {
         if(i < 9 && g_Flag[i] == false)
                 continue;
+        if(g_Flag[8] == false && TmsTagNameList[i].contains(sam))
+            continue;
         pTag = new CTag(TmsTagNameList[i]);
         m_TagMap[TmsTagNameList[i]] = pTag;
     }
     for(int i = 0; i < 9; i++)
     {
         if(g_Flag[i] == false)
+            continue;
+        if(g_Flag[8] == false && TmsTagNameList[i].contains(sam))
             continue;
         {
             pTag = new CTag(TmsStatusTag[i]);
@@ -241,6 +246,8 @@ TmsDialog::TmsDialog(QWidget *parent) :
     {
         if(g_Flag[i] == false)
             continue;
+        if(g_Flag[8] == false && TmsTagNameList[i].contains(sam))
+            continue;
         {
             pTag = new CTag(TmsEquipStatusTag[i]);
             m_TagMap[TmsEquipStatusTag[i]] = pTag;
@@ -250,6 +257,8 @@ TmsDialog::TmsDialog(QWidget *parent) :
     {
         if(g_Flag[i] == false)
             continue;
+        if(g_Flag[8] == false && TmsTagNameList[i].contains(sam))
+            continue;
         pTag = new CTag(TmsCheckTag[i]);
         m_TagMap[TmsCheckTag[i]] = pTag;
         mpCheckTag[i] = pTag;
@@ -258,6 +267,8 @@ TmsDialog::TmsDialog(QWidget *parent) :
     for(int i = 0; i < 9; i++)
     {
         if(g_Flag[i] == false)
+            continue;
+        if(g_Flag[8] == false && TmsTagNameList[i].contains(sam))
             continue;
         {
             pTag = new CTag(TmsCommTag[i]);
@@ -496,8 +507,8 @@ void TmsDialog::DbLoad()
     }
 
     gDb.close();
-    for(int i = 12; i < 19; i++)
-        g_Flag[i] = g_Flag[7];          // 채수기
+    for(int i = 13; i < 19; i++)
+        g_Flag[i] = g_Flag[8];          // 채수기
     for(int i = 19; i < TAG_MAX; i++)
         g_Flag[i] = true;
 }
@@ -964,7 +975,7 @@ void TmsDialog::valueDisplay(QString name, CTag *pTag, QString strVal)
     else
 */    if(name == "FLW01_RATE")
     {
-        if(mpCommTag[8]->getValue() == 0)  //통신불량이면
+        if(mpCommTag[7]->getValue() == 0)  //통신불량이면
         {
             int round = pTag->getRoundUp();
             if(round > 0)
