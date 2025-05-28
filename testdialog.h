@@ -99,6 +99,8 @@ private slots:
 
     void on_Com10_clicked();
 
+    void on_AutoTest_clicked();
+
 protected:
     void timerEvent(QTimerEvent *);
     void doDisp(int value);
@@ -141,6 +143,7 @@ private:
     int         CommRxSeleced;
     int         CommTxSeleced;
     int         mDiMax;
+    bool        m_bAutoTest;
     void        setText(QPushButton *button, int ai, int pos);
     void        messageRead(const char *fname, int lineSkip);
     void	paintEvent(QPaintEvent*);

@@ -46,7 +46,6 @@
 #endif
 
 int fd;
-int afd;
 quint8 doValue;
 quint8 diBuf[4];
 extern bool        m_bScreenSave;
@@ -79,9 +78,8 @@ CTestDialog::CTestDialog(QWidget *parent) :
     flag |= O_NDELAY;
 #endif
     fd = ::open("/dev/iostardust", flag);
-    afd = ::open("/dev/sun_ai", flag);
     if (fd < 0) {
-        printf("ERROR: /dev/sun open(%d) failed\n", fd);
+        printf("ERROR: /dev/iostardust open(%d) failed\n", fd);
     }
     ui->setupUi(this);
     const QRect screen = QApplication::desktop()->screenGeometry();
@@ -95,6 +93,7 @@ CTestDialog::CTestDialog(QWidget *parent) :
     greenPalette.setColor(QPalette::Button, Qt::green);
 
     ui->do1->setPalette(greenPalette);
+    m_bAutoTest = false;
 
     m_diButton[0] = ui->di1;
     m_diButton[1] = ui->di2;
@@ -358,6 +357,59 @@ void CTestDialog::timerEvent(QTimerEvent *event)
     {
         send = ui->commTx->text();
         readComm(m_Fd[CommRxSeleced], send, m_timerIdCommon, ui->commRx);
+        if(m_bAutoTest == true)
+        {
+            if(CommTxSeleced == 0)
+                on_Com2_clicked();
+            else
+            if(CommTxSeleced == 1)
+                on_Com3_clicked();
+            else
+            if(CommTxSeleced == 2)
+                on_Com4_clicked();
+            else
+            if(CommTxSeleced == 3)
+                on_Com5_clicked();
+            else
+            if(CommTxSeleced == 4)
+                on_Com6_clicked();
+            else
+            if(CommTxSeleced == 5)
+                on_Com7_clicked();
+            else
+            if(CommTxSeleced == 6)
+                on_Com8_clicked();
+            else
+            if(CommTxSeleced == 7)
+                on_Com9_clicked();
+            else
+            if(CommTxSeleced == 8)
+                on_Com10_clicked();
+            else
+            if(CommTxSeleced == 9)
+                on_Com11Com12_clicked();
+            else
+            if(CommTxSeleced == 10)
+                on_Com12Com11_clicked();
+            else
+            {
+                ui->AutoTest->setEnabled(true);
+                ui->Com1->setEnabled(true);
+                ui->Com2->setEnabled(true);
+                ui->Com3->setEnabled(true);
+                ui->Com4->setEnabled(true);
+                ui->Com5->setEnabled(true);
+                ui->Com6->setEnabled(true);
+                ui->Com7->setEnabled(true);
+                ui->Com8->setEnabled(true);
+                ui->Com9->setEnabled(true);
+                ui->Com10->setEnabled(true);
+                ui->Com11Com12->setEnabled(true);
+                ui->Com12Com11->setEnabled(true);
+
+                m_bAutoTest = false;
+            }
+        }
     }
     else
     if (event->timerId() == m_timerIdUsbSerial)
@@ -567,7 +619,7 @@ void CTestDialog::openComm(int& fd, QString msg, int& timer)
         ::write(fd, msg.toLocal8Bit().data(), msg.length());
         if(timer != 0)
             killTimer(timer);
-        timer = startTimer(100);
+        timer = startTimer(300);
     }
 #endif
 }
@@ -1075,7 +1127,6 @@ void CTestDialog::on_btnOK_clicked()
     killTimer(m_timerIdAi);
 
     ::close(fd);
-    ::close(afd);
     ::close(mRtc);
     accept();
 }
@@ -1224,4 +1275,39 @@ void CTestDialog::on_Com10_clicked()
     CommTxSeleced = 9;
     CommRxSeleced = 9;
     OpenNSend();
+}
+
+void CTestDialog::on_AutoTest_clicked()
+{
+    ui->AutoTest->setEnabled(false);
+    ui->Com1->setEnabled(false);
+    ui->Com2->setEnabled(false);
+    ui->Com3->setEnabled(false);
+    ui->Com4->setEnabled(false);
+    ui->Com5->setEnabled(false);
+    ui->Com6->setEnabled(false);
+    ui->Com7->setEnabled(false);
+    ui->Com8->setEnabled(false);
+    ui->Com9->setEnabled(false);
+    ui->Com10->setEnabled(false);
+    ui->Com11Com12->setEnabled(false);
+    ui->Com12Com11->setEnabled(false);
+
+    m_bAutoTest = true;
+
+    ui->commRx->setText("");
+    ui->Com1->setPalette(defaultPalette);
+    ui->Com2->setPalette(defaultPalette);
+    ui->Com3->setPalette(defaultPalette);
+    ui->Com4->setPalette(defaultPalette);
+    ui->Com5->setPalette(defaultPalette);
+    ui->Com6->setPalette(defaultPalette);
+    ui->Com7->setPalette(defaultPalette);
+    ui->Com8->setPalette(defaultPalette);
+    ui->Com9->setPalette(defaultPalette);
+    ui->Com10->setPalette(defaultPalette);
+    ui->Com11Com12->setPalette(defaultPalette);
+    ui->Com12Com11->setPalette(defaultPalette);
+
+    on_Com1_clicked();
 }

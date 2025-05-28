@@ -1469,7 +1469,7 @@
     <widget class="QPushButton" name="CommClear">
      <property name="geometry">
       <rect>
-       <x>540</x>
+       <x>580</x>
        <y>630</y>
        <width>200</width>
        <height>80</height>
@@ -1767,6 +1767,24 @@
      </property>
      <property name="checkable">
       <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="AutoTest">
+     <property name="geometry">
+      <rect>
+       <x>880</x>
+       <y>630</y>
+       <width>200</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>자동 테스트</string>
      </property>
     </widget>
    </widget>
@@ -2106,7 +2124,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
