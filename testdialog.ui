@@ -1404,7 +1404,7 @@
       <rect>
        <x>30</x>
        <y>310</y>
-       <width>1441</width>
+       <width>1331</width>
        <height>161</height>
       </rect>
      </property>
@@ -1419,17 +1419,22 @@
      <widget class="MyLineEdit" name="commTx">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>110</x>
         <y>50</y>
         <width>500</width>
         <height>70</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>50</x>
         <y>50</y>
         <width>50</width>
         <height>70</height>
@@ -1442,7 +1447,7 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>780</x>
+        <x>700</x>
         <y>51</y>
         <width>50</width>
         <height>70</height>
@@ -1455,11 +1460,16 @@
      <widget class="QLineEdit" name="commRx">
       <property name="geometry">
        <rect>
-        <x>850</x>
+        <x>770</x>
         <y>50</y>
         <width>500</width>
         <height>70</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -1469,8 +1479,8 @@
     <widget class="QPushButton" name="CommClear">
      <property name="geometry">
       <rect>
-       <x>580</x>
-       <y>630</y>
+       <x>420</x>
+       <y>610</y>
        <width>200</width>
        <height>80</height>
       </rect>
@@ -1682,7 +1692,7 @@
     <widget class="QPushButton" name="Com12Com11">
      <property name="geometry">
       <rect>
-       <x>1270</x>
+       <x>1090</x>
        <y>180</y>
        <width>180</width>
        <height>80</height>
@@ -1706,7 +1716,7 @@
     <widget class="QPushButton" name="Com11Com12">
      <property name="geometry">
       <rect>
-       <x>1270</x>
+       <x>1090</x>
        <y>70</y>
        <width>180</width>
        <height>80</height>
@@ -1772,8 +1782,8 @@
     <widget class="QPushButton" name="AutoTest">
      <property name="geometry">
       <rect>
-       <x>880</x>
-       <y>630</y>
+       <x>680</x>
+       <y>610</y>
        <width>200</width>
        <height>80</height>
       </rect>
@@ -1785,6 +1795,19 @@
      </property>
      <property name="text">
       <string>자동 테스트</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listCommMsg">
+     <property name="geometry">
+      <rect>
+       <x>1390</x>
+       <y>70</y>
+       <width>491</width>
+       <height>981</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QScrollBar:vertical { width: 50px;height: 50px;}</string>
      </property>
     </widget>
    </widget>
@@ -1985,7 +2008,7 @@
     <rect>
      <x>0</x>
      <y>140</y>
-     <width>1741</width>
+     <width>1901</width>
      <height>16</height>
     </rect>
    </property>

@@ -407,6 +407,7 @@ void CTestDialog::timerEvent(QTimerEvent *event)
                 ui->Com11Com12->setEnabled(true);
                 ui->Com12Com11->setEnabled(true);
 
+                ui->listCommMsg->addItem(QString("자동 테스트 End......"));
                 m_bAutoTest = false;
             }
         }
@@ -640,7 +641,16 @@ void CTestDialog::readComm(int& fd, QString send, int& timer, QLineEdit *edit)
         if(send == rcv)
         {
             m_pButton->setPalette(greenPalette);
+            ui->listCommMsg->addItem(QString("%1 OK").arg(m_pButton->text()));
         }
+        else
+        {
+            ui->listCommMsg->addItem(QString("%1 Fail").arg(m_pButton->text()));
+        }
+    }
+    else
+    {
+        ui->listCommMsg->addItem(QString("%1 Fail").arg(m_pButton->text()));
     }
 #endif
 }
@@ -907,7 +917,6 @@ void CTestDialog::on_fram_clicked()
 void CTestDialog::on_usbSerial_clicked()
 {
     ui->listWidgetMsg->clear();
-    ui->listWidgetMsg->clear();
     msgPut(QString("USB Serial Writing....."));
     system("setusbserial > /tmp/setusb.txt");
     messageRead("/tmp/setusb.txt", 0);
@@ -1083,6 +1092,7 @@ void CTestDialog::on_CommClear_clicked()
     ui->Com10->setPalette(defaultPalette);
     ui->Com11Com12->setPalette(defaultPalette);
     ui->Com12Com11->setPalette(defaultPalette);
+    ui->listCommMsg->clear();
 }
 
 void CTestDialog::on_btnOK_clicked()
@@ -1142,6 +1152,8 @@ void CTestDialog::OpenNSend()
 void CTestDialog::on_Com1_clicked()
 {
     ui->Com1->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com1->text()));
+
     CommTxSeleced = 0;
     CommRxSeleced = 0;
     m_pButton = ui->Com1;
@@ -1151,6 +1163,8 @@ void CTestDialog::on_Com1_clicked()
 void CTestDialog::on_Com2_clicked()
 {
     ui->Com2->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com2->text()));
+
     CommTxSeleced = 1;
     CommRxSeleced = 1;
     m_pButton = ui->Com2;
@@ -1160,6 +1174,8 @@ void CTestDialog::on_Com2_clicked()
 void CTestDialog::on_Com3_clicked()
 {
     ui->Com3->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com3->text()));
+
     CommTxSeleced = 2;
     CommRxSeleced = 2;
     m_pButton = ui->Com3;
@@ -1169,6 +1185,8 @@ void CTestDialog::on_Com3_clicked()
 void CTestDialog::on_Com4_clicked()
 {
     ui->Com4->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com4->text()));
+
     CommTxSeleced = 3;
     CommRxSeleced = 3;
     m_pButton = ui->Com4;
@@ -1178,6 +1196,8 @@ void CTestDialog::on_Com4_clicked()
 void CTestDialog::on_Com5_clicked()
 {
     ui->Com5->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com5->text()));
+
     CommTxSeleced = 4;
     CommRxSeleced = 4;
     m_pButton = ui->Com5;
@@ -1187,6 +1207,8 @@ void CTestDialog::on_Com5_clicked()
 void CTestDialog::on_Com6_clicked()
 {
     ui->Com6->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com6->text()));
+
     CommTxSeleced = 5;
     CommRxSeleced = 5;
     m_pButton = ui->Com6;
@@ -1196,6 +1218,8 @@ void CTestDialog::on_Com6_clicked()
 void CTestDialog::on_Com7_clicked()
 {
     ui->Com7->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com7->text()));
+
     CommTxSeleced = 6;
     CommRxSeleced = 6;
     m_pButton = ui->Com7;
@@ -1205,6 +1229,8 @@ void CTestDialog::on_Com7_clicked()
 void CTestDialog::on_Com8_clicked()
 {
     ui->Com8->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com8->text()));
+
     CommTxSeleced = 7;
     CommRxSeleced = 7;
     m_pButton = ui->Com8;
@@ -1214,6 +1240,8 @@ void CTestDialog::on_Com8_clicked()
 void CTestDialog::on_Com11Com12_clicked()
 {
     ui->Com11Com12->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com11Com12->text()));
+
     CommTxSeleced = 10;
     CommRxSeleced = 11;
     m_pButton = ui->Com11Com12;
@@ -1223,6 +1251,8 @@ void CTestDialog::on_Com11Com12_clicked()
 void CTestDialog::on_Com12Com11_clicked()
 {
     ui->Com12Com11->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com12Com11->text()));
+
     CommTxSeleced = 11;
     CommRxSeleced = 10;
     m_pButton = ui->Com12Com11;
@@ -1263,6 +1293,8 @@ void CTestDialog::on_Com9_clicked()
 {
     m_pButton = ui->Com9;
     m_pButton->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com9->text()));
+
     CommTxSeleced = 8;
     CommRxSeleced = 8;
     OpenNSend();
@@ -1272,6 +1304,8 @@ void CTestDialog::on_Com10_clicked()
 {
     m_pButton = ui->Com10;
     m_pButton->setPalette(defaultPalette);
+    ui->listCommMsg->addItem(QString("%1 Test....").arg(ui->Com10->text()));
+
     CommTxSeleced = 9;
     CommRxSeleced = 9;
     OpenNSend();
@@ -1308,6 +1342,9 @@ void CTestDialog::on_AutoTest_clicked()
     ui->Com10->setPalette(defaultPalette);
     ui->Com11Com12->setPalette(defaultPalette);
     ui->Com12Com11->setPalette(defaultPalette);
+
+    ui->listCommMsg->clear();
+    ui->listCommMsg->addItem(QString("자동 테스트 Start......"));
 
     on_Com1_clicked();
 }
