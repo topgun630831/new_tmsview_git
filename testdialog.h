@@ -108,6 +108,7 @@ protected:
     void aiDisp();
 
 private:
+    void AddCommMsg(QString msg);
     Ui::CTestDialog *ui;
     QPalette redPalette;
     QPalette greenPalette;
