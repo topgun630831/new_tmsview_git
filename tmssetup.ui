@@ -99,7 +99,7 @@ QComboBox QScrollBar {
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="systeminfo">
     <widget class="QTableWidget" name="tableProgram">
@@ -2255,7 +2255,7 @@ QComboBox QScrollBar {
          <x>10</x>
          <y>220</y>
          <width>1671</width>
-         <height>881</height>
+         <height>801</height>
         </rect>
        </property>
        <property name="font">
@@ -2411,6 +2411,160 @@ QComboBox QScrollBar {
          </font>
         </property>
        </column>
+      </widget>
+      <widget class="QComboBox" name="MonitorPort">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>1039</y>
+         <width>180</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>나눔고딕코딩</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="maxVisibleItems">
+        <number>16</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>사용안함</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com9</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com11</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com13</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com14</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Com15</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>1039</y>
+         <width>221</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>나눔고딕코딩</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>감시용 통신포트</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="MonitorPortBaudrate">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>1039</y>
+         <width>180</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>나눔고딕코딩</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>9600</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>19200</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>38400</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>115200</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QWidget" name="flow">
@@ -2707,124 +2861,6 @@ QComboBox QScrollBar {
         <string>배출구 번호</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="MonitorPort">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>690</y>
-         <width>180</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>나눔고딕코딩</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="maxVisibleItems">
-        <number>16</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>사용안함</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com3</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com4</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com5</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com6</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com7</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com8</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com9</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com10</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com11</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com12</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com13</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com14</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Com15</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_16">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>690</y>
-         <width>221</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>나눔고딕코딩</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>감시용 통신포트</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_10">
        <property name="geometry">
         <rect>
@@ -3068,42 +3104,6 @@ QComboBox QScrollBar {
          <pointsize>14</pointsize>
         </font>
        </property>
-      </widget>
-      <widget class="QComboBox" name="MonitorPortBaudrate">
-       <property name="geometry">
-        <rect>
-         <x>490</x>
-         <y>690</y>
-         <width>180</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>나눔고딕코딩</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <item>
-        <property name="text">
-         <string>9600</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>19200</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>38400</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>115200</string>
-        </property>
-       </item>
       </widget>
      </widget>
     </widget>

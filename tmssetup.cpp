@@ -295,9 +295,9 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     table->horizontalHeader()->resizeSection(0, 120);    // 측정기기
     table->horizontalHeader()->resizeSection(1, 120);   // ID
     table->horizontalHeader()->resizeSection(2, 120);   // 항목코드
-    table->horizontalHeader()->resizeSection(3, 200);   // 프로토콜
+    table->horizontalHeader()->resizeSection(3, 180);   // 프로토콜
     table->horizontalHeader()->resizeSection(4, 100);   // 소수점
-    table->horizontalHeader()->resizeSection(5, 120);   // 통신포트
+    table->horizontalHeader()->resizeSection(5, 230);   // 통신포트
     table->horizontalHeader()->resizeSection(6, 120);   // 통신주기
     table->horizontalHeader()->resizeSection(7, 120);   // 타임아웃
     table->horizontalHeader()->resizeSection(8, 120);   // 업로드
@@ -310,6 +310,8 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     gDb.setDatabaseName(tr("/data/project2.db"));
     if(gDb.open() == true)
     {
+        CheckFlow();
+
         int row = 0;
         QSqlQuery query("SELECT Id, Code, Desc, Protocol, RoundUp, Port, ScanTime, Timeout, ConstList, Upload,UseCchk,Analog from Ext_Tms_Item");
         while (query.next())
@@ -471,9 +473,6 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
     }
 //    if(gHardwareRevision == "1")
         DispSamplerDoor();
-
-
-    CheckFlow();
 
     QSqlQuery query("select SamplerModel From Driver_Tms Where Name='Sampler'");
     if(query.next())
@@ -862,7 +861,21 @@ void TmsSetup::SetItem(int row, const TMS_ITEM_TAB *tmsitem, bool bAdd)
     SetItem(sCode, row, 2);
     SetItem(tmsitem->Protocol, row, 3);
     SetItem(QString::number(tmsitem->RoundUp), row, 4);
-    SetItem(tmsitem->Port, row, 5);
+    QString port;
+    if(tmsitem->Desc == "Flow")
+    {
+        for(int i = 0; i < m_nFlowNum; i++)
+        {
+            if(i != 0)
+                port += ",";
+            port += m_FlowPort[i];
+        }
+    }
+    else
+    {
+        port = tmsitem->Port;
+    }
+    SetItem(port, row, 5);
     SetItem(QString::number(tmsitem->ScanTime), row, 6);
     SetItem(QString::number(tmsitem->Timeout), row, 7);
     SetItem(QString::number(tmsitem->Upload), row, 8);
@@ -1223,9 +1236,7 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
 
     SelectedRow = item->row();
     ui->tableSensor->setRowHeight(SelectedRow, SENSOR_ROW_HIGHT);
-    QTableWidgetItem *item2 = ui->tableSensor->item(SelectedRow,5);
-    int index = ui->comPort->findText(item2->text());
-    ui->comPort->setCurrentIndex(index);
+    QTableWidgetItem *item2;
     item2 = ui->tableSensor->item(SelectedRow,4);
     ui->round->setText(item2->text());
     item2 = ui->tableSensor->item(SelectedRow,6);
@@ -1241,6 +1252,14 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
     QString Desc = ui->tableSensor->item(SelectedRow,0)->text();
     QString code = ui->tableSensor->item(SelectedRow,2)->text();
     QString protocol = ui->tableSensor->item(SelectedRow,3)->text();
+
+    int index;
+    if(code != "FLW01")
+    {
+        item2 = ui->tableSensor->item(SelectedRow,5);
+        index = ui->comPort->findText(item2->text());
+        ui->comPort->setCurrentIndex(index);
+    }
 
     if(code == "FLW01" || code == "SAM00")
     {
