@@ -204,6 +204,8 @@ void SensorSelect::disp()
     for(int i = 0; i < 5; i++)
     {
         mFlowComboBox[i]->setCurrentText(m_FlowPort[i]);
+//        int index = mFlowComboBox[i]->findText(m_FlowPort[i]);
+//        mFlowComboBox[i]->setCurrentIndex(index);
 //        mProtocolComboBox[i]->setCurrentText(m_FlowProtocol[i]);
         mFlowCheckBox[i]->setChecked(m_bFlowRate[i]);
         mRatio[i]->setText(QString("%1").arg(m_Ratio[i]));

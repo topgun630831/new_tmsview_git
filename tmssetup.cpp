@@ -1254,7 +1254,7 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
     QString protocol = ui->tableSensor->item(SelectedRow,3)->text();
 
     int index;
-    if(code != "FLW01")
+    if(code != "FLW01" || m_nFlowNum == 1)
     {
         item2 = ui->tableSensor->item(SelectedRow,5);
         index = ui->comPort->findText(item2->text());
@@ -1290,7 +1290,8 @@ void TmsSetup::on_tableSensor_itemClicked(QTableWidgetItem *item)
     {
         ui->protocol->addItem(tr("Flow"));
         ui->protocol->addItem(tr("NewFlow"));
-        ui->comPort->setEnabled(false);
+        if(m_nFlowNum != 1)
+            ui->comPort->setEnabled(false);
     }
     else
     if(code == "SAM00")
@@ -2199,6 +2200,8 @@ void TmsSetup::on_comPort_currentIndexChanged(const QString &arg1)
     TMS_ITEM_TAB *tmsitem = TmsItemList[SelectedRow];
     tmsitem->Port = arg1;
     SetItem(tmsitem->Port, SelectedRow, 5);
+    if(m_nFlowNum == 1)
+        m_FlowPort[0] = arg1;
 //    if(tmsitem->Desc == "Flow")
 //        ui->f_comPort1->setCurrentText(arg1);
 }

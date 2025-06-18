@@ -531,10 +531,10 @@ QRadioButton::indicator:unchecked
      </font>
     </property>
     <property name="currentText">
-     <string>Com7</string>
+     <string>Com1</string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="maxVisibleItems">
      <number>15</number>
@@ -601,17 +601,17 @@ QRadioButton::indicator:unchecked
     </item>
     <item>
      <property name="text">
-      <string>com13</string>
+      <string>Com13</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>com14</string>
+      <string>Com14</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>com15</string>
+      <string>Com15</string>
      </property>
     </item>
    </widget>
