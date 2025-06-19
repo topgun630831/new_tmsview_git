@@ -300,6 +300,7 @@ void SensorSelect::on_ok_clicked()
         m_bFlowRate[i] = mFlowCheckBox[i]->isChecked();
         m_Ratio[i] = mRatio[i]->text().toFloat();
     }
+    sFlowComPort = m_FlowPort[0];
     for(int i = 0; i < nFlowNum; i++)
     {
         for(int j = 0; j < nFlowNum; j++)

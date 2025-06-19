@@ -1850,7 +1850,7 @@ QComboBox QScrollBar {
        <x>0</x>
        <y>80</y>
        <width>1681</width>
-       <height>1091</height>
+       <height>1101</height>
       </rect>
      </property>
      <property name="currentIndex">
@@ -2416,7 +2416,7 @@ QComboBox QScrollBar {
        <property name="geometry">
         <rect>
          <x>300</x>
-         <y>1039</y>
+         <y>1035</y>
          <width>180</width>
          <height>60</height>
         </rect>
@@ -2515,7 +2515,7 @@ QComboBox QScrollBar {
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>1039</y>
+         <y>1035</y>
          <width>221</width>
          <height>60</height>
         </rect>
@@ -2534,7 +2534,7 @@ QComboBox QScrollBar {
        <property name="geometry">
         <rect>
          <x>490</x>
-         <y>1039</y>
+         <y>1035</y>
          <width>180</width>
          <height>60</height>
         </rect>

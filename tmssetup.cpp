@@ -2198,12 +2198,15 @@ void TmsSetup::on_comPort_currentIndexChanged(const QString &arg1)
     if(SelectedRow < 0)
         return;
     TMS_ITEM_TAB *tmsitem = TmsItemList[SelectedRow];
+    if(tmsitem->Desc == "Flow")
+    {
+        if(m_nFlowNum == 1)
+            m_FlowPort[0] = arg1;
+        else
+            return;
+    }
     tmsitem->Port = arg1;
     SetItem(tmsitem->Port, SelectedRow, 5);
-    if(m_nFlowNum == 1)
-        m_FlowPort[0] = arg1;
-//    if(tmsitem->Desc == "Flow")
-//        ui->f_comPort1->setCurrentText(arg1);
 }
 
 void TmsSetup::on_round_textChanged(const QString &arg1)
