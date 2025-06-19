@@ -47,7 +47,7 @@ int YMaxRes = 1200; //600;
 
 
 #define VERSION "1.0"
-#define SVN_REVISION "1000"
+#define SVN_REVISION "1001"
 bool g_DebugDisplay=false;
 bool g_WindowsRun=false;
 QString g_Ip = "127.0.0.1";
