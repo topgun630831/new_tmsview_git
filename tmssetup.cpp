@@ -334,7 +334,7 @@ TmsSetup::TmsSetup(bool flag[9], bool checkFlag[9], QWidget *parent) :
             {
                 // ui->f_comPort1->setCurrentText(tmsitem->Port);
                 FlowRow = row;
-                tmsitem->Port = "";
+                //tmsitem->Port = "";
             }
             if((tmsitem->Code == "TOC00" || tmsitem->Code == "TOC10") && tmsitem->Upload == 1)
                 m_bUseToc = true;
